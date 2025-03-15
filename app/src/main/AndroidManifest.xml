@@ -13,7 +13,25 @@
         android:theme="@style/Theme.LutemonNikoMatei"
         tools:targetApi="31">
         <activity
-            android:name=".HomePage"
+            android:name=".GUI.Train"
+            android:exported="false" />
+        <activity
+            android:name=".GUI.CreateLutemon"
+            android:exported="false" />
+        <activity
+            android:name=".GUI.Battle"
+            android:exported="false" />
+        <activity
+            android:name=".GUI.ChooseYourCharacter2"
+            android:exported="false" />
+        <activity
+            android:name=".GUI.ChooseYourCharacter1"
+            android:exported="false" />
+        <activity
+            android:name=".GUI.viewLutemons"
+            android:exported="false" />
+        <activity
+            android:name=".GUI.HomePage"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

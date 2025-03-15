@@ -1,6 +1,7 @@
 package com.example.lutemonnikomatei;
 
-import androidx.appcompat.widget.AppCompatRadioButton;
+import com.example.lutemonnikomatei.enums.LutemonTypes;
+
 public class Lutemon {
     String name;
     int speed;

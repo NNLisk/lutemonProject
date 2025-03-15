@@ -1,4 +1,4 @@
-package com.example.lutemonnikomatei;
+package com.example.lutemonnikomatei.enums;
 
 public enum LutemonTypes {
     TEACHER,
