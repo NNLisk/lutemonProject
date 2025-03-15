@@ -10,6 +10,8 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class HomePage extends AppCompatActivity {
 
+    public static LutemonManager lutemonManager =
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
