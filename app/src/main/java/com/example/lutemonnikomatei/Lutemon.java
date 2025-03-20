@@ -1,6 +1,7 @@
 package com.example.lutemonnikomatei;
 
 import com.example.lutemonnikomatei.enums.LutemonTypes;
+import java.util.Random;
 
 public class Lutemon {
     String name;
@@ -50,11 +51,22 @@ public class Lutemon {
         return this.attack;
     }
 
+    /*
+     method generates maxHp for lutemon
+     - Called only by constructor
+     - Random and normally distributed
+     - limited to 80-120 range without type multiplier
+    */
     private int assignMaxHp() {
-        int hp = 100;
+        int hpMean = 100;
+        int hpStandardDeviation = 20;
+        Random random = new Random();
+        int baseHp = -1;
 
-        int constant = (int) (Math.random() * 40) - 20;
+        while(baseHp < 80 || baseHp > 120) {
+            baseHp = (int) Math.floor(hpMean + hpStandardDeviation * random.nextGaussian());
+        }
+        return baseHp;
 
-        return hp + constant;
     }
 }
