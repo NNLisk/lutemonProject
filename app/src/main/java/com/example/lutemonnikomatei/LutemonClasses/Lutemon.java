@@ -1,4 +1,4 @@
-package com.example.lutemonnikomatei;
+package com.example.lutemonnikomatei.LutemonClasses;
 
 import com.example.lutemonnikomatei.enums.LutemonTypes;
 import java.util.Random;
@@ -7,24 +7,30 @@ public class Lutemon {
     String name;
     int speed;
     int maxHp;
+    int damageTaken;
+    int damageDealt;
     int hp;
+    int stamina;
     LutemonTypes type;
     int attack;
     int wins;
+    int experience;
     int losses;
+    double hpMultiplier;
+    double speedMultiplier;
+    double attackMultiplier;
 
-    public Lutemon(String name, int speed, int maxhp, int attack) {
+    public Lutemon(String name) {
         this.name = name;
-        this.speed = speed;
+        this.speed = assignSpeed();
         this.maxHp = assignMaxHp();
-        this.hp = maxhp;
-        this.attack = attack;
+        this.attack = assignAttackPower();
+        this.stamina = assignStamina();
         this.wins = 0;
         this.losses = 0;
-    }
-
-    public void fetchLutemonType() {
-
+        this.experience = 0;
+        this.damageDealt = 0;
+        this.damageTaken = 0;
     }
 
     public String getName() {
@@ -66,7 +72,19 @@ public class Lutemon {
         while(baseHp < 80 || baseHp > 120) {
             baseHp = (int) Math.floor(hpMean + hpStandardDeviation * random.nextGaussian());
         }
+        this.hp = baseHp;
         return baseHp;
+    }
 
+    private int assignSpeed() {
+        return 0;
+    }
+
+    private int assignAttackPower() {
+        return 0;
+    }
+
+    private int assignStamina() {
+        return 0;
     }
 }

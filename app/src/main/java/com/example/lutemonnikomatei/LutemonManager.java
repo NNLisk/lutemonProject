@@ -1,7 +1,8 @@
 package com.example.lutemonnikomatei;
 
 
-import java.lang.reflect.Array;
+import com.example.lutemonnikomatei.LutemonClasses.Lutemon;
+
 import java.util.ArrayList;
 public class LutemonManager {
 

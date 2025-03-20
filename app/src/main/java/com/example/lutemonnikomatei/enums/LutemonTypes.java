@@ -5,5 +5,6 @@ public enum LutemonTypes {
     STUDENT,
     SHIKSHA_EMPLOYEE,
     TA,
-    SECURITY_GUARD
+    SECURITY_GUARD,
+    Janne;
 }
