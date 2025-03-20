@@ -29,5 +29,10 @@ public class LutemonManager {
     public static void updateLutemonLosses(Lutemon lutemon) {
 
     }
+    public static void lutemonLevelUpHandler(Lutemon lutemon)
+    {
+
+    }
+
 
 }
