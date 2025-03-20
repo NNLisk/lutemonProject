@@ -1,9 +1,9 @@
 package com.example.lutemonnikomatei.enums;
 
 public enum HealTypes{
-    Battery(0),
-    Heal(3),
-    PassiveHeal(4);
+    BATTERY(0),
+    HEAL(3),
+    PASSIVEHEAL(4);
 
     private final int cost;
     HealTypes (int value) {
