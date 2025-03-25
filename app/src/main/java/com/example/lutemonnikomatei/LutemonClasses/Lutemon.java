@@ -21,11 +21,12 @@ public class Lutemon {
     double speedMultiplier;
     double staminaMultiplier;
 
-    public Lutemon(String name) {
+    public Lutemon(String name, LUTEMONTYPES type) {
         this.name = name;
         this.speed = assignSpeed();
         this.maxHp = assignMaxHp();
         this.maxStamina = assignStamina();
+        this.type = type;
         this.wins = 0;
         this.losses = 0;
         this.experience = 0;
@@ -47,6 +48,30 @@ public class Lutemon {
 
     public int getHp() {
         return this.hp;
+    }
+
+    public void addWin() {
+        this.wins += 1;
+    }
+
+    public void addLoss() {
+        this.losses += 1;
+    }
+
+    public void increaseLevel() {
+        this.experience += 1;
+    }
+
+    public void restoreHealth() {
+        this.hp = maxHp;
+    }
+
+    public void decreaseHealth(int damage) {
+        this.hp -= damage;
+    }
+
+    public void heal(int amount) {
+        this.hp += amount;
     }
 
     public LUTEMONTYPES getType() {

@@ -1,7 +1,9 @@
 package com.example.lutemonnikomatei;
 
 
+import com.example.lutemonnikomatei.GUI.HomePage;
 import com.example.lutemonnikomatei.LutemonClasses.Lutemon;
+import com.example.lutemonnikomatei.enums.LUTEMONTYPES;
 
 import java.util.ArrayList;
 public class LutemonManager {
@@ -11,7 +13,9 @@ public class LutemonManager {
 
     Lutemon player1Lutemon;
     Lutemon player2Lutemon;
-    private LutemonManager() {}
+    private LutemonManager() {
+        this.listOfLutemons = new ArrayList<Lutemon>();
+    }
     public static LutemonManager getInstance() {
         if (lutemonManager == null) {
             lutemonManager = new LutemonManager();
@@ -19,20 +23,20 @@ public class LutemonManager {
         return lutemonManager;
     }
 
-    public static void createLutemon() {
-
+    public static void createLutemon(String name, LUTEMONTYPES type) {
+        Lutemon lutemon = new Lutemon(name, type);
+        HomePage.lutemonManager.listOfLutemons.add(lutemon);
     }
 
     public static void updateLutemonWins(Lutemon lutemon) {
-
+        lutemon.addWin();
     }
 
     public static void updateLutemonLosses(Lutemon lutemon) {
-
+        lutemon.addLoss();
     }
-    public static void lutemonLevelUpHandler(Lutemon lutemon)
-    {
-
+    public static void lutemonLevelUpHandler(Lutemon lutemon) {
+        lutemon.increaseLevel();
     }
 
 
