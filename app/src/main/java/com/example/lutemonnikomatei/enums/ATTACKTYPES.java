@@ -14,11 +14,11 @@ public enum ATTACKTYPES {
         this.baseDamage = baseDamage;
     }
 
-    private int getCost() {
+    public int getCost() {
         return cost;
     }
 
-    private int getBaseDamage() {
+    public int getBaseDamage() {
         return baseDamage;
     }
 }

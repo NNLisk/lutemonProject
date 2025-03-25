@@ -19,8 +19,14 @@ public class BattleManager {
         return battleManagerInstance;
     }
 
-    public static void handleAttack(Lutemon attacking, Lutemon receiving, ATTACKTYPES attack) {
-
+    public static boolean handleAttack(Lutemon attacking, Lutemon receiving, ATTACKTYPES attack) {
+        // maybe attack messages here
+        if (attacking.getStamina() < attack.getCost()){
+            return false;
+        }
+        receiving.decreaseHealth(attack.getBaseDamage());
+        attacking.decreaseStamina(attack.getCost());
+        return true;
     }
 
     public static void handleBuffing(Lutemon lutemon, HEALTYPES buff) {
@@ -34,6 +40,7 @@ public class BattleManager {
     public static void handleBattleEnd(Lutemon winner, Lutemon loser) {
         winner.addWin();
         loser.addLoss();
-        winner.
+        winner.restoreHealth();
+        loser.restoreHealth();
     }
 }

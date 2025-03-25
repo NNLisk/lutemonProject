@@ -42,12 +42,12 @@ public class Lutemon {
         return this.speed;
     }
 
-    public int getMaxHp() {
-        return this.maxHp;
-    }
-
     public int getHp() {
         return this.hp;
+    }
+
+    public int getStamina() {
+        return this.stamina;
     }
 
     public void addWin() {
@@ -65,14 +65,20 @@ public class Lutemon {
     public void restoreHealth() {
         this.hp = maxHp;
     }
+    public void restoreStamina() {this.stamina = maxStamina;}
 
     public void decreaseHealth(int damage) {
-        this.hp -= damage;
+        this.hp = Math.max(0, hp - damage);
     }
 
     public void heal(int amount) {
-        this.hp += amount;
+        this.hp = Math.min(maxHp, hp + amount);
     }
+
+    public void decreaseStamina(int cost) {
+        this.stamina -= cost;
+    }
+
 
     public LUTEMONTYPES getType() {
         return this.type;
