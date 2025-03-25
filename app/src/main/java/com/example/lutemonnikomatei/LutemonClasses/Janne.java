@@ -1,21 +1,30 @@
 package com.example.lutemonnikomatei.LutemonClasses;
 
-import com.example.lutemonnikomatei.enums.AttackTypes;
-import com.example.lutemonnikomatei.enums.DebuffTypes;
-import com.example.lutemonnikomatei.enums.HealTypes;
-import com.example.lutemonnikomatei.enums.LutemonTypes;
+import com.example.lutemonnikomatei.enums.ATTACKTYPES;
+import com.example.lutemonnikomatei.enums.DEBUFFTYPES;
+import com.example.lutemonnikomatei.enums.HEALTYPES;
+import com.example.lutemonnikomatei.enums.LUTEMONTYPES;
 
 import java.util.ArrayList;
 
 public class Janne extends Lutemon {
-    public ArrayList<AttackTypes> attacks;
-    public ArrayList<DebuffTypes> debuffs;
-    public ArrayList<HealTypes> heals;
+    public ArrayList<ATTACKTYPES> attacks;
+    public ArrayList<DEBUFFTYPES> debuffs;
+    public ArrayList<HEALTYPES> heals;
     public Janne(String name) {
         super(name);
-        this.type = LutemonTypes.Janne;
+        this.type = LUTEMONTYPES.Janne;
         this.hpMultiplier = 3;
         this.attackMultiplier = 3;
         this.speedMultiplier = 3;
+
+        this.attacks = new ArrayList<ATTACKTYPES>();
+        this.heals = new ArrayList<HEALTYPES>();
+        this.debuffs = new ArrayList<DEBUFFTYPES>();
+
+        attacks.add(ATTACKTYPES.SLAM);
+        attacks.add(ATTACKTYPES.PROJECTILE);
+        heals.add(HEALTYPES.HEAL);
+        debuffs.add(DEBUFFTYPES.CONFUSION);
     }
 }

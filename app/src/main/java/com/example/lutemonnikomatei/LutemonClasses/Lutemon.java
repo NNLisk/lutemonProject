@@ -1,6 +1,6 @@
 package com.example.lutemonnikomatei.LutemonClasses;
 
-import com.example.lutemonnikomatei.enums.LutemonTypes;
+import com.example.lutemonnikomatei.enums.LUTEMONTYPES;
 import java.util.Random;
 
 public class Lutemon {
@@ -11,7 +11,7 @@ public class Lutemon {
     int damageDealt;
     int hp;
     int stamina;
-    LutemonTypes type;
+    LUTEMONTYPES type;
     int attack;
     int wins;
     int experience;
@@ -49,7 +49,7 @@ public class Lutemon {
         return this.hp;
     }
 
-    public LutemonTypes getType() {
+    public LUTEMONTYPES getType() {
         return this.type;
     }
 

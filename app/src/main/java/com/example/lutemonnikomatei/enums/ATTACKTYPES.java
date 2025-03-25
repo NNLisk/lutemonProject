@@ -1,6 +1,6 @@
 package com.example.lutemonnikomatei.enums;
 
-public enum AttackTypes {
+public enum ATTACKTYPES {
     SLASH(3, 30),
     PUNCH(2, 20),
     PIERCE(3, 27),
@@ -9,7 +9,7 @@ public enum AttackTypes {
     private final int cost;
     private final int baseDamage;
 
-    AttackTypes(int cost, int baseDamage) {
+    ATTACKTYPES(int cost, int baseDamage) {
         this.cost = cost;
         this.baseDamage = baseDamage;
     }

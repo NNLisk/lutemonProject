@@ -1,12 +1,14 @@
 package com.example.lutemonnikomatei.enums;
 
-public enum HealTypes{
+public enum HEALTYPES {
     BATTERY(0),
     HEAL(3),
-    PASSIVEHEAL(4);
+    PASSIVEHEAL(4),
+
+    MYSTERYBUFF(4);
 
     private final int cost;
-    HealTypes (int value) {
+    HEALTYPES(int value) {
         this.cost = value;
     }
 

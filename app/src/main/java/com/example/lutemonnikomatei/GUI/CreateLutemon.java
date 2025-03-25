@@ -9,10 +9,10 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.lutemonnikomatei.R;
-import com.example.lutemonnikomatei.enums.LutemonTypes;
+import com.example.lutemonnikomatei.enums.LUTEMONTYPES;
 
 public class CreateLutemon extends AppCompatActivity {
-public LutemonTypes chosenType;
+public LUTEMONTYPES chosenType;
 public String chosenName;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -1,6 +1,6 @@
 package com.example.lutemonnikomatei.enums;
 
-public enum LutemonTypes {
+public enum LUTEMONTYPES {
     TEACHER,
     STUDENT,
     SHIKSHA_EMPLOYEE,
