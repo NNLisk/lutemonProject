@@ -25,7 +25,6 @@ public class Lutemon {
         this.name = name;
         this.speed = assignSpeed();
         this.maxHp = assignMaxHp();
-        //this.attack = assignAttackPower();
         this.maxStamina = assignStamina();
         this.wins = 0;
         this.losses = 0;
@@ -54,10 +53,6 @@ public class Lutemon {
         return this.type;
     }
 
-    public int getAttack() {
-        return this.attack;
-    }
-
     /*
      method generates maxHp for lutemon
      - Called only by constructor
@@ -81,12 +76,20 @@ public class Lutemon {
     }
 
     private int assignSpeed() {
-        return 0;
+        int speedMean = 10;
+        int speedDeviation = 2;
+        int baseSpeed = -1;
+        int speedMultiplied;
+        Random random = new Random();
+
+        while(baseSpeed < 7 || baseSpeed > 13) {
+            baseSpeed = (int) Math.floor(speedMean + speedDeviation*random.nextGaussian());
+        }
+        speedMultiplied = (int) Math.floor(baseSpeed * this.speedMultiplier);
+
+        this.stamina = speedMultiplied;
+        return speedMultiplied;
     }
-
-    /*private int assignAttackPower() {
-
-    }*/
 
     private int assignStamina() {
         int staminaMean = 10;
