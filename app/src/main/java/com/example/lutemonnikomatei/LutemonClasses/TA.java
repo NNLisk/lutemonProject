@@ -14,7 +14,7 @@ public class TA extends Lutemon{
     public TA(String name) {
         super(name);
         this.hpMultiplier = 1;
-        this.attackMultiplier = 1;
+        this.staminaMultiplier = 1;
         this.speedMultiplier = 1;
 
         this.attacks = new ArrayList<ATTACKTYPES>();

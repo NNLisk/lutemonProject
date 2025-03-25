@@ -10,6 +10,7 @@ public class Lutemon {
     int damageTaken;
     int damageDealt;
     int hp;
+    int maxStamina;
     int stamina;
     LUTEMONTYPES type;
     int attack;
@@ -18,14 +19,14 @@ public class Lutemon {
     int losses;
     double hpMultiplier;
     double speedMultiplier;
-    double attackMultiplier;
+    double staminaMultiplier;
 
     public Lutemon(String name) {
         this.name = name;
         this.speed = assignSpeed();
         this.maxHp = assignMaxHp();
-        this.attack = assignAttackPower();
-        this.stamina = assignStamina();
+        //this.attack = assignAttackPower();
+        this.maxStamina = assignStamina();
         this.wins = 0;
         this.losses = 0;
         this.experience = 0;
@@ -65,26 +66,41 @@ public class Lutemon {
     */
     private int assignMaxHp() {
         int hpMean = 100;
-        int hpStandardDeviation = 20;
-        Random random = new Random();
+        int hpStandardDeviation = 10;
         int baseHp = -1;
+        int hpMultiplied; // this is the hp after multiplier by lutemon type
+        Random random = new Random();
 
         while(baseHp < 80 || baseHp > 120) {
             baseHp = (int) Math.floor(hpMean + hpStandardDeviation * random.nextGaussian());
         }
-        this.hp = baseHp;
-        return baseHp;
+        hpMultiplied = (int) Math.floor(baseHp * this.hpMultiplier);
+
+        this.hp = hpMultiplied;
+        return hpMultiplied;
     }
 
     private int assignSpeed() {
         return 0;
     }
 
-    private int assignAttackPower() {
-        return 0;
-    }
+    /*private int assignAttackPower() {
+
+    }*/
 
     private int assignStamina() {
-        return 0;
+        int staminaMean = 10;
+        int staminaDeviation = 2;
+        int baseStamina = -1;
+        int staminaMultiplied;
+        Random random = new Random();
+
+        while(baseStamina < 7 || baseStamina > 13) {
+            baseStamina = (int) Math.floor(staminaMean + staminaDeviation*random.nextGaussian());
+        }
+        staminaMultiplied = (int) Math.floor(baseStamina * this.staminaMultiplier);
+
+        this.stamina = staminaMultiplied;
+        return staminaMultiplied;
     }
 }

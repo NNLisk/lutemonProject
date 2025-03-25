@@ -15,7 +15,7 @@ public class Student extends Lutemon{
     public Student(String name) {
         super(name);
         this.hpMultiplier = 1.2;
-        this.attackMultiplier = 0.9;
+        this.staminaMultiplier = 0.9;
         this.speedMultiplier = 1.5;
 
         this.attacks = new ArrayList<ATTACKTYPES>();

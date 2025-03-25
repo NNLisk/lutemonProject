@@ -15,7 +15,7 @@ public class RestaurantWorker extends Lutemon{
     public RestaurantWorker(String name) {
         super(name);
         this.hpMultiplier = 1.7;
-        this.attackMultiplier = 0.8;
+        this.staminaMultiplier = 0.8;
         this.speedMultiplier = 0.6;
 
         this.attacks = new ArrayList<ATTACKTYPES>();

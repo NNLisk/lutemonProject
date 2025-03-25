@@ -15,7 +15,7 @@ public class Janne extends Lutemon {
         super(name);
         this.type = LUTEMONTYPES.Janne;
         this.hpMultiplier = 3;
-        this.attackMultiplier = 3;
+        this.staminaMultiplier = 3;
         this.speedMultiplier = 3;
 
         this.attacks = new ArrayList<ATTACKTYPES>();
