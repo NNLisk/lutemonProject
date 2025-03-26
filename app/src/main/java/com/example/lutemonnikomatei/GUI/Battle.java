@@ -57,5 +57,7 @@ public class Battle extends AppCompatActivity {
         BattleManager battleManager = new BattleManager(battleListener);
 
         battleManager.startBattle(player1, player2);
+
+
     }
 }

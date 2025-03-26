@@ -38,6 +38,7 @@ public class BattleManager {
         }
 
         handleBuffing(currentPlayer, buff);
+
     }
     public void onPlayerDebuffSelected(DEBUFFTYPES debuff) {
         if (isGameOver) {
@@ -92,3 +93,5 @@ public class BattleManager {
         receivingPlayer = temp;
     }
 }
+
+

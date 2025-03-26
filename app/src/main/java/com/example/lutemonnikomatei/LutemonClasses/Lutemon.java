@@ -24,7 +24,7 @@ public class Lutemon {
         this.name = name;
         this.speed = assignSpeed();
         this.maxHp = assignMaxHp();
-        this.maxStamina = assignStamina();
+        this.maxStamina = assignMaxStamina();
         this.type = type;
         this.wins = 0;
         this.losses = 0;
@@ -121,7 +121,7 @@ public class Lutemon {
         return speedMultiplied;
     }
 
-    private int assignStamina() {
+    private int assignMaxStamina() {
         int staminaMean = 10;
         int staminaDeviation = 2;
         int baseStamina = -1;
