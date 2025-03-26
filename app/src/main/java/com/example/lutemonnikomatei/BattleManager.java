@@ -8,6 +8,7 @@ import com.example.lutemonnikomatei.enums.HEALTYPES;
 public class BattleManager {
 
     Lutemon currentPlayer;
+    Lutemon receivingPlayer;
     BattleListener listener;
     boolean isGameOver;
 
@@ -15,9 +16,32 @@ public class BattleManager {
         this.listener = listener;
         this.isGameOver = false;
     }
-    public Lutemon startBattle(Lutemon player1, Lutemon player2) {
-
+    public void startBattle(Lutemon player1, Lutemon player2) {
+        currentPlayer = getStartingPlayer(player1, player2);
+        receivingPlayer = getReceivingLutemon(player1, player2);
         listener.onTurnStart(currentPlayer);
+    }
+
+    public void onPlayerAttackSelected(ATTACKTYPES attack) {
+        if (isGameOver) {
+            return;
+        }
+
+        handleAttack(currentPlayer, receivingPlayer, attack);
+    }
+    public void onPlayerBuffSelected(HEALTYPES buff) {
+        if (isGameOver) {
+            return;
+        }
+
+        handleBuffing(currentPlayer, buff);
+    }
+    public void onPlayerDebuffSelected(DEBUFFTYPES debuff) {
+        if (isGameOver) {
+            return;
+        }
+
+        handleDebuffing(currentPlayer, receivingPlayer, debuff);
     }
 
     private boolean handleAttack(Lutemon attacking, Lutemon receiving, ATTACKTYPES attack) {
@@ -51,5 +75,15 @@ public class BattleManager {
             return player2;
         }
         return player1;
+    }
+
+    private Lutemon getReceivingLutemon(Lutemon player1, Lutemon player2) {
+        return (player1.equals(currentPlayer)) ? player2 : player1;
+    }
+
+    private void switchPlayers() {
+        Lutemon temp = currentPlayer;
+        currentPlayer = receivingPlayer;
+        receivingPlayer = temp;
     }
 }
