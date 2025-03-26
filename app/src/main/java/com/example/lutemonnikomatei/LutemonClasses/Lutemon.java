@@ -13,7 +13,6 @@ public class Lutemon {
     int maxStamina;
     int stamina;
     LUTEMONTYPES type;
-    int attack;
     int wins;
     int experience;
     int losses;

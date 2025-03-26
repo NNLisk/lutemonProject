@@ -18,10 +18,10 @@ import com.example.lutemonnikomatei.R;
 
 public class Battle extends AppCompatActivity {
 
-    // somehow player1 and player2 needs to be set here,
-    // maybe from the previous activity?
-    Lutemon player1 = LutemonManager.
+    LutemonManager lutemonManager = LutemonManager.getInstance();
 
+    Lutemon player1 = lutemonManager.getPlayer1();
+    Lutemon player2 = lutemonManager.getPlayer2();
     Button player1Ability1;
     Button player1Ability2;
     Button player1Ability3;

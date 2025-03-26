@@ -71,6 +71,8 @@ public class BattleManager {
         loser.addLoss();
         winner.restoreHealth();
         loser.restoreHealth();
+        winner.restoreStamina();
+        loser.restoreStamina();
     }
 
     public Lutemon getStartingPlayer(Lutemon player1, Lutemon player2) {
