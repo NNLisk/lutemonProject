@@ -45,12 +45,12 @@ public class Battle extends AppCompatActivity {
         BattleListener battleListener = new BattleListener() {
             @Override
             public void onTurnStart(Lutemon currentPlayer) {
-
+                // UI UPDATER METHOD CALL HERE
             }
 
             @Override
             public void onGameOver(Lutemon winner) {
-
+                // UI UPDATER METHOD CALL HERE
             }
         };
 
