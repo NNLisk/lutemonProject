@@ -2,6 +2,7 @@ package com.example.lutemonnikomatei.LutemonClasses;
 
 import com.example.lutemonnikomatei.enums.ATTACKTYPES;
 import com.example.lutemonnikomatei.enums.HEALTYPES;
+import com.example.lutemonnikomatei.enums.LUTEMONTYPES;
 
 import java.util.ArrayList;
 
@@ -11,7 +12,7 @@ public class SecurityGuard extends Lutemon{
     public ArrayList<HEALTYPES> heals;
     public ArrayList<ATTACKTYPES> weaknesses;
     public SecurityGuard(String name) {
-        super(name);
+        super(name, LUTEMONTYPES.SECURITY_GUARD);
         this.hpMultiplier = 0.8;
         this.staminaMultiplier = 1.3;
         this.speedMultiplier = 1.4;

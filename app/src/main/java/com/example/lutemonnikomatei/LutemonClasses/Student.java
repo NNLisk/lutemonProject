@@ -3,6 +3,7 @@ package com.example.lutemonnikomatei.LutemonClasses;
 import com.example.lutemonnikomatei.enums.ATTACKTYPES;
 import com.example.lutemonnikomatei.enums.DEBUFFTYPES;
 import com.example.lutemonnikomatei.enums.HEALTYPES;
+import com.example.lutemonnikomatei.enums.LUTEMONTYPES;
 
 import java.util.ArrayList;
 
@@ -13,7 +14,7 @@ public class Student extends Lutemon{
     public ArrayList<ATTACKTYPES> weaknesses;
 
     public Student(String name) {
-        super(name);
+        super(name, LUTEMONTYPES.STUDENT);
         this.hpMultiplier = 1.2;
         this.staminaMultiplier = 0.9;
         this.speedMultiplier = 1.5;

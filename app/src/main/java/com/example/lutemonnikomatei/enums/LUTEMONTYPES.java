@@ -3,7 +3,7 @@ package com.example.lutemonnikomatei.enums;
 public enum LUTEMONTYPES {
     TEACHER,
     STUDENT,
-    SHIKSHA_EMPLOYEE,
+    RESTAURANT_WORKER,
     TA,
     SECURITY_GUARD,
     Janne;
