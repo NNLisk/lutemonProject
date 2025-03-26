@@ -4,6 +4,7 @@ import com.example.lutemonnikomatei.LutemonClasses.Lutemon;
 import com.example.lutemonnikomatei.enums.ATTACKTYPES;
 import com.example.lutemonnikomatei.enums.DEBUFFTYPES;
 import com.example.lutemonnikomatei.enums.HEALTYPES;
+import com.example.lutemonnikomatei.Exceptions.*;
 
 public class BattleManager {
 
@@ -22,12 +23,14 @@ public class BattleManager {
         listener.onTurnStart(currentPlayer);
     }
 
-    public void onPlayerAttackSelected(ATTACKTYPES attack) {
+    public void onPlayerAttackSelected(ATTACKTYPES attack) throws OutOfStamina {
         if (isGameOver) {
             return;
         }
+        while (!handleAttack(currentPlayer, receivingPlayer, attack)) {
+            throw new OutOfStamina();
+        }
 
-        handleAttack(currentPlayer, receivingPlayer, attack);
     }
     public void onPlayerBuffSelected(HEALTYPES buff) {
         if (isGameOver) {
