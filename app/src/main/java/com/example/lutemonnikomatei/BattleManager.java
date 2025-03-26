@@ -7,22 +7,19 @@ import com.example.lutemonnikomatei.enums.HEALTYPES;
 
 public class BattleManager {
 
-    Lutemon startingLutemon = null;
-    Lutemon nonStartingLutemon = null;
+    Lutemon currentPlayer;
+    BattleListener listener;
+    boolean isGameOver;
+
+    public BattleManager(BattleListener listener) {
+        this.listener = listener;
+        this.isGameOver = false;
+    }
     public Lutemon startBattle(Lutemon player1, Lutemon player2) {
 
-        getPlayerOrder(player1, player2);
-
-        Lutemon winner = null;
-
-        while(player1.getHp() > 0 && player2.getHp() > 0) {
-            //battle
-        }
-
-        return winner;
     }
 
-    public static boolean handleAttack(Lutemon attacking, Lutemon receiving, ATTACKTYPES attack) {
+    private boolean handleAttack(Lutemon attacking, Lutemon receiving, ATTACKTYPES attack) {
         // maybe attack messages here
         if (attacking.getStamina() < attack.getCost()){
             return false;
