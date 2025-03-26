@@ -7,12 +7,17 @@ import com.example.lutemonnikomatei.enums.HEALTYPES;
 
 public class BattleManager {
 
+    Lutemon startingLutemon = null;
+    Lutemon nonStartingLutemon = null;
     public Lutemon startBattle(Lutemon player1, Lutemon player2) {
 
-        Lutemon startingLutemon = getStartingLutemon(player1, player2);
+        getPlayerOrder(player1, player2);
 
         Lutemon winner = null;
 
+        while(player1.getHp() > 0 && player2.getHp() > 0) {
+            //battle
+        }
 
         return winner;
     }
@@ -41,12 +46,16 @@ public class BattleManager {
         loser.addLoss();
         winner.restoreHealth();
         loser.restoreHealth();
+        startingLutemon = nonStartingLutemon = null; // clears the lutemons from the battle
     }
 
-    private Lutemon getStartingLutemon(Lutemon player1, Lutemon player2) {
+    private void getPlayerOrder(Lutemon player1, Lutemon player2) {
         if (player1.getSpeed() < player2.getSpeed()) {
-            return player2;
+            startingLutemon = player2;
+            nonStartingLutemon = player1;
+        } else {
+            startingLutemon = player1;
+            nonStartingLutemon = player2;
         }
-        return player1;
     }
 }
