@@ -13,14 +13,14 @@ import androidx.recyclerview.widget.BatchingListUpdateCallback;
 import com.example.lutemonnikomatei.BattleListener;
 import com.example.lutemonnikomatei.BattleManager;
 import com.example.lutemonnikomatei.LutemonClasses.Lutemon;
+import com.example.lutemonnikomatei.LutemonManager;
 import com.example.lutemonnikomatei.R;
 
 public class Battle extends AppCompatActivity {
 
     // somehow player1 and player2 needs to be set here,
     // maybe from the previous activity?
-    Lutemon player1;
-    Lutemon player2;
+    Lutemon player1 = LutemonManager.
 
     Button player1Ability1;
     Button player1Ability2;

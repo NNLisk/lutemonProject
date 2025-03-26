@@ -28,6 +28,22 @@ public class LutemonManager {
         HomePage.lutemonManager.listOfLutemons.add(lutemon);
     }
 
+    public Lutemon getPlayer1() {
+        return this.player1Lutemon;
+    }
+
+    public Lutemon getPlayer2() {
+        return this.player2Lutemon;
+    }
+
+    public void setLutemon1(Lutemon player) {
+        this.player1Lutemon = player;
+    }
+
+    public void setLutemon2(Lutemon player) {
+        this.player2Lutemon = player;
+    }
+
     public static void updateLutemonWins(Lutemon lutemon) {
         lutemon.addWin();
     }
