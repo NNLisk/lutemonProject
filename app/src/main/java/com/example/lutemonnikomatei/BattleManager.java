@@ -17,6 +17,7 @@ public class BattleManager {
     }
     public Lutemon startBattle(Lutemon player1, Lutemon player2) {
 
+        listener.onTurnStart(currentPlayer);
     }
 
     private boolean handleAttack(Lutemon attacking, Lutemon receiving, ATTACKTYPES attack) {
@@ -43,16 +44,12 @@ public class BattleManager {
         loser.addLoss();
         winner.restoreHealth();
         loser.restoreHealth();
-        startingLutemon = nonStartingLutemon = null; // clears the lutemons from the battle
     }
 
-    private void getPlayerOrder(Lutemon player1, Lutemon player2) {
+    public Lutemon getStartingPlayer(Lutemon player1, Lutemon player2) {
         if (player1.getSpeed() < player2.getSpeed()) {
-            startingLutemon = player2;
-            nonStartingLutemon = player1;
-        } else {
-            startingLutemon = player1;
-            nonStartingLutemon = player2;
+            return player2;
         }
+        return player1;
     }
 }
