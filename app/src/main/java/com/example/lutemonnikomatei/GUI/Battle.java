@@ -7,7 +7,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.recyclerview.widget.BatchingListUpdateCallback;
 
+import com.example.lutemonnikomatei.BattleManager;
 import com.example.lutemonnikomatei.R;
 
 public class Battle extends AppCompatActivity {

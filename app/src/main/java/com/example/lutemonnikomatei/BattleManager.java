@@ -7,16 +7,14 @@ import com.example.lutemonnikomatei.enums.HEALTYPES;
 
 public class BattleManager {
 
-    public static BattleManager battleManagerInstance = null;
-    private BattleManager() {
+    public Lutemon startBattle(Lutemon player1, Lutemon player2) {
 
-    }
+        Lutemon startingLutemon = getStartingLutemon(player1, player2);
 
-    public static BattleManager getInstance() {
-        if (battleManagerInstance == null) {
-            battleManagerInstance = new BattleManager();
-        }
-        return battleManagerInstance;
+        Lutemon winner = null;
+
+
+        return winner;
     }
 
     public static boolean handleAttack(Lutemon attacking, Lutemon receiving, ATTACKTYPES attack) {
@@ -29,18 +27,26 @@ public class BattleManager {
         return true;
     }
 
-    public static void handleBuffing(Lutemon lutemon, HEALTYPES buff) {
+
+    private void handleBuffing(Lutemon lutemon, HEALTYPES buff) {
 
     }
 
-    public static void handleDebuffing(Lutemon attacking, Lutemon receiving, DEBUFFTYPES debuff) {
+    private void handleDebuffing(Lutemon attacking, Lutemon receiving, DEBUFFTYPES debuff) {
 
     }
 
-    public static void handleBattleEnd(Lutemon winner, Lutemon loser) {
+    private void handleBattleEnd(Lutemon winner, Lutemon loser) {
         winner.addWin();
         loser.addLoss();
         winner.restoreHealth();
         loser.restoreHealth();
+    }
+
+    private Lutemon getStartingLutemon(Lutemon player1, Lutemon player2) {
+        if (player1.getSpeed() < player2.getSpeed()) {
+            return player2;
+        }
+        return player1;
     }
 }

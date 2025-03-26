@@ -38,6 +38,4 @@ public class LutemonManager {
     public static void lutemonLevelUpHandler(Lutemon lutemon) {
         lutemon.increaseLevel();
     }
-
-
 }
