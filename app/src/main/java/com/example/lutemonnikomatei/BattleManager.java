@@ -20,17 +20,26 @@ public class BattleManager {
     public void startBattle(Lutemon player1, Lutemon player2) {
         currentPlayer = getStartingPlayer(player1, player2);
         receivingPlayer = getReceivingLutemon(player1, player2);
-        listener.onTurnStart(currentPlayer);
+        listener.onTurnStart();
     }
 
     public void onPlayerAttackSelected(ATTACKTYPES attack) throws OutOfStamina {
+
         if (isGameOver) {
             return;
         }
-        while (!handleAttack(currentPlayer, receivingPlayer, attack)) {
+        if (!handleAttack(currentPlayer, receivingPlayer, attack)) {
             throw new OutOfStamina();
         }
 
+        if (checkIfBattleOver(currentPlayer, receivingPlayer)) {
+            isGameOver = true;
+            listener.onGameOver();
+            return;
+        }
+
+        switchPlayers();
+        listener.onTurnStart();
     }
     public void onPlayerBuffSelected(HEALTYPES buff) {
         if (isGameOver) {
@@ -65,6 +74,10 @@ public class BattleManager {
 
     private void handleDebuffing(Lutemon attacking, Lutemon receiving, DEBUFFTYPES debuff) {
 
+    }
+
+    private boolean checkIfBattleOver(Lutemon p1, Lutemon p2) {
+        return p1.getHp() == 0 || p2.getHp() == 0;
     }
 
     private void handleBattleEnd(Lutemon winner, Lutemon loser) {
