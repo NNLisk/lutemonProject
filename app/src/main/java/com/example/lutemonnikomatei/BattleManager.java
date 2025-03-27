@@ -5,6 +5,8 @@ import com.example.lutemonnikomatei.enums.ATTACKTYPES;
 import com.example.lutemonnikomatei.enums.DEBUFFTYPES;
 import com.example.lutemonnikomatei.enums.HEALTYPES;
 import com.example.lutemonnikomatei.Exceptions.*;
+import com.example.lutemonnikomatei.statuseffects.MultiturnHeal;
+import com.example.lutemonnikomatei.statuseffects.StatusEffect;
 
 public class BattleManager {
 
@@ -48,6 +50,8 @@ public class BattleManager {
 
         handleBuffing(currentPlayer, buff);
 
+        switchPlayers();
+        listener.onTurnStart();
     }
     public void onPlayerDebuffSelected(DEBUFFTYPES debuff) {
         if (isGameOver) {
@@ -68,9 +72,29 @@ public class BattleManager {
     }
 
 
-    private void handleBuffing(Lutemon lutemon, HEALTYPES buff) {
+    private boolean handleBuffing(Lutemon lutemon, HEALTYPES buff) {
+        if (lutemon.getStamina() < buff.getCost()) {
+            return false;
+        }
+        switch(buff){
+            case HEAL:
+                lutemon.heal((int) Math.floor(lutemon.getMaxHp()*0.3));
+                break;
 
+            case BATTERY:
+                lutemon.restoreStamina();
+                break;
+
+            case PASSIVEHEAL:
+                StatusEffect eff = new MultiturnHeal(3);
+                lutemon.addStatusEffect(eff);
+                eff.applyEffect(currentPlayer);
+                break;
+        }
+        return true;
     }
+
+
 
     private void handleDebuffing(Lutemon attacking, Lutemon receiving, DEBUFFTYPES debuff) {
 

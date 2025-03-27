@@ -1,6 +1,9 @@
 package com.example.lutemonnikomatei.LutemonClasses;
 
 import com.example.lutemonnikomatei.enums.LUTEMONTYPES;
+import com.example.lutemonnikomatei.statuseffects.StatusEffect;
+
+import java.util.ArrayList;
 import java.util.Random;
 
 public class Lutemon {
@@ -12,6 +15,7 @@ public class Lutemon {
     int hp;
     int maxStamina;
     int stamina;
+    ArrayList<StatusEffect> statusEffects;
     LUTEMONTYPES type;
     int wins;
     int experience;
@@ -25,6 +29,7 @@ public class Lutemon {
         this.speed = assignSpeed();
         this.maxHp = assignMaxHp();
         this.maxStamina = assignMaxStamina();
+        this.statusEffects = new ArrayList<StatusEffect>();
         this.type = type;
         this.wins = 0;
         this.losses = 0;
@@ -44,9 +49,13 @@ public class Lutemon {
     public int getHp() {
         return this.hp;
     }
+    public int getMaxHp() {return this.maxHp;}
 
     public int getStamina() {
         return this.stamina;
+    }
+    public void addStatusEffect(StatusEffect eff) {
+        this.statusEffects.add(eff);
     }
 
     public void addWin() {
