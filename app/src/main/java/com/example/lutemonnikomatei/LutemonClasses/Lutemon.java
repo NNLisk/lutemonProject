@@ -3,6 +3,7 @@ package com.example.lutemonnikomatei.LutemonClasses;
 import com.example.lutemonnikomatei.enums.LUTEMONTYPES;
 import com.example.lutemonnikomatei.statuseffects.StatusEffect;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -56,6 +57,9 @@ public class Lutemon {
     }
     public void addStatusEffect(StatusEffect eff) {
         this.statusEffects.add(eff);
+    }
+    public ArrayList<StatusEffect> getStatusEffects() {
+        return this.statusEffects;
     }
 
     public void addWin() {

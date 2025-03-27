@@ -8,6 +8,8 @@ import com.example.lutemonnikomatei.Exceptions.*;
 import com.example.lutemonnikomatei.statuseffects.MultiturnHeal;
 import com.example.lutemonnikomatei.statuseffects.StatusEffect;
 
+import java.util.Iterator;
+
 public class BattleManager {
 
     Lutemon currentPlayer;
@@ -95,9 +97,18 @@ public class BattleManager {
     }
 
 
-
     private void handleDebuffing(Lutemon attacking, Lutemon receiving, DEBUFFTYPES debuff) {
 
+    }
+    public void processStatusEffects(Lutemon lutemon) {
+        Iterator<StatusEffect> iterator = lutemon.getStatusEffects().iterator();
+        while (iterator.hasNext()) {
+            StatusEffect effect = iterator.next();
+            effect.applyEffect(lutemon);
+            if (effect.isExpired()) {
+                iterator.remove();
+            }
+        }
     }
 
     private boolean checkIfBattleOver(Lutemon p1, Lutemon p2) {
