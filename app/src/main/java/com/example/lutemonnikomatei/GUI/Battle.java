@@ -101,4 +101,12 @@ public class Battle extends AppCompatActivity {
             index++;
         } 
     }
+
+    private void updateBattleUIonTurnChange() {
+
+    }
+
+    private void UIwhenGameOver() {
+
+    }
 }
