@@ -2,6 +2,7 @@ package com.example.lutemonnikomatei.GUI;
 
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,6 +14,7 @@ import java.util.ArrayList;
 
 import com.example.lutemonnikomatei.BattleListener;
 import com.example.lutemonnikomatei.BattleManager;
+import com.example.lutemonnikomatei.Exceptions.OutOfStamina;
 import com.example.lutemonnikomatei.LutemonClasses.Lutemon;
 import com.example.lutemonnikomatei.LutemonManager;
 import com.example.lutemonnikomatei.R;
@@ -66,18 +68,36 @@ public class Battle extends AppCompatActivity {
     public void buttonAssigner(Lutemon lutemon) {
         int index = 0;
 
-        for (ATTACKTYPES attacks : lutemon.getAttacks()) {
-            buttonlist[index].setOnClickListener(battleManager.onPlayerAttackSelected(attacks));
+        for (ATTACKTYPES attack : lutemon.getAttacks()) {
+            buttonlist[index].setOnClickListener(view -> {
+                try {
+                    battleManager.onPlayerAttackSelected(attack);
+                } catch (OutOfStamina e) {
+                    Toast.makeText(view.getContext(), "Not enough stamina!", Toast.LENGTH_SHORT).show();
+                }
+            });
             index++;
         }
 
-        for (DEBUFFTYPES debuffs : lutemon.getDebuffs()) {
-            buttonlist[index].setOnClickListener(battleManager.onPlayerDebuffSelected(debuffs));
+        for (DEBUFFTYPES debuff : lutemon.getDebuffs()) {
+            buttonlist[index].setOnClickListener(view -> {
+                try {
+                    battleManager.onPlayerDebuffSelected(debuff);
+                } catch (OutOfStamina e) {
+                    Toast.makeText(view.getContext(), "Not enough stamina!", Toast.LENGTH_SHORT).show();
+                }
+            });
             index++;
         }
 
-        for (BUFFTYPES buffs : lutemon.getBuffs()) {
-            buttonlist[index].setOnClickListener(battleManager.onPlayerBuffSelected(buffs));
+        for (BUFFTYPES buff : lutemon.getBuffs()) {
+            buttonlist[index].setOnClickListener(view -> {
+                try {
+                    battleManager.onPlayerBuffSelected(buff);
+                } catch (OutOfStamina e) {
+                    Toast.makeText(view.getContext(), "Not enough stamina!", Toast.LENGTH_SHORT).show();
+                }
+            });
             index++;
         } 
     }
