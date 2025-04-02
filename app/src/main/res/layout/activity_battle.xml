@@ -7,4 +7,47 @@
     android:layout_height="match_parent"
     tools:context=".GUI.Battle">
 
+    <LinearLayout
+        android:id="@+id/abilityButtonContainer"
+        android:layout_width="415dp"
+        android:layout_height="260dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <Button
+            android:id="@+id/playerAbility1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp" />
+
+        <Button
+            android:id="@+id/playerAbility2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp" />
+
+        <Button
+            android:id="@+id/playerAbility3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp" />
+
+        <Button
+            android:id="@+id/playerAbility4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/playerContainer"
+        android:layout_width="0dp"
+        android:layout_height="381dp"
+        android:layout_marginBottom="8dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/abilityButtonContainer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"></LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -10,8 +10,6 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import java.util.ArrayList;
-
 import com.example.lutemonnikomatei.BattleListener;
 import com.example.lutemonnikomatei.BattleManager;
 import com.example.lutemonnikomatei.Exceptions.OutOfStamina;
@@ -25,15 +23,12 @@ import com.example.lutemonnikomatei.enums.BUFFTYPES;
 public class Battle extends AppCompatActivity {
 
     LutemonManager lutemonManager = LutemonManager.getInstance();
-
-    Lutemon player1 = lutemonManager.getPlayer1();
-    Lutemon player2 = lutemonManager.getPlayer2();
     
-    Button abilityButton1;
-    Button abilityButton2;
-    Button abilityButton3;
-    Button abilityButton4;
-    Button[] buttonlist = {abilityButton1, abilityButton2, abilityButton3, abilityButton4};
+    Button abilityButton1 = findViewById(R.id.playerAbility1);
+    Button abilityButton2 = findViewById(R.id.playerAbility2);
+    Button abilityButton3 = findViewById(R.id.playerAbility3);
+    Button abilityButton4 = findViewById(R.id.playerAbility4);
+    Button[] buttonList = {abilityButton1, abilityButton2, abilityButton3, abilityButton4};
 
     BattleManager battleManager;
 
@@ -62,14 +57,14 @@ public class Battle extends AppCompatActivity {
 
         battleManager = new BattleManager(battleListener);
 
-        battleManager.startBattle(player1, player2);        
+        battleManager.startBattle(lutemonManager.getPlayer1(), lutemonManager.getPlayer2());
     }
 
     public void buttonAssigner(Lutemon lutemon) {
         int index = 0;
 
         for (ATTACKTYPES attack : lutemon.getAttacks()) {
-            buttonlist[index].setOnClickListener(view -> {
+            buttonList[index].setOnClickListener(view -> {
                 try {
                     battleManager.onPlayerAttackSelected(attack);
                 } catch (OutOfStamina e) {
@@ -80,7 +75,7 @@ public class Battle extends AppCompatActivity {
         }
 
         for (DEBUFFTYPES debuff : lutemon.getDebuffs()) {
-            buttonlist[index].setOnClickListener(view -> {
+            buttonList[index].setOnClickListener(view -> {
                 try {
                     battleManager.onPlayerDebuffSelected(debuff);
                 } catch (OutOfStamina e) {
@@ -91,7 +86,7 @@ public class Battle extends AppCompatActivity {
         }
 
         for (BUFFTYPES buff : lutemon.getBuffs()) {
-            buttonlist[index].setOnClickListener(view -> {
+            buttonList[index].setOnClickListener(view -> {
                 try {
                     battleManager.onPlayerBuffSelected(buff);
                 } catch (OutOfStamina e) {
