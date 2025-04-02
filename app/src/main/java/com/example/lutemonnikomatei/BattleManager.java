@@ -45,22 +45,41 @@ public class BattleManager {
         switchPlayers();
         listener.onTurnStart();
     }
-    public void onPlayerBuffSelected(HEALTYPES buff) {
+    public void onPlayerBuffSelected(HEALTYPES buff) throws OutOfStamina {
         if (isGameOver) {
             return;
         }
 
-        handleBuffing(currentPlayer, buff);
+        if (!handleBuffing(currentPlayernull, buff)) {
+            throw new OutOfStamina();
+        }
+
+        if (checkIfBattleOver(currentPlayer, receivingPlayer)) {
+            isGameOver = true;
+            listener.onGameOver();
+            return;
+        }
 
         switchPlayers();
         listener.onTurnStart();
     }
-    public void onPlayerDebuffSelected(DEBUFFTYPES debuff) {
+    public void onPlayerDebuffSelected(DEBUFFTYPES debuff) throws OutOfStamina{
         if (isGameOver) {
             return;
         }
 
-        handleDebuffing(currentPlayer, receivingPlayer, debuff);
+        if (!handleDebuffing(currentPlayer, receivingPlayer, debuff)) {
+            throw new OutOfStamina();
+        }
+
+        if (checkIfBattleOver(currentPlayer, receivingPlayer)) {
+            isGameOver = true;
+            listener.onGameOver();
+            return;
+        }
+        switchPlayers();
+        listener.onTurnStart();
+    
     }
 
     private boolean handleAttack(Lutemon attacking, Lutemon receiving, ATTACKTYPES attack) {
