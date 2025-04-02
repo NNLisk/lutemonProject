@@ -25,4 +25,15 @@ public class SecurityGuard extends Lutemon{
         attacks.add(ATTACKTYPES.SLAM);
         heals.add(HEALTYPES.HEAL);
     }
+
+    
+    public ArrayList<ATTACKTYPES> getAttacks() {
+        return this.attacks;
+    }
+    public ArrayList<DEBUFFTYPES> getDebuffs() {
+        return this.debuffs;
+    }
+    public ArrayList<HEALTYPES> getBuffs() {
+        return this.getBuffs;
+    }
 }

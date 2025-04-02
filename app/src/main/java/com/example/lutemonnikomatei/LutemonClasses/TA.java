@@ -27,4 +27,15 @@ public class TA extends Lutemon{
         debuffs.add(DEBUFFTYPES.WEAKEN);
         heals.add(HEALTYPES.BATTERY);
     }
+
+    
+    public ArrayList<ATTACKTYPES> getAttacks() {
+        return this.attacks;
+    }
+    public ArrayList<DEBUFFTYPES> getDebuffs() {
+        return this.debuffs;
+    }
+    public ArrayList<HEALTYPES> getBuffs() {
+        return this.getBuffs;
+    }
 }

@@ -30,4 +30,15 @@ public class Teacher extends Lutemon{
         heals.add(HEALTYPES.HEAL);
 
     }
+
+    
+    public ArrayList<ATTACKTYPES> getAttacks() {
+        return this.attacks;
+    }
+    public ArrayList<DEBUFFTYPES> getDebuffs() {
+        return this.debuffs;
+    }
+    public ArrayList<HEALTYPES> getBuffs() {
+        return this.getBuffs;
+    }
 }

@@ -10,6 +10,8 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.BatchingListUpdateCallback;
 
+import java.util.ArrayList;
+
 import com.example.lutemonnikomatei.BattleListener;
 import com.example.lutemonnikomatei.BattleManager;
 import com.example.lutemonnikomatei.LutemonClasses.Lutemon;
@@ -27,8 +29,9 @@ public class Battle extends AppCompatActivity {
     Button abilityButton2;
     Button abilityButton3;
     Button abilityButton4;
-
     Button[] buttonlist = {abilityButton1, abilityButton2, abilityButton3, abilityButton4};
+
+    BattleManager battleManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,15 +56,27 @@ public class Battle extends AppCompatActivity {
             }
         };
 
-        BattleManager battleManager = new BattleManager(battleListener);
+        battleManager = new BattleManager(battleListener);
 
-        battleManager.startBattle(player1, player2);
-        
-
-        
+        battleManager.startBattle(player1, player2);        
     }
 
     public void buttonAssigner(Lutemon lutemon) {
+        int index = 0;
 
+        for (ArrayList<ATTACKTYPES> attacks : lutemon.getAttacks()) {
+            buttonlist[index].setOnClickListener(battleManager.onPlayerAttackSelected());
+            index++;
+        }
+
+        for (ArrayList<DEBUFFTYPES> debuffs : lutemon.getDebuffs()) {
+            buttonlist[index].setOnClickListener(battleManager.onPlayerDebuffSelected());
+            index++;
+        }
+
+        for (ArrayList<HEALTYPES> buffs : lutemon.getBuffs()) {
+            buttonlist[index].setOnClickListener(battleManager.onPlayerBuffSelected());
+            index++;
+        } 
     }
 }
