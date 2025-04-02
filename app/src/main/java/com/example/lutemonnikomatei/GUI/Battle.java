@@ -25,10 +25,10 @@ public class Battle extends AppCompatActivity {
 
     LutemonManager lutemonManager = LutemonManager.getInstance();
     
-    Button abilityButton1 = findViewById(R.id.playerAbility1);
-    Button abilityButton2 = findViewById(R.id.playerAbility2);
-    Button abilityButton3 = findViewById(R.id.playerAbility3);
-    Button abilityButton4 = findViewById(R.id.playerAbility4);
+    Button abilityButton1;
+    Button abilityButton2;
+    Button abilityButton3;
+    Button abilityButton4;
     Button[] buttonList = {abilityButton1, abilityButton2, abilityButton3, abilityButton4};
 
     BattleManager battleManager;
@@ -44,9 +44,15 @@ public class Battle extends AppCompatActivity {
             return insets;
         });
 
+        abilityButton1 = findViewById(R.id.playerAbility1);
+        abilityButton2 = findViewById(R.id.playerAbility2);
+        abilityButton3 = findViewById(R.id.playerAbility3);
+        abilityButton4 = findViewById(R.id.playerAbility4);
+
         BattleListener battleListener = new BattleListener() {
             @Override
-            public void onTurnStart() {
+            public void onTurnStart(Lutemon lutemon) {
+                buttonAssigner(lutemon);
                 // UI UPDATER METHOD CALL HERE
             }
 
@@ -61,7 +67,7 @@ public class Battle extends AppCompatActivity {
         battleManager.startBattle(lutemonManager.getPlayer1(), lutemonManager.getPlayer2());
     }
 
-    public void buttonAssigner(Lutemon lutemon) {
+    private void buttonAssigner(Lutemon lutemon) {
         int index = 0;
         resetButtons();
 

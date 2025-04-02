@@ -14,6 +14,8 @@ public class BattleManager {
 
     Lutemon currentPlayer;
     Lutemon receivingPlayer;
+
+    Lutemon winner = null;
     BattleListener listener;
     boolean isGameOver;
 
@@ -24,66 +26,72 @@ public class BattleManager {
     public void startBattle(Lutemon player1, Lutemon player2) {
         currentPlayer = getStartingPlayer(player1, player2);
         receivingPlayer = getReceivingLutemon(player1, player2);
-        listener.onTurnStart();
+        listener.onTurnStart(currentPlayer);
     }
 
     public void onPlayerAttackSelected(ATTACKTYPES attack) throws OutOfStamina {
-
         if (isGameOver) {
             return;
         }
+        processStatusEffects(currentPlayer);
         if (!handleAttack(currentPlayer, receivingPlayer, attack)) {
             throw new OutOfStamina();
         }
 
-        if (checkIfBattleOver(currentPlayer, receivingPlayer)) {
+        winner = checkIfBattleOver(currentPlayer, receivingPlayer);
+        if (winner != null) {
             isGameOver = true;
+            handleBattleEnd(winner, (winner == currentPlayer) ? receivingPlayer : currentPlayer);
             listener.onGameOver();
             return;
         }
 
         switchPlayers();
-        listener.onTurnStart();
+        listener.onTurnStart(currentPlayer);
     }
     public void onPlayerBuffSelected(BUFFTYPES buff) throws OutOfStamina {
+
         if (isGameOver) {
             return;
         }
-
+        processStatusEffects(currentPlayer);
         if (!handleBuffing(currentPlayer, buff)) {
             throw new OutOfStamina();
         }
 
-        if (checkIfBattleOver(currentPlayer, receivingPlayer)) {
+        winner = checkIfBattleOver(currentPlayer, receivingPlayer);
+        if (winner != null) {
             isGameOver = true;
+            handleBattleEnd(winner, (winner == currentPlayer) ? receivingPlayer : currentPlayer);
             listener.onGameOver();
             return;
         }
-
         switchPlayers();
-        listener.onTurnStart();
+        listener.onTurnStart(currentPlayer);
     }
     public void onPlayerDebuffSelected(DEBUFFTYPES debuff) throws OutOfStamina{
         if (isGameOver) {
             return;
         }
+        processStatusEffects(currentPlayer);
 
         if (!handleDebuffing(currentPlayer, receivingPlayer, debuff)) {
             throw new OutOfStamina();
         }
 
-        if (checkIfBattleOver(currentPlayer, receivingPlayer)) {
+        winner = checkIfBattleOver(currentPlayer, receivingPlayer);
+        if (winner != null) {
             isGameOver = true;
+            handleBattleEnd(winner, (winner == currentPlayer) ? receivingPlayer : currentPlayer);
             listener.onGameOver();
             return;
         }
         switchPlayers();
-        listener.onTurnStart();
-    
+        listener.onTurnStart(currentPlayer);
     }
 
     private boolean handleAttack(Lutemon attacking, Lutemon receiving, ATTACKTYPES attack) {
-        // maybe attack messages here
+
         if (attacking.getStamina() < attack.getCost()){
             return false;
         }
@@ -133,8 +141,14 @@ public class BattleManager {
         }
     }
 
-    private boolean checkIfBattleOver(Lutemon p1, Lutemon p2) {
-        return p1.getHp() == 0 || p2.getHp() == 0;
+    private Lutemon checkIfBattleOver(Lutemon p1, Lutemon p2) {
+        if (p1.getHp() == 0) {
+            return p1;
+        }
+        if (p2.getHp() == 0) {
+            return p2;
+        }
+        return null;
     }
 
     private void handleBattleEnd(Lutemon winner, Lutemon loser) {
