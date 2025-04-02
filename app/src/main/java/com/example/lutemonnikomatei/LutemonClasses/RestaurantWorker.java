@@ -11,7 +11,7 @@ public class RestaurantWorker extends Lutemon{
 
     public ArrayList<ATTACKTYPES> attacks;
     public ArrayList<DEBUFFTYPES> debuffs;
-    public ArrayList<BUFFTYPES> heals;
+    public ArrayList<BUFFTYPES> buffs;
     public ArrayList<ATTACKTYPES> weaknesses;
     public RestaurantWorker(String name) {
         super(name, LUTEMONTYPES.RESTAURANT_WORKER);
@@ -20,13 +20,13 @@ public class RestaurantWorker extends Lutemon{
         this.speedMultiplier = 0.6;
 
         this.attacks = new ArrayList<ATTACKTYPES>();
-        this.heals = new ArrayList<BUFFTYPES>();
+        this.buffs = new ArrayList<BUFFTYPES>();
         this.debuffs = new ArrayList<DEBUFFTYPES>();
 
         attacks.add(ATTACKTYPES.PUNCH);
         attacks.add(ATTACKTYPES.SLASH);
         debuffs.add(DEBUFFTYPES.MYSTERYDEBUFF);
-        heals.add(BUFFTYPES.MYSTERYBUFF);
+        buffs.add(BUFFTYPES.MYSTERYBUFF);
     }
 
     
@@ -37,6 +37,6 @@ public class RestaurantWorker extends Lutemon{
         return this.debuffs;
     }
     public ArrayList<BUFFTYPES> getBuffs() {
-        return this.getBuffs;
+        return this.buffs;
     }
 }

@@ -11,7 +11,7 @@ public class Teacher extends Lutemon{
 
     public ArrayList<ATTACKTYPES> attacks;
     public ArrayList<DEBUFFTYPES> debuffs;
-    public ArrayList<BUFFTYPES> heals;
+    public ArrayList<BUFFTYPES> buffs;
     public ArrayList<ATTACKTYPES> weaknesses;
 
     public Teacher(String name) {
@@ -21,13 +21,13 @@ public class Teacher extends Lutemon{
         this.speedMultiplier = 0.8;
 
         this.attacks = new ArrayList<ATTACKTYPES>();
-        this.heals = new ArrayList<BUFFTYPES>();
+        this.buffs = new ArrayList<BUFFTYPES>();
         this.debuffs = new ArrayList<DEBUFFTYPES>();
 
         attacks.add(ATTACKTYPES.PUNCH);
         attacks.add(ATTACKTYPES.PROJECTILE);
         debuffs.add(DEBUFFTYPES.CONFUSION);
-        heals.add(BUFFTYPES.HEAL);
+        buffs.add(BUFFTYPES.HEAL);
 
     }
 
@@ -39,6 +39,6 @@ public class Teacher extends Lutemon{
         return this.debuffs;
     }
     public ArrayList<BUFFTYPES> getBuffs() {
-        return this.getBuffs;
+        return this.buffs;
     }
 }

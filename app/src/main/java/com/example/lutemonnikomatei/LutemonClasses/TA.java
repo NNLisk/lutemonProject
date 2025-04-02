@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class TA extends Lutemon{
     public ArrayList<ATTACKTYPES> attacks;
     public ArrayList<DEBUFFTYPES> debuffs;
-    public ArrayList<BUFFTYPES> heals;
+    public ArrayList<BUFFTYPES> buffs;
     public ArrayList<ATTACKTYPES> weaknesses;
     public TA(String name) {
         super(name, LUTEMONTYPES.TA);
@@ -19,13 +19,13 @@ public class TA extends Lutemon{
         this.speedMultiplier = 1;
 
         this.attacks = new ArrayList<ATTACKTYPES>();
-        this.heals = new ArrayList<BUFFTYPES>();
+        this.buffs = new ArrayList<BUFFTYPES>();
         this.debuffs = new ArrayList<DEBUFFTYPES>();
 
         attacks.add(ATTACKTYPES.SLASH);
         attacks.add(ATTACKTYPES.PIERCE);
         debuffs.add(DEBUFFTYPES.WEAKEN);
-        heals.add(BUFFTYPES.BATTERY);
+        buffs.add(BUFFTYPES.BATTERY);
     }
 
     
@@ -36,6 +36,6 @@ public class TA extends Lutemon{
         return this.debuffs;
     }
     public ArrayList<BUFFTYPES> getBuffs() {
-        return this.getBuffs;
+        return this.buffs;
     }
 }
