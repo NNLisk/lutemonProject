@@ -1,5 +1,8 @@
 package com.example.lutemonnikomatei.LutemonClasses;
 
+import com.example.lutemonnikomatei.enums.ATTACKTYPES;
+import com.example.lutemonnikomatei.enums.BUFFTYPES;
+import com.example.lutemonnikomatei.enums.DEBUFFTYPES;
 import com.example.lutemonnikomatei.enums.LUTEMONTYPES;
 import com.example.lutemonnikomatei.statuseffects.StatusEffect;
 
@@ -7,7 +10,7 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class Lutemon {
+public abstract class Lutemon {
     String name;
     int speed;
     int maxHp;
@@ -38,6 +41,10 @@ public class Lutemon {
         this.damageDealt = 0;
         this.damageTaken = 0;
     }
+
+    public abstract ArrayList<ATTACKTYPES> getAttacks();
+    public abstract ArrayList<BUFFTYPES> getBuffs();
+    public abstract ArrayList<DEBUFFTYPES> getDebuffs();
 
     public String getName() {
         return this.name;

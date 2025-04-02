@@ -3,7 +3,7 @@ package com.example.lutemonnikomatei;
 import com.example.lutemonnikomatei.LutemonClasses.Lutemon;
 import com.example.lutemonnikomatei.enums.ATTACKTYPES;
 import com.example.lutemonnikomatei.enums.DEBUFFTYPES;
-import com.example.lutemonnikomatei.enums.HEALTYPES;
+import com.example.lutemonnikomatei.enums.BUFFTYPES;
 import com.example.lutemonnikomatei.Exceptions.*;
 import com.example.lutemonnikomatei.statuseffects.MultiturnHeal;
 import com.example.lutemonnikomatei.statuseffects.StatusEffect;
@@ -45,12 +45,12 @@ public class BattleManager {
         switchPlayers();
         listener.onTurnStart();
     }
-    public void onPlayerBuffSelected(HEALTYPES buff) throws OutOfStamina {
+    public void onPlayerBuffSelected(BUFFTYPES buff) throws OutOfStamina {
         if (isGameOver) {
             return;
         }
 
-        if (!handleBuffing(currentPlayernull, buff)) {
+        if (!handleBuffing(currentPlayer, buff)) {
             throw new OutOfStamina();
         }
 
@@ -93,7 +93,7 @@ public class BattleManager {
     }
 
 
-    private boolean handleBuffing(Lutemon lutemon, HEALTYPES buff) {
+    private boolean handleBuffing(Lutemon lutemon, BUFFTYPES buff) {
         if (lutemon.getStamina() < buff.getCost()) {
             return false;
         }
@@ -116,8 +116,11 @@ public class BattleManager {
     }
 
 
-    private void handleDebuffing(Lutemon attacking, Lutemon receiving, DEBUFFTYPES debuff) {
-
+    private boolean handleDebuffing(Lutemon attacking, Lutemon receiving, DEBUFFTYPES debuff) {
+        if (attacking.getStamina() < debuff.getCost()) {
+            return false;
+        }
+        return true;
     }
     public void processStatusEffects(Lutemon lutemon) {
         Iterator<StatusEffect> iterator = lutemon.getStatusEffects().iterator();

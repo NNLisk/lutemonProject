@@ -2,7 +2,7 @@ package com.example.lutemonnikomatei.LutemonClasses;
 
 import com.example.lutemonnikomatei.enums.ATTACKTYPES;
 import com.example.lutemonnikomatei.enums.DEBUFFTYPES;
-import com.example.lutemonnikomatei.enums.HEALTYPES;
+import com.example.lutemonnikomatei.enums.BUFFTYPES;
 import com.example.lutemonnikomatei.enums.LUTEMONTYPES;
 
 import java.util.ArrayList;
@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class TA extends Lutemon{
     public ArrayList<ATTACKTYPES> attacks;
     public ArrayList<DEBUFFTYPES> debuffs;
-    public ArrayList<HEALTYPES> heals;
+    public ArrayList<BUFFTYPES> heals;
     public ArrayList<ATTACKTYPES> weaknesses;
     public TA(String name) {
         super(name, LUTEMONTYPES.TA);
@@ -19,13 +19,13 @@ public class TA extends Lutemon{
         this.speedMultiplier = 1;
 
         this.attacks = new ArrayList<ATTACKTYPES>();
-        this.heals = new ArrayList<HEALTYPES>();
+        this.heals = new ArrayList<BUFFTYPES>();
         this.debuffs = new ArrayList<DEBUFFTYPES>();
 
         attacks.add(ATTACKTYPES.SLASH);
         attacks.add(ATTACKTYPES.PIERCE);
         debuffs.add(DEBUFFTYPES.WEAKEN);
-        heals.add(HEALTYPES.BATTERY);
+        heals.add(BUFFTYPES.BATTERY);
     }
 
     
@@ -35,7 +35,7 @@ public class TA extends Lutemon{
     public ArrayList<DEBUFFTYPES> getDebuffs() {
         return this.debuffs;
     }
-    public ArrayList<HEALTYPES> getBuffs() {
+    public ArrayList<BUFFTYPES> getBuffs() {
         return this.getBuffs;
     }
 }

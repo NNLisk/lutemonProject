@@ -1,7 +1,7 @@
 package com.example.lutemonnikomatei.LutemonClasses;
 
 import com.example.lutemonnikomatei.enums.ATTACKTYPES;
-import com.example.lutemonnikomatei.enums.HEALTYPES;
+import com.example.lutemonnikomatei.enums.BUFFTYPES;
 import com.example.lutemonnikomatei.enums.LUTEMONTYPES;
 
 import java.util.ArrayList;
@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class SecurityGuard extends Lutemon{
 
     public ArrayList<ATTACKTYPES> attacks;
-    public ArrayList<HEALTYPES> heals;
+    public ArrayList<BUFFTYPES> heals;
     public ArrayList<ATTACKTYPES> weaknesses;
     public SecurityGuard(String name) {
         super(name, LUTEMONTYPES.SECURITY_GUARD);
@@ -18,12 +18,12 @@ public class SecurityGuard extends Lutemon{
         this.speedMultiplier = 1.4;
 
         this.attacks = new ArrayList<ATTACKTYPES>();
-        this.heals = new ArrayList<HEALTYPES>();
+        this.heals = new ArrayList<BUFFTYPES>();
 
         attacks.add(ATTACKTYPES.PUNCH);
         attacks.add(ATTACKTYPES.PROJECTILE);
         attacks.add(ATTACKTYPES.SLAM);
-        heals.add(HEALTYPES.HEAL);
+        heals.add(BUFFTYPES.HEAL);
     }
 
     
@@ -33,7 +33,7 @@ public class SecurityGuard extends Lutemon{
     public ArrayList<DEBUFFTYPES> getDebuffs() {
         return this.debuffs;
     }
-    public ArrayList<HEALTYPES> getBuffs() {
+    public ArrayList<BUFFTYPES> getBuffs() {
         return this.getBuffs;
     }
 }

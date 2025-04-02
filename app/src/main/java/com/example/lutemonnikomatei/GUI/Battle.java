@@ -8,7 +8,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
-import androidx.recyclerview.widget.BatchingListUpdateCallback;
 
 import java.util.ArrayList;
 
@@ -17,6 +16,9 @@ import com.example.lutemonnikomatei.BattleManager;
 import com.example.lutemonnikomatei.LutemonClasses.Lutemon;
 import com.example.lutemonnikomatei.LutemonManager;
 import com.example.lutemonnikomatei.R;
+import com.example.lutemonnikomatei.enums.ATTACKTYPES;
+import com.example.lutemonnikomatei.enums.DEBUFFTYPES;
+import com.example.lutemonnikomatei.enums.BUFFTYPES;
 
 public class Battle extends AppCompatActivity {
 
@@ -64,18 +66,18 @@ public class Battle extends AppCompatActivity {
     public void buttonAssigner(Lutemon lutemon) {
         int index = 0;
 
-        for (ArrayList<ATTACKTYPES> attacks : lutemon.getAttacks()) {
-            buttonlist[index].setOnClickListener(battleManager.onPlayerAttackSelected());
+        for (ATTACKTYPES attacks : lutemon.getAttacks()) {
+            buttonlist[index].setOnClickListener(battleManager.onPlayerAttackSelected(attacks));
             index++;
         }
 
-        for (ArrayList<DEBUFFTYPES> debuffs : lutemon.getDebuffs()) {
-            buttonlist[index].setOnClickListener(battleManager.onPlayerDebuffSelected());
+        for (DEBUFFTYPES debuffs : lutemon.getDebuffs()) {
+            buttonlist[index].setOnClickListener(battleManager.onPlayerDebuffSelected(debuffs));
             index++;
         }
 
-        for (ArrayList<HEALTYPES> buffs : lutemon.getBuffs()) {
-            buttonlist[index].setOnClickListener(battleManager.onPlayerBuffSelected());
+        for (BUFFTYPES buffs : lutemon.getBuffs()) {
+            buttonlist[index].setOnClickListener(battleManager.onPlayerBuffSelected(buffs));
             index++;
         } 
     }
