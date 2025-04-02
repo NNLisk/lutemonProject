@@ -1,6 +1,7 @@
 package com.example.lutemonnikomatei.GUI;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -62,8 +63,11 @@ public class Battle extends AppCompatActivity {
 
     public void buttonAssigner(Lutemon lutemon) {
         int index = 0;
+        resetButtons();
 
         for (ATTACKTYPES attack : lutemon.getAttacks()) {
+            buttonList[index].setText(attack.name());
+            buttonList[index].setVisibility(View.VISIBLE);
             buttonList[index].setOnClickListener(view -> {
                 try {
                     battleManager.onPlayerAttackSelected(attack);
@@ -75,6 +79,8 @@ public class Battle extends AppCompatActivity {
         }
 
         for (DEBUFFTYPES debuff : lutemon.getDebuffs()) {
+            buttonList[index].setText(debuff.name());
+            buttonList[index].setVisibility(View.VISIBLE);
             buttonList[index].setOnClickListener(view -> {
                 try {
                     battleManager.onPlayerDebuffSelected(debuff);
@@ -86,6 +92,8 @@ public class Battle extends AppCompatActivity {
         }
 
         for (BUFFTYPES buff : lutemon.getBuffs()) {
+            buttonList[index].setText(buff.name());
+            buttonList[index].setVisibility(View.VISIBLE);
             buttonList[index].setOnClickListener(view -> {
                 try {
                     battleManager.onPlayerBuffSelected(buff);
@@ -95,6 +103,13 @@ public class Battle extends AppCompatActivity {
             });
             index++;
         } 
+    }
+
+    private void resetButtons() {
+        for (Button button : buttonList) {
+            button.setOnClickListener(null);
+            button.setVisibility(View.INVISIBLE);
+        }
     }
 
     private void updateBattleUIonTurnChange() {
