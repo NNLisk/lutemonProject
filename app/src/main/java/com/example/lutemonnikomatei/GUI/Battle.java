@@ -22,14 +22,13 @@ public class Battle extends AppCompatActivity {
 
     Lutemon player1 = lutemonManager.getPlayer1();
     Lutemon player2 = lutemonManager.getPlayer2();
-    Button player1Ability1;
-    Button player1Ability2;
-    Button player1Ability3;
-    Button player1Ability4;
-    Button player2Ability1;
-    Button player2Ability2;
-    Button player2Ability3;
-    Button player2Ability4;
+    
+    Button abilityButton1;
+    Button abilityButton2;
+    Button abilityButton3;
+    Button abilityButton4;
+
+    Button[] buttonlist = {abilityButton1, abilityButton2, abilityButton3, abilityButton4};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +56,12 @@ public class Battle extends AppCompatActivity {
         BattleManager battleManager = new BattleManager(battleListener);
 
         battleManager.startBattle(player1, player2);
+        
 
+        
+    }
+
+    public void buttonAssigner(Lutemon lutemon) {
 
     }
 }
