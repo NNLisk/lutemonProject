@@ -38,6 +38,6 @@ public class Student extends Lutemon{
         return this.debuffs;
     }
     public ArrayList<BUFFTYPES> getBuffs() {
-        return this.getBuffs;
+        return this.getBuffs();
     }
 }

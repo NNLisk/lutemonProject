@@ -29,7 +29,7 @@
             android:exported="false" />
         <activity
             android:name=".GUI.viewLutemons"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".GUI.HomePage"
             android:exported="true">
