@@ -54,12 +54,63 @@
         <LinearLayout
             android:id="@+id/player1Container"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+/showP1image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+            >
+            <TextView
+            android:id="@+/showP1name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            >
+            <TextView
+            android:id="@+/showP1health"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            >
+            <TextView
+            android:id="@+/showP1Stamina"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            >
         </LinearLayout>
         <LinearLayout
-            android:id="@+id/player1Container"
+            android:id="@+id/player2Container"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+/showP2image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+            >
+            <TextView
+            android:id="@+/showP2name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            >
+            <TextView
+            android:id="@+/showP2health"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            >
+            <TextView
+            android:id="@+/showP2Stamina"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            >
         </LinearLayout>
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
