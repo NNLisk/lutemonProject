@@ -59,13 +59,25 @@ public class Battle extends AppCompatActivity {
         abilityButton3 = findViewById(R.id.playerAbility3);
         abilityButton4 = findViewById(R.id.playerAbility4);
 
+        p1NameContainer = findViewById(R.id.showP1name);
+        p2NameContainer = findViewById(R.id.showP2name);
+
+        p1HealthContainer = findViewById(R.id.showP1health);
+        p2HealthContainer = findViewById(R.id.showP2health);
+
+        p1StaminaContainer = findViewById(R.id.showP1stamina);
+        p2StaminaContainer = findViewById(R.id.showP2stamina);
+
+        p1ImageContainer = findViewById(R.id.showP1image);
+        p2ImageContainer = findViewById(R.id.showP2image);
+
         updateBattleUIonTurnChange(); // sets player name, hp, stamina and image(eventually)
         
         BattleListener battleListener = new BattleListener() {
             @Override
             public void onTurnStart(Lutemon lutemon) {
                 buttonAssigner(lutemon);
-                // UI UPDATER METHOD CALL HERE
+                updateBattleUIonTurnChange();
             }
 
             @Override
@@ -79,6 +91,7 @@ public class Battle extends AppCompatActivity {
         battleManager.startBattle(lutemonManager.getPlayer1(), lutemonManager.getPlayer2());
     }
 
+    // assigns buttons based on the lutemons abilities, loops through the ability arraylist
     private void buttonAssigner(Lutemon lutemon) {
         int index = 0;
         resetButtons();
@@ -123,6 +136,7 @@ public class Battle extends AppCompatActivity {
         } 
     }
 
+    // ability buttons invisible and cleared
     private void resetButtons() {
         for (Button button : buttonList) {
             button.setOnClickListener(null);
@@ -130,6 +144,8 @@ public class Battle extends AppCompatActivity {
         }
     }
 
+
+    // updates the player name and stats
     private void updateBattleUIonTurnChange() {
         p1NameContainer.setText(lutemonManager.getPlayer1().getName());
         p2NameContainer.setText(lutemonManager.getPlayer2().getName());
