@@ -31,6 +31,16 @@ public class Battle extends AppCompatActivity {
     Button abilityButton4;
     Button[] buttonList = {abilityButton1, abilityButton2, abilityButton3, abilityButton4};
 
+    TextView p1NameContainer;
+    TextView p2NameContainer;
+    TextView p1HealthContainer;
+    TextView p2HealthContainer;
+    TextView p1StaminaContainer;
+    TextView p2StaminaContainer;
+
+    ImageView p1ImageContainer;
+    ImageView p2ImageContainer;
+
     BattleManager battleManager;
 
     @Override
@@ -49,6 +59,8 @@ public class Battle extends AppCompatActivity {
         abilityButton3 = findViewById(R.id.playerAbility3);
         abilityButton4 = findViewById(R.id.playerAbility4);
 
+        updateBattleUIonTurnChange(); // sets player name, hp, stamina and image(eventually)
+        
         BattleListener battleListener = new BattleListener() {
             @Override
             public void onTurnStart(Lutemon lutemon) {
@@ -119,7 +131,15 @@ public class Battle extends AppCompatActivity {
     }
 
     private void updateBattleUIonTurnChange() {
+        p1NameContainer.setText(lutemonManager.getPlayer1().getName());
+        p2NameContainer.setText(lutemonManager.getPlayer2().getName());
 
+        p1HealthContainer.setText(String.valueOf(lutemonManager.getPlayer1().getHp()) + "/" + String.valueOf(lutemonManager.getPlayer1().getMaxHp()));
+        p2HealthContainer.setText(String.valueOf(lutemonManager.getPlayer2().getHp()) + "/" + String.valueOf(lutemonManager.getPlayer2().getMaxHp()));
+
+        p1StaminaContainer.setText(String.valueOf(lutemonManager.getPlayer1().getStamina()) + "/" + String.valueOf(lutemonManager.getp1().getMaxStamina()));
+        p2StaminaContainer.setText(String.valueOf(lutemonManager.getPlayer2().getStamina()) + "/" + String.valueOf(lutemonManager.getp2().getMaxStamina()));
+        
     }
 
     private void UIwhenGameOver() {
