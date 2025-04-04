@@ -20,25 +20,29 @@
             android:id="@+id/playerAbility1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="4dp" />
+            android:layout_margin="4dp"
+            android:contentDescription="@string/playerAbility"/>
 
         <Button
             android:id="@+id/playerAbility2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="4dp" />
+            android:layout_margin="4dp"
+            android:contentDescription="@string/playerAbility"/>
 
         <Button
             android:id="@+id/playerAbility3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="4dp" />
+            android:layout_margin="4dp"
+            android:contentDescription="@string/playerAbility"/>
 
         <Button
             android:id="@+id/playerAbility4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="4dp" />
+            android:layout_margin="4dp"
+            android:contentDescription="@string/playerAbility"/>
     </LinearLayout>
 
     <LinearLayout

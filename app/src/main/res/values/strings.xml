@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">lutemonNikoMatei</string>
+    <string name="playerAbility">Player Ability</string>
+    <string name="testBattle">Test Battle</string>
 </resources>

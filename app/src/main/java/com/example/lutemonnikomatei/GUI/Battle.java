@@ -1,6 +1,7 @@
 package com.example.lutemonnikomatei.GUI;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -25,6 +26,8 @@ import com.example.lutemonnikomatei.enums.ATTACKTYPES;
 import com.example.lutemonnikomatei.enums.DEBUFFTYPES;
 import com.example.lutemonnikomatei.enums.BUFFTYPES;
 
+import java.util.ArrayList;
+
 public class Battle extends AppCompatActivity {
 
     LutemonManager lutemonManager = LutemonManager.getInstance();
@@ -33,7 +36,7 @@ public class Battle extends AppCompatActivity {
     Button abilityButton2;
     Button abilityButton3;
     Button abilityButton4;
-    Button[] buttonList = {abilityButton1, abilityButton2, abilityButton3, abilityButton4};
+    ArrayList<Button> buttonList = new ArrayList<>();
 
     TextView p1NameContainer;
     TextView p2NameContainer;
@@ -58,10 +61,27 @@ public class Battle extends AppCompatActivity {
             return insets;
         });
 
+        BattleListener battleListener = new BattleListener() {
+            @Override
+            public void onTurnStart(Lutemon lutemon) {
+                buttonAssigner(lutemon);
+                updateBattleUIonTurnChange();
+            }
+
+            @Override
+            public void onGameOver() {
+                // UI UPDATER METHOD CALL HERE
+            }
+        };
         abilityButton1 = findViewById(R.id.playerAbility1);
         abilityButton2 = findViewById(R.id.playerAbility2);
         abilityButton3 = findViewById(R.id.playerAbility3);
         abilityButton4 = findViewById(R.id.playerAbility4);
+
+        buttonList.add(abilityButton1);
+        buttonList.add(abilityButton2);
+        buttonList.add(abilityButton3);
+        buttonList.add(abilityButton4);
 
         p1NameContainer = findViewById(R.id.showP1name);
         p2NameContainer = findViewById(R.id.showP2name);
@@ -75,70 +95,80 @@ public class Battle extends AppCompatActivity {
         p1ImageContainer = findViewById(R.id.showP1image);
         p2ImageContainer = findViewById(R.id.showP2image);
 
-        updateBattleUIonTurnChange(); // sets player name, hp, stamina and image(eventually)
-        
-        BattleListener battleListener = new BattleListener() {
-            @Override
-            public void onTurnStart(Lutemon lutemon) {
-                buttonAssigner(lutemon);
-                updateBattleUIonTurnChange();
-            }
+        Lutemon l1 = new Janne("Janne");
+        Lutemon l2 = new Student("Niko");
 
-            @Override
-            public void onGameOver() {
-                // UI UPDATER METHOD CALL HERE
-            }
-        };
+        lutemonManager.setPlayer1(l1);
+        lutemonManager.setPlayer2(l2);
 
         battleManager = new BattleManager(battleListener);
-        battleManager.setCurrentPlayer(new Janne("Janne"));
-        battleManager.setReceivingPlayer(new Student("Niko"));
 
         battleManager.startBattle(lutemonManager.getPlayer1(), lutemonManager.getPlayer2());
+        //updateBattleUIonTurnChange(); // sets player name, hp, stamina and image(eventually)
     }
 
     // assigns buttons based on the lutemons abilities, loops through the ability arraylist
     private void buttonAssigner(Lutemon lutemon) {
         int index = 0;
-        resetButtons();
+        //resetButtons();
 
         for (ATTACKTYPES attack : lutemon.getAttacks()) {
-            buttonList[index].setText(attack.name());
-            buttonList[index].setVisibility(View.VISIBLE);
-            buttonList[index].setOnClickListener(view -> {
-                try {
-                    battleManager.onPlayerAttackSelected(attack);
-                } catch (OutOfStamina e) {
-                    Toast.makeText(view.getContext(), "Not enough stamina!", Toast.LENGTH_SHORT).show();
-                }
-            });
-            index++;
+            if (index < buttonList.size()) {
+                buttonList.get(index).setText(attack.toString());
+                buttonList.get(index).setVisibility(View.VISIBLE);
+                buttonList.get(index).setOnClickListener(view -> {
+                    try {
+                        battleManager.onPlayerAttackSelected(attack);
+                    } catch (OutOfStamina e) {
+                        Toast.makeText(view.getContext(), "Not enough stamina!", Toast.LENGTH_SHORT).show();
+                    }
+                });
+                index++;
+                Log.d("success", "button assigned");
+            } else {
+                Log.d("indexOutOfBounds", "index out of bounds: attacks");
+            }
         }
 
         for (DEBUFFTYPES debuff : lutemon.getDebuffs()) {
-            buttonList[index].setText(debuff.name());
-            buttonList[index].setVisibility(View.VISIBLE);
-            buttonList[index].setOnClickListener(view -> {
-                try {
-                    battleManager.onPlayerDebuffSelected(debuff);
-                } catch (OutOfStamina e) {
-                    Toast.makeText(view.getContext(), "Not enough stamina!", Toast.LENGTH_SHORT).show();
-                }
-            });
-            index++;
+            if (index < buttonList.size()) {
+                buttonList.get(index).setText(debuff.toString());
+                buttonList.get(index).setVisibility(View.VISIBLE);
+                buttonList.get(index).setOnClickListener(view -> {
+                    try {
+                        battleManager.onPlayerDebuffSelected(debuff);
+                    } catch (OutOfStamina e) {
+                        Toast.makeText(view.getContext(), "Not enough stamina!", Toast.LENGTH_SHORT).show();
+                    }
+                });
+                index++;
+                Log.d("success", "button assigned");
+            } else {
+                Log.d("indexOutOfBounds", "index out of bounds: debuffs");
+            }
         }
 
         for (BUFFTYPES buff : lutemon.getBuffs()) {
-            buttonList[index].setText(buff.name());
-            buttonList[index].setVisibility(View.VISIBLE);
-            buttonList[index].setOnClickListener(view -> {
-                try {
-                    battleManager.onPlayerBuffSelected(buff);
-                } catch (OutOfStamina e) {
-                    Toast.makeText(view.getContext(), "Not enough stamina!", Toast.LENGTH_SHORT).show();
-                }
-            });
-            index++;
+
+            for (Button button : buttonList) {
+                Log.d("ButtonLog", "Button " + button);
+            }
+            if (index < buttonList.size()) {
+                buttonList.get(index).setText(buff.toString());
+                buttonList.get(index).setVisibility(View.VISIBLE);
+                buttonList.get(index).setOnClickListener(view -> {
+                    try {
+                        battleManager.onPlayerBuffSelected(buff);
+                    } catch (OutOfStamina e) {
+                        Toast.makeText(view.getContext(), "Not enough stamina!", Toast.LENGTH_SHORT).show();
+                    }
+                });
+                index++;
+                Log.d("success", "button assigned");
+            } else {
+                Log.d("indexOutOfBounds", "index out of bounds: buffs");
+                break;
+            }
         } 
     }
 
