@@ -58,28 +58,24 @@
             android:orientation="vertical">
 
             <ImageView
-                android:id="@+/showP1image"
+                android:id="@+id/showP1image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/showP1name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-            >
+                android:gravity="center" />
             <TextView
-            android:id="@+/showP1name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            >
+                android:id="@+id/showP1health"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center" />
             <TextView
-            android:id="@+/showP1health"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            >
-            <TextView
-            android:id="@+/showP1Stamina"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            >
+                android:id="@+id/showP1Stamina"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center" />
         </LinearLayout>
         <LinearLayout
             android:id="@+id/player2Container"
@@ -88,28 +84,24 @@
             android:orientation="vertical">
 
             <ImageView
-                android:id="@+/showP2image"
+                android:id="@+id/showP2image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/showP2name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-            >
+                android:gravity="center" />
             <TextView
-            android:id="@+/showP2name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            >
+                android:id="@+id/showP2health"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center" />
             <TextView
-            android:id="@+/showP2health"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            >
-            <TextView
-            android:id="@+/showP2Stamina"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            >
+                android:id="@+id/showP2Stamina"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center" />
         </LinearLayout>
 
     </LinearLayout>

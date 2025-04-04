@@ -15,10 +15,11 @@ public class Teacher extends Lutemon{
     public ArrayList<ATTACKTYPES> weaknesses;
 
     public Teacher(String name) {
-        super(name, LUTEMONTYPES.TEACHER);
+        super(name);
         this.hpMultiplier = 1;
         this.staminaMultiplier = 1.1;
         this.speedMultiplier = 0.8;
+        this.type = LUTEMONTYPES.TEACHER;
 
         this.attacks = new ArrayList<ATTACKTYPES>();
         this.buffs = new ArrayList<BUFFTYPES>();

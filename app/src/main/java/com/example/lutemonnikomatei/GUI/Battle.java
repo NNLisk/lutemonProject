@@ -3,6 +3,8 @@ package com.example.lutemonnikomatei.GUI;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -14,7 +16,9 @@ import androidx.core.view.WindowInsetsCompat;
 import com.example.lutemonnikomatei.BattleListener;
 import com.example.lutemonnikomatei.BattleManager;
 import com.example.lutemonnikomatei.Exceptions.OutOfStamina;
+import com.example.lutemonnikomatei.LutemonClasses.Janne;
 import com.example.lutemonnikomatei.LutemonClasses.Lutemon;
+import com.example.lutemonnikomatei.LutemonClasses.Student;
 import com.example.lutemonnikomatei.LutemonManager;
 import com.example.lutemonnikomatei.R;
 import com.example.lutemonnikomatei.enums.ATTACKTYPES;
@@ -65,8 +69,8 @@ public class Battle extends AppCompatActivity {
         p1HealthContainer = findViewById(R.id.showP1health);
         p2HealthContainer = findViewById(R.id.showP2health);
 
-        p1StaminaContainer = findViewById(R.id.showP1stamina);
-        p2StaminaContainer = findViewById(R.id.showP2stamina);
+        p1StaminaContainer = findViewById(R.id.showP1Stamina);
+        p2StaminaContainer = findViewById(R.id.showP2Stamina);
 
         p1ImageContainer = findViewById(R.id.showP1image);
         p2ImageContainer = findViewById(R.id.showP2image);
@@ -87,6 +91,8 @@ public class Battle extends AppCompatActivity {
         };
 
         battleManager = new BattleManager(battleListener);
+        battleManager.setCurrentPlayer(new Janne("Janne"));
+        battleManager.setReceivingPlayer(new Student("Niko"));
 
         battleManager.startBattle(lutemonManager.getPlayer1(), lutemonManager.getPlayer2());
     }
@@ -150,11 +156,11 @@ public class Battle extends AppCompatActivity {
         p1NameContainer.setText(lutemonManager.getPlayer1().getName());
         p2NameContainer.setText(lutemonManager.getPlayer2().getName());
 
-        p1HealthContainer.setText(String.valueOf(lutemonManager.getPlayer1().getHp()) + "/" + String.valueOf(lutemonManager.getPlayer1().getMaxHp()));
-        p2HealthContainer.setText(String.valueOf(lutemonManager.getPlayer2().getHp()) + "/" + String.valueOf(lutemonManager.getPlayer2().getMaxHp()));
+        p1HealthContainer.setText(lutemonManager.getPlayer1().getHp() + "/" + lutemonManager.getPlayer1().getMaxHp());
+        p2HealthContainer.setText(lutemonManager.getPlayer2().getHp() + "/" + lutemonManager.getPlayer2().getMaxHp());
 
-        p1StaminaContainer.setText(String.valueOf(lutemonManager.getPlayer1().getStamina()) + "/" + String.valueOf(lutemonManager.getp1().getMaxStamina()));
-        p2StaminaContainer.setText(String.valueOf(lutemonManager.getPlayer2().getStamina()) + "/" + String.valueOf(lutemonManager.getp2().getMaxStamina()));
+        p1StaminaContainer.setText(lutemonManager.getPlayer1().getStamina() + "/" + lutemonManager.getPlayer1().getMaxStamina());
+        p2StaminaContainer.setText(lutemonManager.getPlayer2().getStamina() + "/" + lutemonManager.getPlayer2().getMaxStamina());
         
     }
 

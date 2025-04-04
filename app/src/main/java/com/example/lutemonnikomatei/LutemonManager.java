@@ -2,6 +2,7 @@ package com.example.lutemonnikomatei;
 
 
 import com.example.lutemonnikomatei.GUI.HomePage;
+import com.example.lutemonnikomatei.LutemonClasses.Janne;
 import com.example.lutemonnikomatei.LutemonClasses.Lutemon;
 import com.example.lutemonnikomatei.enums.LUTEMONTYPES;
 
@@ -23,8 +24,8 @@ public class LutemonManager {
         return lutemonManager;
     }
 
-    public static void createLutemon(String name, LUTEMONTYPES type) {
-        Lutemon lutemon = new Lutemon(name, type);
+    public static void createLutemon(String name) {
+        Lutemon lutemon = new Janne(name); //test purposes, later to be changed to switch case to account for types
         HomePage.lutemonManager.listOfLutemons.add(lutemon);
     }
 
@@ -36,11 +37,11 @@ public class LutemonManager {
         return this.player2Lutemon;
     }
 
-    public void setLutemon1(Lutemon player) {
+    public void setPlayer1(Lutemon player) {
         this.player1Lutemon = player;
     }
 
-    public void setLutemon2(Lutemon player) {
+    public void setPlayer2(Lutemon player) {
         this.player2Lutemon = player;
     }
 

@@ -29,6 +29,14 @@ public class BattleManager {
         listener.onTurnStart(currentPlayer);
     }
 
+    public void setCurrentPlayer(Lutemon player1) {
+        this.currentPlayer = player1;
+    }
+
+    public void setReceivingPlayer(Lutemon player2) {
+        this.receivingPlayer = player2;
+    }
+
     public void onPlayerAttackSelected(ATTACKTYPES attack) throws OutOfStamina {
         if (isGameOver) {
             return;

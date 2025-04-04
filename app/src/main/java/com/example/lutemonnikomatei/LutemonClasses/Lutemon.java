@@ -28,13 +28,12 @@ public abstract class Lutemon {
     double speedMultiplier;
     double staminaMultiplier;
 
-    public Lutemon(String name, LUTEMONTYPES type) {
+    public Lutemon(String name) {
         this.name = name;
         this.speed = assignSpeed();
         this.maxHp = assignMaxHp();
         this.maxStamina = assignMaxStamina();
         this.statusEffects = new ArrayList<StatusEffect>();
-        this.type = type;
         this.wins = 0;
         this.losses = 0;
         this.experience = 0;
@@ -62,6 +61,7 @@ public abstract class Lutemon {
     public int getStamina() {
         return this.stamina;
     }
+    public int getMaxStamina() {return this.maxStamina;}
     public void addStatusEffect(StatusEffect eff) {
         this.statusEffects.add(eff);
     }
