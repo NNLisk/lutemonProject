@@ -1,5 +1,7 @@
 package com.example.lutemonnikomatei.LutemonClasses;
 
+import android.util.Log;
+
 import com.example.lutemonnikomatei.enums.ATTACKTYPES;
 import com.example.lutemonnikomatei.enums.BUFFTYPES;
 import com.example.lutemonnikomatei.enums.DEBUFFTYPES;
@@ -28,8 +30,11 @@ public abstract class Lutemon {
     double speedMultiplier;
     double staminaMultiplier;
 
-    public Lutemon(String name) {
+    public Lutemon(String name, double hpMultiplier, double speedMultiplier, double staminaMultiplier) {
         this.name = name;
+        this.hpMultiplier = hpMultiplier;
+        this.speedMultiplier = speedMultiplier;
+        this.staminaMultiplier = staminaMultiplier;
         this.speed = assignSpeed();
         this.maxHp = assignMaxHp();
         this.maxStamina = assignMaxStamina();
@@ -112,48 +117,39 @@ public abstract class Lutemon {
     private int assignMaxHp() {
         int hpMean = 100;
         int hpStandardDeviation = 10;
-        int baseHp = -1;
-        int hpMultiplied; // this is the hp after multiplier by lutemon type
-        Random random = new Random();
-
-        while(baseHp < 80 || baseHp > 120) {
-            baseHp = (int) Math.floor(hpMean + hpStandardDeviation * random.nextGaussian());
-        }
-        hpMultiplied = (int) Math.floor(baseHp * this.hpMultiplier);
-
-        this.hp = hpMultiplied;
-        return hpMultiplied;
+        int lowerBound = 80;
+        int upperBound = 120;
+        int maxHp = assignStat(hpMean, hpStandardDeviation, this.hpMultiplier, lowerBound, upperBound);
+        this.hp = maxHp;
+        return maxHp;
     }
 
     private int assignSpeed() {
         int speedMean = 10;
         int speedDeviation = 2;
-        int baseSpeed = -1;
-        int speedMultiplied;
-        Random random = new Random();
+        int lowerBound = 7;
+        int upperBound = 13;
+        return assignStat(speedMean, speedDeviation, this.speedMultiplier, lowerBound, upperBound);
 
-        while(baseSpeed < 7 || baseSpeed > 13) {
-            baseSpeed = (int) Math.floor(speedMean + speedDeviation*random.nextGaussian());
-        }
-        speedMultiplied = (int) Math.floor(baseSpeed * this.speedMultiplier);
-
-        this.stamina = speedMultiplied;
-        return speedMultiplied;
     }
 
     private int assignMaxStamina() {
         int staminaMean = 10;
         int staminaDeviation = 2;
-        int baseStamina = -1;
-        int staminaMultiplied;
+        int lowerBound = 7;
+        int upperBound = 13;
+        int stamina = assignStat(staminaMean, staminaDeviation, this.staminaMultiplier, lowerBound, upperBound);
+        this.stamina = stamina;
+        return stamina;
+
+    }
+    private int assignStat(int mean, int deviation, double multiplier, int lowerBound, int upperBound) {
         Random random = new Random();
+        int baseStat;
+        baseStat = (int) Math.floor(mean + deviation * random.nextGaussian());
+        if (baseStat < lowerBound) {baseStat = lowerBound;}
+        if (baseStat > upperBound) {baseStat = upperBound;}
 
-        while(baseStamina < 7 || baseStamina > 13) {
-            baseStamina = (int) Math.floor(staminaMean + staminaDeviation*random.nextGaussian());
-        }
-        staminaMultiplied = (int) Math.floor(baseStamina * this.staminaMultiplier);
-
-        this.stamina = staminaMultiplied;
-        return staminaMultiplied;
+        return (int) Math.floor(baseStat * multiplier);
     }
 }

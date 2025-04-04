@@ -98,6 +98,8 @@ public class Battle extends AppCompatActivity {
         Lutemon l1 = new Janne("Janne");
         Lutemon l2 = new Student("Niko");
 
+        Log.d("lutemon", "lutemonTEST: hp/stamina/speed" + l1.getMaxHp() + "/" + l1.getMaxStamina() + "/" + l1.getSpeed());
+
         lutemonManager.setPlayer1(l1);
         lutemonManager.setPlayer2(l2);
 

@@ -12,10 +12,7 @@ public class Janne extends Lutemon {
     public ArrayList<DEBUFFTYPES> debuffs;
     public ArrayList<BUFFTYPES> buffs;
     public Janne(String name) {
-        super(name);
-        this.hpMultiplier = 3;
-        this.staminaMultiplier = 3;
-        this.speedMultiplier = 3;
+        super(name, 3, 3, 3);
         this.type = LUTEMONTYPES.Janne;
 
         this.attacks = new ArrayList<ATTACKTYPES>();
