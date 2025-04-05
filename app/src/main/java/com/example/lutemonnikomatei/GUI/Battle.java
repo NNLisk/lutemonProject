@@ -62,9 +62,8 @@ public class Battle extends AppCompatActivity {
             @Override
             public void onTurnStart(Lutemon lutemon) {
                 Log.d("ONTURNSTART", "onTurnStart: onTurnStart CALLED FOR " + lutemon.getName());
-                resetButtons();
                 updateBattleUIonTurnChange();
-
+                updateButtonVisibilities(battleManager.getCurrentPlayer(), battleManager.getReceivingPlayer());
             }
 
             @Override
@@ -107,14 +106,16 @@ public class Battle extends AppCompatActivity {
         p1ImageContainer = findViewById(R.id.showP1image);
         p2ImageContainer = findViewById(R.id.showP2image);
 
-        battleManager.startBattle(lutemonManager.getPlayer1(), lutemonManager.getPlayer2());
-        //buttonAssigner(l1);
+        battleManager.startBattle();
+        buttonAssigner(battleManager.getCurrentPlayer(), getButtonListForPlayer(battleManager.getCurrentPlayer()));
+        buttonAssigner(battleManager.getReceivingPlayer(), getButtonListForPlayer(battleManager.getReceivingPlayer()));
+
+        updateButtonVisibilities(battleManager.getCurrentPlayer(), battleManager.getReceivingPlayer());
     }
 
     // assigns buttons based on the lutemons abilities, loops through the ability arraylist
     private void buttonAssigner(Lutemon lutemon, ArrayList<Button> buttons) {
         int index = 0;
-        resetButtons();
 
         for (ATTACKTYPES attack : lutemon.getAttacks()) {
             if (index < buttons.size()) {
@@ -212,10 +213,26 @@ public class Battle extends AppCompatActivity {
     }
 
     private void updateButtonVisibilities(Lutemon currentPlayer, Lutemon notCurrentPlayer) {
+        ArrayList<Button> currentPlayerButtons = getButtonListForPlayer(currentPlayer);
+        for (Button btn : currentPlayerButtons) {
+            btn.setVisibility(View.VISIBLE);
+        }
+        ArrayList<Button> notCurrentPlayerButtons = getButtonListForPlayer(notCurrentPlayer);
 
+        for (Button btn : notCurrentPlayerButtons) {
+            btn.setVisibility(View.GONE);
+        }
     }
 
     private void UIwhenGameOver() {
 
+    }
+
+    private ArrayList<Button> getButtonListForPlayer(Lutemon player) {
+        if (player == lutemonManager.getPlayer1()) {
+            return buttonListPlayer1;
+        } else {
+            return buttonListPlayer2;
+        }
     }
 }

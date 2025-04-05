@@ -23,15 +23,17 @@ public class BattleManager {
 
 
     public BattleManager(BattleListener listener) {
+        LutemonManager ltmMngr = LutemonManager.getInstance();
         this.listener = listener;
         this.isGameOver = false;
+        currentPlayer = getStartingPlayer(ltmMngr.getPlayer1(), ltmMngr.getPlayer2());
+        receivingPlayer = getReceivingLutemon(ltmMngr.getPlayer1(), ltmMngr.getPlayer2());
     }
-    public void startBattle(Lutemon player1, Lutemon player2) {
-        currentPlayer = getStartingPlayer(player1, player2);
-        receivingPlayer = getReceivingLutemon(player1, player2);
+    public void startBattle() {
         listener.onTurnStart(currentPlayer);
     }
-
+    public Lutemon getCurrentPlayer() {return this.currentPlayer;}
+    public Lutemon getReceivingPlayer() {return this.receivingPlayer;}
     private Lutemon checkIfBattleOver(Lutemon p1, Lutemon p2) {
         if (p1.getHp() == 0) {
             return p1;
