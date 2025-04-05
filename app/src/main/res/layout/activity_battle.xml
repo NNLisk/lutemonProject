@@ -8,45 +8,82 @@
     android:background="@color/palette4"
     tools:context=".GUI.Battle">
 
-    <LinearLayout
-        android:id="@+id/abilityButtonContainer"
-        android:layout_width="415dp"
+    <ScrollView
+        android:layout_width="match_parent"
         android:layout_height="260dp"
-        android:orientation="vertical"
-        android:background="@color/palette2"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
-        <Button
-            android:id="@+id/playerAbility1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="4dp"
-            android:background="@color/palette1" />
 
-        <Button
-            android:id="@+id/playerAbility2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="4dp"
-            android:contentDescription="@string/playerAbility"
-            android:textColorLink="#8f87f1" />
+        <LinearLayout
+            android:id="@+id/abilityButtonContainer"
+            android:layout_width="415dp"
+            android:layout_height="260dp"
+            android:orientation="vertical"
+            android:background="@color/palette2"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
 
-        <Button
-            android:id="@+id/playerAbility3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="4dp"
-            android:contentDescription="@string/playerAbility" />
+            <Button
+                android:id="@+id/player1Ability1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp" />
 
-        <Button
-            android:id="@+id/playerAbility4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="4dp"
-            android:contentDescription="@string/playerAbility" />
-    </LinearLayout>
+            <Button
+                android:id="@+id/player1Ability2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:contentDescription="@string/playerAbility" />
+
+            <Button
+                android:id="@+id/player1Ability3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:contentDescription="@string/playerAbility" />
+
+            <Button
+                android:id="@+id/player1Ability4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:contentDescription="@string/playerAbility" />
+
+            <Button
+                android:id="@+id/player2Ability1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:contentDescription="@string/playerAbility" />
+            <Button
+                android:id="@+id/player2Ability2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:contentDescription="@string/playerAbility" />
+            <Button
+                android:id="@+id/player2Ability3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:contentDescription="@string/playerAbility" />
+            <Button
+                android:id="@+id/player2Ability4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:contentDescription="@string/playerAbility" />
+        </LinearLayout>
+
+    </ScrollView>
+
+
+
+
 
     <LinearLayout
         android:id="@+id/playerContainer"
