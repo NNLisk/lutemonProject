@@ -5,102 +5,153 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/palette4"
     tools:context=".GUI.Battle">
 
-    <LinearLayout
-        android:id="@+id/abilityButtonContainer"
-        android:layout_width="415dp"
+    <ScrollView
+        android:layout_width="match_parent"
         android:layout_height="260dp"
-        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
-        <Button
-            android:id="@+id/playerAbility1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="4dp"
-            android:contentDescription="@string/playerAbility"/>
 
-        <Button
-            android:id="@+id/playerAbility2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="4dp"
-            android:contentDescription="@string/playerAbility"/>
+        <LinearLayout
+            android:id="@+id/abilityButtonContainer"
+            android:layout_width="415dp"
+            android:layout_height="260dp"
+            android:orientation="vertical"
+            android:background="@color/palette2"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
 
-        <Button
-            android:id="@+id/playerAbility3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="4dp"
-            android:contentDescription="@string/playerAbility"/>
+            <Button
+                android:id="@+id/player1Ability1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp" />
 
-        <Button
-            android:id="@+id/playerAbility4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="4dp"
-            android:contentDescription="@string/playerAbility"/>
-    </LinearLayout>
+            <Button
+                android:id="@+id/player1Ability2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:contentDescription="@string/playerAbility" />
+
+            <Button
+                android:id="@+id/player1Ability3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:contentDescription="@string/playerAbility" />
+
+            <Button
+                android:id="@+id/player1Ability4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:contentDescription="@string/playerAbility" />
+
+            <Button
+                android:id="@+id/player2Ability1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:contentDescription="@string/playerAbility" />
+            <Button
+                android:id="@+id/player2Ability2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:contentDescription="@string/playerAbility" />
+            <Button
+                android:id="@+id/player2Ability3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:contentDescription="@string/playerAbility" />
+            <Button
+                android:id="@+id/player2Ability4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:contentDescription="@string/playerAbility" />
+        </LinearLayout>
+
+    </ScrollView>
+
+
+
+
 
     <LinearLayout
         android:id="@+id/playerContainer"
         android:layout_width="0dp"
         android:layout_height="381dp"
         android:layout_marginBottom="8dp"
+        android:gravity="center"
         android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/abilityButtonContainer"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:id="@+id/player1Container"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="100dp"
+            android:layout_height="150dp"
+            android:layout_marginRight="30dp"
             android:orientation="vertical">
 
             <ImageView
                 android:id="@+id/showP1image"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
+
             <TextView
                 android:id="@+id/showP1name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center" />
+
             <TextView
                 android:id="@+id/showP1health"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center" />
+
             <TextView
                 android:id="@+id/showP1Stamina"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center" />
         </LinearLayout>
+
         <LinearLayout
             android:id="@+id/player2Container"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="100dp"
+            android:layout_height="150dp"
+            android:layout_marginLeft="30dp"
             android:orientation="vertical">
 
             <ImageView
                 android:id="@+id/showP2image"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
+
             <TextView
                 android:id="@+id/showP2name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center" />
+
             <TextView
                 android:id="@+id/showP2health"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center" />
+
             <TextView
                 android:id="@+id/showP2Stamina"
                 android:layout_width="wrap_content"

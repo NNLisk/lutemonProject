@@ -21,16 +21,19 @@ public class BattleManager {
     BattleListener listener;
     boolean isGameOver;
 
+
     public BattleManager(BattleListener listener) {
+        LutemonManager ltmMngr = LutemonManager.getInstance();
         this.listener = listener;
         this.isGameOver = false;
+        currentPlayer = getStartingPlayer(ltmMngr.getPlayer1(), ltmMngr.getPlayer2());
+        receivingPlayer = getReceivingLutemon(ltmMngr.getPlayer1(), ltmMngr.getPlayer2());
     }
-    public void startBattle(Lutemon player1, Lutemon player2) {
-        currentPlayer = getStartingPlayer(player1, player2);
-        receivingPlayer = getReceivingLutemon(player1, player2);
+    public void startBattle() {
         listener.onTurnStart(currentPlayer);
     }
-
+    public Lutemon getCurrentPlayer() {return this.currentPlayer;}
+    public Lutemon getReceivingPlayer() {return this.receivingPlayer;}
     private Lutemon checkIfBattleOver(Lutemon p1, Lutemon p2) {
         if (p1.getHp() == 0) {
             return p1;
@@ -71,15 +74,19 @@ public class BattleManager {
     public void onPlayerAttackSelected(ATTACKTYPES attack) throws OutOfStamina {
         Log.d("ATTACK", "onPlayerAttackSelected: ATTACK SELECTED");
         if (isGameOver) {
+            Log.d("GAME OVER", "onPlayerAttackSelected: game over");
             return;
         }
+
         processStatusEffects(currentPlayer);
         if (!handleAttack(currentPlayer, receivingPlayer, attack)) {
+            Log.d("OUTOFSTAMINA", "onPlayerAttackSelected: " + currentPlayer.getName() + "OUTOFSTAMINA");
             throw new OutOfStamina();
         }
 
         winner = checkIfBattleOver(currentPlayer, receivingPlayer);
         if (winner != null) {
+            Log.d("WINNER", "onPlayerAttackSelected: WINNER: " + winner.getName());
             isGameOver = true;
             handleBattleEnd(winner, (winner == currentPlayer) ? receivingPlayer : currentPlayer);
             listener.onGameOver();
@@ -91,9 +98,8 @@ public class BattleManager {
     }
     public void onPlayerBuffSelected(BUFFTYPES buff) throws OutOfStamina {
 
-        if (isGameOver) {
-            return;
-        }
+        if (isGameOver) return;
+
         processStatusEffects(currentPlayer);
         if (!handleBuffing(currentPlayer, buff)) {
             throw new OutOfStamina();
