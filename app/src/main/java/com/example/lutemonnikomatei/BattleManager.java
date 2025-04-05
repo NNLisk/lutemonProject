@@ -1,5 +1,7 @@
 package com.example.lutemonnikomatei;
 
+import android.util.Log;
+
 import com.example.lutemonnikomatei.LutemonClasses.Lutemon;
 import com.example.lutemonnikomatei.enums.ATTACKTYPES;
 import com.example.lutemonnikomatei.enums.DEBUFFTYPES;
@@ -63,9 +65,11 @@ public class BattleManager {
         Lutemon temp = currentPlayer;
         currentPlayer = receivingPlayer;
         receivingPlayer = temp;
+        Log.d("PLAYER", "switchPlayers: SWITCHED");
     }
 
     public void onPlayerAttackSelected(ATTACKTYPES attack) throws OutOfStamina {
+        Log.d("ATTACK", "onPlayerAttackSelected: ATTACK SELECTED");
         if (isGameOver) {
             return;
         }

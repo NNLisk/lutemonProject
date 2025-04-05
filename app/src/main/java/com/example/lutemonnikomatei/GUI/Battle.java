@@ -64,6 +64,8 @@ public class Battle extends AppCompatActivity {
         BattleListener battleListener = new BattleListener() {
             @Override
             public void onTurnStart(Lutemon lutemon) {
+                Log.d("ONTURNSTART", "onTurnStart: onTurnStart CALLED FOR " + lutemon.getName());
+                resetButtons();
                 buttonAssigner(lutemon);
                 updateBattleUIonTurnChange();
             }
@@ -106,19 +108,23 @@ public class Battle extends AppCompatActivity {
         battleManager = new BattleManager(battleListener);
 
         battleManager.startBattle(lutemonManager.getPlayer1(), lutemonManager.getPlayer2());
-        //updateBattleUIonTurnChange(); // sets player name, hp, stamina and image(eventually)
+        //buttonAssigner(l1);
     }
 
     // assigns buttons based on the lutemons abilities, loops through the ability arraylist
     private void buttonAssigner(Lutemon lutemon) {
         int index = 0;
-        //resetButtons();
 
         for (ATTACKTYPES attack : lutemon.getAttacks()) {
             if (index < buttonList.size()) {
-                buttonList.get(index).setText(attack.toString());
-                buttonList.get(index).setVisibility(View.VISIBLE);
-                buttonList.get(index).setOnClickListener(view -> {
+                Button btn = buttonList.get(index);
+                btn.setText(attack.toString());
+                btn.setVisibility(View.VISIBLE);
+
+                final ATTACKTYPES selectedAttack = attack;
+
+                btn.setOnClickListener(view -> {
+                    Log.d("BUTTON", "buttonAssigner: attack clicked");
                     try {
                         battleManager.onPlayerAttackSelected(attack);
                     } catch (OutOfStamina e) {
@@ -126,13 +132,13 @@ public class Battle extends AppCompatActivity {
                     }
                 });
                 index++;
-                Log.d("success", "button assigned");
+                Log.d("BUTTON", "button assigned");
             } else {
-                Log.d("indexOutOfBounds", "index out of bounds: attacks");
+                Log.d("INDEXERROR", "index out of bounds: attacks");
             }
         }
 
-        for (DEBUFFTYPES debuff : lutemon.getDebuffs()) {
+        /*for (DEBUFFTYPES debuff : lutemon.getDebuffs()) {
             if (index < buttonList.size()) {
                 buttonList.get(index).setText(debuff.toString());
                 buttonList.get(index).setVisibility(View.VISIBLE);
@@ -144,13 +150,13 @@ public class Battle extends AppCompatActivity {
                     }
                 });
                 index++;
-                Log.d("success", "button assigned");
+                Log.d("BUTTON", "button assigned");
             } else {
-                Log.d("indexOutOfBounds", "index out of bounds: debuffs");
+                Log.d("INDEXERROR", "index out of bounds: debuffs");
             }
-        }
+        }*/
 
-        for (BUFFTYPES buff : lutemon.getBuffs()) {
+        /*for (BUFFTYPES buff : lutemon.getBuffs()) {
 
             for (Button button : buttonList) {
                 Log.d("ButtonLog", "Button " + button);
@@ -166,20 +172,21 @@ public class Battle extends AppCompatActivity {
                     }
                 });
                 index++;
-                Log.d("success", "button assigned");
+                Log.d("BUTTON", "button assigned");
             } else {
-                Log.d("indexOutOfBounds", "index out of bounds: buffs");
+                Log.d("INDEXERROR", "index out of bounds: buffs");
                 break;
             }
-        } 
+        } */
     }
 
     // ability buttons invisible and cleared
     private void resetButtons() {
         for (Button button : buttonList) {
             button.setOnClickListener(null);
-            button.setVisibility(View.INVISIBLE);
+            button.setVisibility(View.GONE);
         }
+        Log.d("RESET", "resetButtons: RESET");
     }
 
 
@@ -193,7 +200,7 @@ public class Battle extends AppCompatActivity {
 
         p1StaminaContainer.setText(lutemonManager.getPlayer1().getStamina() + "/" + lutemonManager.getPlayer1().getMaxStamina());
         p2StaminaContainer.setText(lutemonManager.getPlayer2().getStamina() + "/" + lutemonManager.getPlayer2().getMaxStamina());
-        
+        Log.d("UI", "updateBattleUIonTurnChange: UI VALUES UPDATED");
     }
 
     private void UIwhenGameOver() {
