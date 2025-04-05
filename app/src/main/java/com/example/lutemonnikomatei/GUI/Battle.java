@@ -25,6 +25,7 @@ import com.example.lutemonnikomatei.R;
 import com.example.lutemonnikomatei.enums.ATTACKTYPES;
 import com.example.lutemonnikomatei.enums.BUFFTYPES;
 import com.example.lutemonnikomatei.enums.DEBUFFTYPES;
+import com.example.lutemonnikomatei.enums.LUTEMONTYPES;
 
 import java.util.ArrayList;
 
@@ -51,12 +52,13 @@ public class Battle extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        //dummy lutemons
+        LutemonManager.createLutemon("Janne", LUTEMONTYPES.Janne);
+        LutemonManager.createLutemon("Niko", LUTEMONTYPES.STUDENT);
 
-        Lutemon l1 = new Janne("Janne");
-        Lutemon l2 = new Student("Niko");
-
-        lutemonManager.setPlayer1(l1);
-        lutemonManager.setPlayer2(l2);
+        // dummy lutemons
+        lutemonManager.setPlayer1(lutemonManager.getListOfLutemons().get(0));
+        lutemonManager.setPlayer2(lutemonManager.getListOfLutemons().get(1));
 
         BattleListener battleListener = new BattleListener() {
             @Override
