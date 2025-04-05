@@ -72,6 +72,7 @@ public class Battle extends AppCompatActivity {
 
             @Override
             public void onGameOver() {
+                Log.d("GAME OVER", "onGameOver: CALLED");
                 // UI UPDATER METHOD CALL HERE
             }
         };
@@ -114,6 +115,7 @@ public class Battle extends AppCompatActivity {
     // assigns buttons based on the lutemons abilities, loops through the ability arraylist
     private void buttonAssigner(Lutemon lutemon) {
         int index = 0;
+        resetButtons();
 
         for (ATTACKTYPES attack : lutemon.getAttacks()) {
             if (index < buttonList.size()) {
@@ -121,12 +123,12 @@ public class Battle extends AppCompatActivity {
                 btn.setText(attack.toString());
                 btn.setVisibility(View.VISIBLE);
 
-                final ATTACKTYPES selectedAttack = attack;
+                final ATTACKTYPES attackCopy = attack;
 
                 btn.setOnClickListener(view -> {
                     Log.d("BUTTON", "buttonAssigner: attack clicked");
                     try {
-                        battleManager.onPlayerAttackSelected(attack);
+                        battleManager.onPlayerAttackSelected(attackCopy);
                     } catch (OutOfStamina e) {
                         Toast.makeText(view.getContext(), "Not enough stamina!", Toast.LENGTH_SHORT).show();
                     }
@@ -143,6 +145,7 @@ public class Battle extends AppCompatActivity {
                 buttonList.get(index).setText(debuff.toString());
                 buttonList.get(index).setVisibility(View.VISIBLE);
                 buttonList.get(index).setOnClickListener(view -> {
+
                     try {
                         battleManager.onPlayerDebuffSelected(debuff);
                     } catch (OutOfStamina e) {
@@ -158,15 +161,17 @@ public class Battle extends AppCompatActivity {
 
         /*for (BUFFTYPES buff : lutemon.getBuffs()) {
 
-            for (Button button : buttonList) {
-                Log.d("ButtonLog", "Button " + button);
-            }
             if (index < buttonList.size()) {
-                buttonList.get(index).setText(buff.toString());
-                buttonList.get(index).setVisibility(View.VISIBLE);
-                buttonList.get(index).setOnClickListener(view -> {
+                Button btn = buttonList.get(index);
+                btn.setText(buff.toString());
+                btn.setVisibility(View.VISIBLE);
+
+                final BUFFTYPES buffCopy = buff;
+
+                btn.setOnClickListener(view -> {
+                    Log.d("BUTTON", "buttonAssigner: Heal clicked");
                     try {
-                        battleManager.onPlayerBuffSelected(buff);
+                        battleManager.onPlayerBuffSelected(buffCopy);
                     } catch (OutOfStamina e) {
                         Toast.makeText(view.getContext(), "Not enough stamina!", Toast.LENGTH_SHORT).show();
                     }
@@ -177,7 +182,7 @@ public class Battle extends AppCompatActivity {
                 Log.d("INDEXERROR", "index out of bounds: buffs");
                 break;
             }
-        } */
+        }*/
     }
 
     // ability buttons invisible and cleared
