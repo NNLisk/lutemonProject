@@ -38,7 +38,7 @@ public class Battle extends AppCompatActivity {
     Button p2abilityButton1, p2abilityButton2, p2abilityButton3, p2abilityButton4;
     ArrayList<Button> buttonListPlayer2 = new ArrayList<>();
 
-    TextView p1NameContainer, p2NameContainer, p1HealthContainer, p2HealthContainer, p1StaminaContainer, p2StaminaContainer;
+    TextView p1NameContainer, p2NameContainer, p1HealthContainer, p2HealthContainer, p1StaminaContainer, p2StaminaContainer, showTurn;
     ImageView p1ImageContainer, p2ImageContainer;
     BattleManager battleManager;
 
@@ -95,6 +95,8 @@ public class Battle extends AppCompatActivity {
         buttonListPlayer2.add(p2abilityButton2);
         buttonListPlayer2.add(p2abilityButton3);
         buttonListPlayer2.add(p2abilityButton4);
+
+        showTurn = findViewById(R.id.showTurn);
 
         p1NameContainer = findViewById(R.id.showP1name);
         p2NameContainer = findViewById(R.id.showP2name);
@@ -224,6 +226,8 @@ public class Battle extends AppCompatActivity {
         for (Button btn : notCurrentPlayerButtons) {
             btn.setVisibility(View.GONE);
         }
+
+        showTurn.setText(battleManager.getCurrentPlayer().getName());
     }
 
     private void UIwhenGameOver() {
