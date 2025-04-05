@@ -18,6 +18,7 @@ public class HomePage extends AppCompatActivity {
     public static LutemonManager lutemonManager = LutemonManager.getInstance();
 
     Button testBattle;
+    Button viewLute;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,10 +32,14 @@ public class HomePage extends AppCompatActivity {
         });
 
         testBattle = findViewById(R.id.testBattle);
+        viewLute = findViewById(R.id.viewLutemon);
 
         testBattle.setOnClickListener(view -> {
             Intent battleIntent = new Intent(HomePage.this, Battle.class);
             startActivity(battleIntent);
+        });
+        viewLute.setOnClickListener(view-> {Intent viewIntent = new Intent(HomePage.this, viewLutemons.class);
+        startActivity(viewIntent);
         });
     }
 }
