@@ -29,12 +29,40 @@ public class BattleManager {
         listener.onTurnStart(currentPlayer);
     }
 
-    public void setCurrentPlayer(Lutemon player1) {
-        this.currentPlayer = player1;
+    private Lutemon checkIfBattleOver(Lutemon p1, Lutemon p2) {
+        if (p1.getHp() == 0) {
+            return p1;
+        }
+        if (p2.getHp() == 0) {
+            return p2;
+        }
+        return null;
     }
 
-    public void setReceivingPlayer(Lutemon player2) {
-        this.receivingPlayer = player2;
+    private void handleBattleEnd(Lutemon winner, Lutemon loser) {
+        winner.addWin();
+        loser.addLoss();
+        winner.restoreHealth();
+        loser.restoreHealth();
+        winner.restoreStamina();
+        loser.restoreStamina();
+    }
+
+    public Lutemon getStartingPlayer(Lutemon player1, Lutemon player2) {
+        if (player1.getSpeed() < player2.getSpeed()) {
+            return player2;
+        }
+        return player1;
+    }
+
+    private Lutemon getReceivingLutemon(Lutemon player1, Lutemon player2) {
+        return (player1.equals(currentPlayer)) ? player2 : player1;
+    }
+
+    private void switchPlayers() {
+        Lutemon temp = currentPlayer;
+        currentPlayer = receivingPlayer;
+        receivingPlayer = temp;
     }
 
     public void onPlayerAttackSelected(ATTACKTYPES attack) throws OutOfStamina {
@@ -149,41 +177,7 @@ public class BattleManager {
         }
     }
 
-    private Lutemon checkIfBattleOver(Lutemon p1, Lutemon p2) {
-        if (p1.getHp() == 0) {
-            return p1;
-        }
-        if (p2.getHp() == 0) {
-            return p2;
-        }
-        return null;
-    }
 
-    private void handleBattleEnd(Lutemon winner, Lutemon loser) {
-        winner.addWin();
-        loser.addLoss();
-        winner.restoreHealth();
-        loser.restoreHealth();
-        winner.restoreStamina();
-        loser.restoreStamina();
-    }
-
-    public Lutemon getStartingPlayer(Lutemon player1, Lutemon player2) {
-        if (player1.getSpeed() < player2.getSpeed()) {
-            return player2;
-        }
-        return player1;
-    }
-
-    private Lutemon getReceivingLutemon(Lutemon player1, Lutemon player2) {
-        return (player1.equals(currentPlayer)) ? player2 : player1;
-    }
-
-    private void switchPlayers() {
-        Lutemon temp = currentPlayer;
-        currentPlayer = receivingPlayer;
-        receivingPlayer = temp;
-    }
 }
 
 
