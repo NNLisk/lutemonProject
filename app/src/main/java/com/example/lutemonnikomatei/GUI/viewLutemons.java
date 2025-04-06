@@ -11,6 +11,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.example.lutemonnikomatei.LutemonClasses.Lutemon;
 import com.example.lutemonnikomatei.LutemonClasses.TA;
+import com.example.lutemonnikomatei.LutemonManager;
 import com.example.lutemonnikomatei.R;
 
 import android.os.Bundle;
@@ -29,6 +30,7 @@ public class viewLutemons extends AppCompatActivity {
     private RecyclerView recyclerView;
     private LutemonAdapter lutemonAdapter;
     private List<Lutemon> lutemonList;
+    LutemonManager lutemonManager = LutemonManager.getInstance();;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +48,7 @@ public class viewLutemons extends AppCompatActivity {
 
         // Create sample Lutemon data
         lutemonList = createSampleLutemons();
+
 
         // Initialize adapter with click listener
         lutemonAdapter = new LutemonAdapter(lutemonList, new LutemonAdapter.OnLutemonClickListener() {
@@ -65,9 +68,10 @@ public class viewLutemons extends AppCompatActivity {
 
     // Method to create sample data
     private List<Lutemon> createSampleLutemons() {
-        List<Lutemon> lutemons = new ArrayList<>();
+        List<Lutemon> lutemons = lutemonManager.getListOfLutemons();
 
-        lutemons.add(new TA("diud"));
+
+
         return lutemons;
     }
 }
