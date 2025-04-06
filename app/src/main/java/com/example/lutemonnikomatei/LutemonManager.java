@@ -57,6 +57,34 @@ public class LutemonManager {
         }
     }
 
+    public static void createLutemon(String name, String type) {
+        Lutemon lutemon = null; //test purposes, later to be changed to switch case to account for types
+
+        switch (type) {
+            case "Janne":
+                lutemon = new Janne(name);
+                break;
+            case "RESTAURANT_WORKER":
+                lutemon = new RestaurantWorker(name);
+                break;
+            case "SECURITY_GUARD":
+                lutemon = new SecurityGuard(name);
+                break;
+            case "STUDENT":
+                lutemon = new Student(name);
+                break;
+            case "TA":
+                lutemon = new TA(name);
+                break;
+            case "TEACHER":
+                lutemon = new Teacher(name);
+                break;
+        }
+        if (lutemon != null) {
+            HomePage.lutemonManager.listOfLutemons.add(lutemon);
+        }
+    }
+
     public Lutemon getPlayer1() {
         return this.player1Lutemon;
     }
