@@ -7,4 +7,113 @@
     android:layout_height="match_parent"
     tools:context=".GUI.CreateLutemon">
 
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="72dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="72dp"
+        android:text="Give name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2">
+
+        <!-- First row of radio buttons -->
+        <RadioGroup
+            android:id="@+id/radioGroupRow1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/idBtnJanne"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:padding="2dp"
+                android:text="Janne"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="10sp" />
+
+            <RadioButton
+                android:id="@+id/idBtnStudent"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:padding="2dp"
+                android:text="Student"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="10sp" />
+
+            <RadioButton
+                android:id="@+id/idBtnRestaurantWorker"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:padding="2dp"
+                android:text="RestaurantWorker"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="10sp" />
+        </RadioGroup>
+
+        <!-- Second row of radio buttons -->
+        <RadioGroup
+            android:id="@+id/radioGroupRow2"
+            android:layout_width="252dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/idBtnSecurityGuard"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:padding="2dp"
+                android:text="SecurityGuard"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="10sp" />
+
+            <RadioButton
+                android:id="@+id/idBtnTA"
+                android:layout_width="66dp"
+                android:layout_height="25dp"
+                android:padding="2dp"
+                android:text="TA"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="10sp" />
+
+            <RadioButton
+                android:id="@+id/idBtnTeacher"
+                android:layout_width="85dp"
+                android:layout_height="25dp"
+                android:padding="2dp"
+                android:text="Teacher"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="10sp" />
+        </RadioGroup>
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
