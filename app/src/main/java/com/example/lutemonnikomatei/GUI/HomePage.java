@@ -12,6 +12,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.example.lutemonnikomatei.LutemonManager;
 import com.example.lutemonnikomatei.R;
+import com.example.lutemonnikomatei.enums.LUTEMONTYPES;
 
 public class HomePage extends AppCompatActivity {
 
@@ -32,6 +33,15 @@ public class HomePage extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        lutemonManager.createLutemon("Niko", LUTEMONTYPES.STUDENT);
+        lutemonManager.createLutemon("Matei", LUTEMONTYPES.STUDENT);
+        lutemonManager.createLutemon("Cristian", LUTEMONTYPES.STUDENT);
+
+        lutemonManager.createLutemon("JANNE", LUTEMONTYPES.Janne);
+
+        lutemonManager.setPlayer1(lutemonManager.getListOfLutemons().get(3));
+        lutemonManager.setPlayer2(lutemonManager.getListOfLutemons().get(0));
 
         testBattle = findViewById(R.id.testBattle);
         viewLute = findViewById(R.id.viewLutemon);

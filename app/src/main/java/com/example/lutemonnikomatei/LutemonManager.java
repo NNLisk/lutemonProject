@@ -21,12 +21,6 @@ public class LutemonManager {
     Lutemon player2Lutemon;
     private LutemonManager() {
         this.listOfLutemons = new ArrayList<Lutemon>();
-
-        /*createLutemon("Niko", LUTEMONTYPES.STUDENT);
-        createLutemon("Matei", LUTEMONTYPES.STUDENT);
-        createLutemon("Cristian", LUTEMONTYPES.STUDENT);
-
-        createLutemon("JANNE", LUTEMONTYPES.Janne);*/
     }
     public static LutemonManager getInstance() {
         if (lutemonManager == null) {
@@ -35,7 +29,7 @@ public class LutemonManager {
         return lutemonManager;
     }
 
-    public static void createLutemon(String name, LUTEMONTYPES type) {
+    public void createLutemon(String name, LUTEMONTYPES type) {
         Lutemon lutemon = null;
 
         switch (type) {
@@ -59,7 +53,7 @@ public class LutemonManager {
                 break;
         }
         if (lutemon != null) {
-            HomePage.lutemonManager.listOfLutemons.add(lutemon);
+            LutemonManager.getInstance().getListOfLutemons().add(lutemon);
         }
     }
 

@@ -52,13 +52,7 @@ public class Battle extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        //dummy lutemons
-        LutemonManager.createLutemon("Janne", LUTEMONTYPES.Janne);
-        LutemonManager.createLutemon("Niko", LUTEMONTYPES.STUDENT);
 
-        // dummy lutemons
-        lutemonManager.setPlayer1(lutemonManager.getListOfLutemons().get(0));
-        lutemonManager.setPlayer2(lutemonManager.getListOfLutemons().get(1));
 
         BattleListener battleListener = new BattleListener() {
             @Override
