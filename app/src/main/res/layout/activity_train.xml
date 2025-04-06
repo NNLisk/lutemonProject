@@ -7,4 +7,21 @@
     android:layout_height="match_parent"
     tools:context=".GUI.Train">
 
+    <Button
+        android:id="@+id/HpTrain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="68dp"
+        android:text="TrainHp"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="464dp" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="train Stamina"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/HpTrain"
+        tools:layout_editor_absoluteY="464dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

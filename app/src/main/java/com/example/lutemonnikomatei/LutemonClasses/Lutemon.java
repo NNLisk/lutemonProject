@@ -152,4 +152,12 @@ public abstract class Lutemon {
 
         return (int) Math.floor(baseStat * multiplier);
     }
+    public void setMaxHp(int Hp)
+    {
+        this.maxHp = Hp;
+    }
+    public double getHpMultiplier()
+    {
+        return this.hpMultiplier;
+    }
 }

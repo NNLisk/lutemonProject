@@ -19,6 +19,7 @@ public class HomePage extends AppCompatActivity {
 
     Button testBattle;
     Button viewLute;
+    Button trainLute;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +34,8 @@ public class HomePage extends AppCompatActivity {
 
         testBattle = findViewById(R.id.testBattle);
         viewLute = findViewById(R.id.viewLutemon);
+        trainLute = findViewById(R.id.trainLutemon);
+
 
         testBattle.setOnClickListener(view -> {
             Intent battleIntent = new Intent(HomePage.this, Battle.class);
@@ -41,5 +44,9 @@ public class HomePage extends AppCompatActivity {
         viewLute.setOnClickListener(view-> {Intent viewIntent = new Intent(HomePage.this, viewLutemons.class);
         startActivity(viewIntent);
         });
+        trainLute.setOnClickListener(view-> {Intent viewIntent = new Intent(HomePage.this, Train.class);
+            startActivity(viewIntent);
+        });
+
     }
 }
