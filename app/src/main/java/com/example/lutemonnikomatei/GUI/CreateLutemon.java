@@ -72,7 +72,7 @@ public String chosenName;
             // find the radiobutton by returned id
             selectedRadioButton = (RadioButton)findViewById(selectedId);
             chosenType = selectedRadioButton.getText().toString();
-            Toast.makeText(getApplicationContext(), selectedRadioButton.getText().toString()+" is selected", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "New " + selectedRadioButton.getText().toString()+" Lutemon has been created!", Toast.LENGTH_SHORT).show();
         }
         LutemonManager.createLutemon(chosenName, chosenType);
     }
