@@ -81,7 +81,10 @@ public class BattleManager {
         processStatusEffects(currentPlayer);
         if (!handleAttack(currentPlayer, receivingPlayer, attack)) {
             Log.d("OUTOFSTAMINA", "onPlayerAttackSelected: " + currentPlayer.getName() + "OUTOFSTAMINA");
+            listener.updateBattleMessage(currentPlayer.getName() + " Is out of stamina");
             throw new OutOfStamina();
+        } else {
+            listener.updateBattleMessage(currentPlayer.getName() + " HIT " + receivingPlayer.getName() + " BY " + attack.getBaseDamage());
         }
 
         winner = checkIfBattleOver(currentPlayer, receivingPlayer);
@@ -102,6 +105,7 @@ public class BattleManager {
 
         processStatusEffects(currentPlayer);
         if (!handleBuffing(currentPlayer, buff)) {
+            listener.updateBattleMessage(currentPlayer.getName() + " Is out of stamina");
             throw new OutOfStamina();
         }
 
@@ -122,6 +126,7 @@ public class BattleManager {
         processStatusEffects(currentPlayer);
 
         if (!handleDebuffing(currentPlayer, receivingPlayer, debuff)) {
+            listener.updateBattleMessage(currentPlayer.getName() + " Is out of stamina");
             throw new OutOfStamina();
         }
 

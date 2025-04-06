@@ -37,7 +37,8 @@
                 android:layout_marginLeft="12dp"
                 android:layout_marginRight="12dp"
                 android:layout_marginBottom="4dp"
-                android:layout_marginTop="4dp" />
+                android:layout_marginTop="4dp"
+                android:textColor="@color/white"/>
 
             <Button
                 android:id="@+id/player1Ability2"
@@ -48,7 +49,8 @@
                 android:layout_marginBottom="4dp"
                 android:layout_marginTop="4dp"
                 android:backgroundTint="@color/palette1"
-                android:contentDescription="@string/playerAbility" />
+                android:contentDescription="@string/playerAbility"
+                android:textColor="@color/white"/>
 
             <Button
                 android:id="@+id/player1Ability3"
@@ -59,7 +61,8 @@
                 android:layout_marginBottom="4dp"
                 android:layout_marginTop="4dp"
                 android:backgroundTint="@color/palette1"
-                android:contentDescription="@string/playerAbility" />
+                android:contentDescription="@string/playerAbility"
+                android:textColor="@color/white"/>
 
             <Button
                 android:id="@+id/player1Ability4"
@@ -70,7 +73,8 @@
                 android:layout_marginBottom="4dp"
                 android:layout_marginTop="4dp"
                 android:backgroundTint="@color/palette1"
-                android:contentDescription="@string/playerAbility" />
+                android:contentDescription="@string/playerAbility"
+                android:textColor="@color/white"/>
 
             <Button
                 android:id="@+id/player2Ability1"
@@ -81,7 +85,8 @@
                 android:layout_marginBottom="4dp"
                 android:layout_marginTop="4dp"
                 android:backgroundTint="@color/palette1"
-                android:contentDescription="@string/playerAbility" />
+                android:contentDescription="@string/playerAbility"
+                android:textColor="@color/white"/>
 
             <Button
                 android:id="@+id/player2Ability2"
@@ -92,7 +97,8 @@
                 android:layout_marginBottom="4dp"
                 android:layout_marginTop="4dp"
                 android:backgroundTint="@color/palette1"
-                android:contentDescription="@string/playerAbility" />
+                android:contentDescription="@string/playerAbility"
+                android:textColor="@color/white"/>
 
             <Button
                 android:id="@+id/player2Ability3"
@@ -103,7 +109,8 @@
                 android:layout_marginBottom="4dp"
                 android:layout_marginTop="4dp"
                 android:backgroundTint="@color/palette1"
-                android:contentDescription="@string/playerAbility" />
+                android:contentDescription="@string/playerAbility"
+                android:textColor="@color/white"/>
 
             <Button
                 android:id="@+id/player2Ability4"
@@ -114,7 +121,8 @@
                 android:layout_marginBottom="4dp"
                 android:layout_marginTop="4dp"
                 android:backgroundTint="@color/palette1"
-                android:contentDescription="@string/playerAbility" />
+                android:contentDescription="@string/playerAbility"
+                android:textColor="@color/white"/>
         </LinearLayout>
 
     </ScrollView>
@@ -137,7 +145,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:textSize="24sp"
-            android:textColor="@color/design_default_color_primary_variant"
+            android:textColor="@color/white"
             android:paddingBottom="8dp"
             android:paddingTop="8dp"/>
     </LinearLayout>
@@ -159,7 +167,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:textSize="24sp"
-            android:textColor="@color/design_default_color_primary_variant"
+            android:textColor="@color/white"
             android:paddingBottom="8dp"
             android:paddingTop="8dp"/>
     </LinearLayout>
@@ -179,7 +187,7 @@
             android:layout_width="100dp"
             android:layout_height="150dp"
             android:gravity="bottom"
-            android:layout_marginRight="30dp"
+            android:layout_marginEnd="30dp"
             android:orientation="vertical">
 
             <ImageView
@@ -192,7 +200,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:textColor="@color/design_default_color_primary_variant"
+                android:textColor="@color/white"
                 android:textSize="24sp" />
 
             <TextView
@@ -200,7 +208,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:textColor="@color/design_default_color_primary_variant"
+                android:textColor="@color/white"
                 android:textSize="18sp" />
 
             <TextView
@@ -208,7 +216,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:textColor="@color/design_default_color_primary_variant"
+                android:textColor="@color/white"
                 android:textSize="18sp" />
         </LinearLayout>
 
@@ -216,8 +224,8 @@
             android:id="@+id/player2Container"
             android:layout_width="100dp"
             android:layout_height="150dp"
-            android:gravity="bottom"
-            android:layout_marginLeft="30dp"
+            android:gravity="center_horizontal"
+            android:layout_marginStart="30dp"
             android:orientation="vertical">
 
             <ImageView
@@ -230,7 +238,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:textColor="@color/design_default_color_primary_variant"
+                android:textColor="@color/white"
                 android:textSize="24sp" />
 
             <TextView
@@ -238,7 +246,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:textColor="@color/design_default_color_primary_variant"
+                android:textColor="@color/white"
                 android:textSize="18sp" />
 
             <TextView
@@ -246,7 +254,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:textColor="@color/design_default_color_primary_variant"
+                android:textColor="@color/white"
                 android:textSize="18sp" />
         </LinearLayout>
 
