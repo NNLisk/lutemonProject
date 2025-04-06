@@ -21,6 +21,12 @@ public class LutemonManager {
     Lutemon player2Lutemon;
     private LutemonManager() {
         this.listOfLutemons = new ArrayList<Lutemon>();
+
+        /*createLutemon("Niko", LUTEMONTYPES.STUDENT);
+        createLutemon("Matei", LUTEMONTYPES.STUDENT);
+        createLutemon("Cristian", LUTEMONTYPES.STUDENT);
+
+        createLutemon("JANNE", LUTEMONTYPES.Janne);*/
     }
     public static LutemonManager getInstance() {
         if (lutemonManager == null) {
@@ -30,7 +36,7 @@ public class LutemonManager {
     }
 
     public static void createLutemon(String name, LUTEMONTYPES type) {
-        Lutemon lutemon = null; //test purposes, later to be changed to switch case to account for types
+        Lutemon lutemon = null;
 
         switch (type) {
             case Janne:
