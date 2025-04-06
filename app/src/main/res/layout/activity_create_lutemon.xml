@@ -17,109 +17,106 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
-        android:id="@+id/giveNameTextView"
+    <EditText
+        android:id="@+id/giveNameEditView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="72dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="72dp"
-        android:text="Give name"
+        android:hint="Enter a name for your Lutemon:"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
+    <RadioGroup
+        android:id="@+id/radioGroup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:gravity="center"
-        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/giveNameTextView">
+        app:layout_constraintTop_toBottomOf="@+id/giveNameEditView">
 
-        <!-- Single RadioGroup with a GridLayout inside to maintain visual appearance -->
-        <RadioGroup
-            android:id="@+id/radioGroup"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+        <!-- Important: Use android:checkedButton to set default selection if needed -->
+
+        <!-- Using a GridLayout to maintain the 3x2 appearance -->
+
 
             <!-- First row -->
-            <LinearLayout
+            <RadioButton
+                android:id="@+id/idBtnJanne"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:layout_height="25dp"
+                android:layout_row="0"
+                android:layout_column="0"
+                android:padding="2dp"
+                android:text="Janne"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="10sp" />
 
-                <RadioButton
-                    android:id="@+id/idBtnJanne"
-                    android:layout_width="wrap_content"
-                    android:layout_height="25dp"
-                    android:padding="2dp"
-                    android:text="Janne"
-                    android:textAlignment="center"
-                    android:textColor="@color/black"
-                    android:textSize="10sp" />
+            <RadioButton
+                android:id="@+id/idBtnStudent"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:layout_row="0"
+                android:layout_column="1"
+                android:padding="2dp"
+                android:text="Student"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="10sp" />
 
-                <RadioButton
-                    android:id="@+id/idBtnStudent"
-                    android:layout_width="wrap_content"
-                    android:layout_height="25dp"
-                    android:padding="2dp"
-                    android:text="Student"
-                    android:textAlignment="center"
-                    android:textColor="@color/black"
-                    android:textSize="10sp" />
-
-                <RadioButton
-                    android:id="@+id/idBtnRestaurantWorker"
-                    android:layout_width="wrap_content"
-                    android:layout_height="25dp"
-                    android:padding="2dp"
-                    android:text="RestaurantWorker"
-                    android:textAlignment="center"
-                    android:textColor="@color/black"
-                    android:textSize="10sp" />
-            </LinearLayout>
+            <RadioButton
+                android:id="@+id/idBtnRestaurantWorker"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:layout_row="0"
+                android:layout_column="2"
+                android:padding="2dp"
+                android:text="RestaurantWorker"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="10sp" />
 
             <!-- Second row -->
-            <LinearLayout
-                android:layout_width="252dp"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+            <RadioButton
+                android:id="@+id/idBtnSecurityGuard"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:layout_row="1"
+                android:layout_column="0"
+                android:padding="2dp"
+                android:text="SecurityGuard"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="10sp" />
 
-                <RadioButton
-                    android:id="@+id/idBtnSecurityGuard"
-                    android:layout_width="wrap_content"
-                    android:layout_height="25dp"
-                    android:padding="2dp"
-                    android:text="SecurityGuard"
-                    android:textAlignment="center"
-                    android:textColor="@color/black"
-                    android:textSize="10sp" />
+            <RadioButton
+                android:id="@+id/idBtnTA"
+                android:layout_width="66dp"
+                android:layout_height="25dp"
+                android:layout_row="1"
+                android:layout_column="1"
+                android:padding="2dp"
+                android:text="TA"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="10sp" />
 
-                <RadioButton
-                    android:id="@+id/idBtnTA"
-                    android:layout_width="66dp"
-                    android:layout_height="25dp"
-                    android:padding="2dp"
-                    android:text="TA"
-                    android:textAlignment="center"
-                    android:textColor="@color/black"
-                    android:textSize="10sp" />
+            <RadioButton
+                android:id="@+id/idBtnTeacher"
+                android:layout_width="85dp"
+                android:layout_height="25dp"
+                android:layout_row="1"
+                android:layout_column="2"
+                android:padding="2dp"
+                android:text="Teacher"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="10sp" />
 
-                <RadioButton
-                    android:id="@+id/idBtnTeacher"
-                    android:layout_width="85dp"
-                    android:layout_height="25dp"
-                    android:padding="2dp"
-                    android:text="Teacher"
-                    android:textAlignment="center"
-                    android:textColor="@color/black"
-                    android:textSize="10sp" />
-            </LinearLayout>
-        </RadioGroup>
-    </LinearLayout>
+    </RadioGroup>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
