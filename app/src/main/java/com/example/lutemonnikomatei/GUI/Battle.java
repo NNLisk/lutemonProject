@@ -53,6 +53,8 @@ public class Battle extends AppCompatActivity {
             return insets;
         });
 
+        // assigns new battle listener that defines game action operations like
+        // ui updaters and game end notifiers
 
         BattleListener battleListener = new BattleListener() {
             @Override
@@ -77,6 +79,7 @@ public class Battle extends AppCompatActivity {
         };
         battleManager = new BattleManager(battleListener);
 
+        // find and divide 8 buttons into 2 lists
         p1abilityButton1 = findViewById(R.id.player1Ability1);
         p1abilityButton2 = findViewById(R.id.player1Ability2);
         p1abilityButton3 = findViewById(R.id.player1Ability3);
@@ -112,10 +115,12 @@ public class Battle extends AppCompatActivity {
         p1ImageContainer = findViewById(R.id.showP1image);
         p2ImageContainer = findViewById(R.id.showP2image);
 
+        // calls battle manager to start the battle
         battleManager.startBattle();
         buttonAssigner(battleManager.getCurrentPlayer(), getButtonListForPlayer(battleManager.getCurrentPlayer()));
         buttonAssigner(battleManager.getReceivingPlayer(), getButtonListForPlayer(battleManager.getReceivingPlayer()));
 
+        // ui value updater
         updateButtonVisibilities(battleManager.getCurrentPlayer(), battleManager.getReceivingPlayer());
     }
 
@@ -192,7 +197,8 @@ public class Battle extends AppCompatActivity {
     }
 
 
-    // updates the player name and stats
+    // updates the player name and stats in the battle ui, called after every turn
+    // with onTurnStart in the battlelistener
     private void updateBattleUIonTurnChange() {
         p1NameContainer.setText(lutemonManager.getPlayer1().getName());
         p2NameContainer.setText(lutemonManager.getPlayer2().getName());
@@ -205,6 +211,8 @@ public class Battle extends AppCompatActivity {
         Log.d("UI", "updateBattleUIonTurnChange: UI VALUES UPDATED");
     }
 
+
+    // ui method for making the player of the new turn buttons visible and the others Gone
     private void updateButtonVisibilities(Lutemon currentPlayer, Lutemon notCurrentPlayer) {
         ArrayList<Button> currentPlayerButtons = getButtonListForPlayer(currentPlayer);
         for (Button btn : currentPlayerButtons) {
@@ -219,6 +227,7 @@ public class Battle extends AppCompatActivity {
         showTurn.setText(battleManager.getCurrentPlayer().getName() + "'s turn");
     }
 
+    // method makes all buttons invisible
     private void disableAllButtons(Lutemon player1, Lutemon player2) {
         for (Button btn : getButtonListForPlayer(player1)) {
             btn.setVisibility(View.GONE);
@@ -228,10 +237,12 @@ public class Battle extends AppCompatActivity {
         }
     }
 
+    // UI method for game over ui updates
     private void UIwhenGameOver() {
 
     }
 
+    // list handler for getting each lutemons personal list of ability buttons
     private ArrayList<Button> getButtonListForPlayer(Lutemon player) {
         if (player == lutemonManager.getPlayer1()) {
             return buttonListPlayer1;

@@ -12,6 +12,13 @@ import com.example.lutemonnikomatei.statuseffects.StatusEffect;
 
 import java.util.Iterator;
 
+/*
+* BATTLE MANAGER CLASS
+* --------------------
+* HANDLES ALL BATTLE LOGIC THAT IS NOT RELATED TO
+* USER INTERFACE CHANGES
+*/
+
 public class BattleManager {
 
     Lutemon currentPlayer;
@@ -20,7 +27,7 @@ public class BattleManager {
     BattleListener listener;
     boolean isGameOver;
 
-
+    // constructor, sets listener, and players
     public BattleManager(BattleListener listener) {
         LutemonManager ltmMngr = LutemonManager.getInstance();
         this.listener = listener;
@@ -28,12 +35,18 @@ public class BattleManager {
         currentPlayer = getStartingPlayer(ltmMngr.getPlayer1(), ltmMngr.getPlayer2());
         receivingPlayer = getReceivingLutemon(ltmMngr.getPlayer1(), ltmMngr.getPlayer2());
     }
+
+    // starts battle, displays the right players using listener methods
     public void startBattle() {
         listener.updateBattleMessage("Battle started");
         listener.onTurnStart(currentPlayer);
     }
+
+    // getters
     public Lutemon getCurrentPlayer() {return this.currentPlayer;}
     public Lutemon getReceivingPlayer() {return this.receivingPlayer;}
+
+    // checks if the battle is over and returns the player with 0 hp left
     private Lutemon checkIfBattleOver(Lutemon p1, Lutemon p2) {
         if (p1.getHp() == 0) {
             return p1;
@@ -44,6 +57,7 @@ public class BattleManager {
         return null;
     }
 
+    // handles battle over logic, restoring hp and stamina, updating wins and losses
     private void handleBattleEnd(Lutemon winner, Lutemon loser) {
         winner.addWin();
         loser.addLoss();
@@ -53,6 +67,7 @@ public class BattleManager {
         loser.restoreStamina();
     }
 
+    // returns the player with higher speed statistic, to determine the starter of battle
     public Lutemon getStartingPlayer(Lutemon player1, Lutemon player2) {
         if (player1.getSpeed() < player2.getSpeed()) {
             return player2;
@@ -60,10 +75,13 @@ public class BattleManager {
         return player1;
     }
 
+    // returns the player that is not the starting player
+    // i.e. one with lower speed
     private Lutemon getReceivingLutemon(Lutemon player1, Lutemon player2) {
         return (player1.equals(currentPlayer)) ? player2 : player1;
     }
 
+    // switches the current player and receiving player on turn change
     private void switchPlayers() {
         Lutemon temp = currentPlayer;
         currentPlayer = receivingPlayer;
@@ -71,6 +89,9 @@ public class BattleManager {
         Log.d("PLAYER", "switchPlayers: SWITCHED");
     }
 
+    // this function is called when user actually presses an attack button
+    // only for attack abilities
+    // checks if game over, checks stamina and finally handles turn end
     public void onPlayerAttackSelected(ATTACKTYPES attack) throws OutOfStamina {
         Log.d("ATTACK", "onPlayerAttackSelected: ATTACK SELECTED");
         if (isGameOver) {
@@ -99,6 +120,8 @@ public class BattleManager {
         switchPlayers();
         listener.onTurnStart(currentPlayer);
     }
+
+    // similar to onPlayerAttackSelected above, called when user presses a buff ability
     public void onPlayerBuffSelected(BUFFTYPES buff) throws OutOfStamina {
 
         if (isGameOver) return;
@@ -119,6 +142,9 @@ public class BattleManager {
         switchPlayers();
         listener.onTurnStart(currentPlayer);
     }
+
+    // similar to onPlayerAttackSelected and onPlayerBuffSelected, called when user presses a
+    // debuff ability
     public void onPlayerDebuffSelected(DEBUFFTYPES debuff) throws OutOfStamina{
         if (isGameOver) {
             return;
@@ -141,6 +167,7 @@ public class BattleManager {
         listener.onTurnStart(currentPlayer);
     }
 
+    // attack logic, called inside onPlayerAttackSelected
     private boolean handleAttack(Lutemon attacking, Lutemon receiving, ATTACKTYPES attack) {
 
         if (attacking.getStamina() < attack.getCost()){
@@ -151,7 +178,7 @@ public class BattleManager {
         return true;
     }
 
-
+    // buff logic, called inside onPlayerBuffSelected
     private boolean handleBuffing(Lutemon lutemon, BUFFTYPES buff) {
         if (lutemon.getStamina() < buff.getCost()) {
             return false;
@@ -174,13 +201,15 @@ public class BattleManager {
         return true;
     }
 
-
+    // debuff logic, called inside onPlayerDebuffSelected
     private boolean handleDebuffing(Lutemon attacking, Lutemon receiving, DEBUFFTYPES debuff) {
         if (attacking.getStamina() < debuff.getCost()) {
             return false;
         }
         return true;
     }
+
+    // method to process status effects
     public void processStatusEffects(Lutemon lutemon) {
         Iterator<StatusEffect> iterator = lutemon.getStatusEffects().iterator();
         while (iterator.hasNext()) {
