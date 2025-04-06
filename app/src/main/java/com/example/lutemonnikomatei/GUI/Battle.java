@@ -191,19 +191,6 @@ public class Battle extends AppCompatActivity {
         }
     }
 
-    // ability buttons invisible and cleared
-    private void resetButtons() {
-        for (Button button : buttonListPlayer1) {
-            button.setOnClickListener(null);
-            button.setVisibility(View.GONE);
-        }
-        for (Button button : buttonListPlayer2) {
-            button.setOnClickListener(null);
-            button.setVisibility(View.GONE);
-        }
-        Log.d("RESET", "resetButtons: RESET");
-    }
-
 
     // updates the player name and stats
     private void updateBattleUIonTurnChange() {
