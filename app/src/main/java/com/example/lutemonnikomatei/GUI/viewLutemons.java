@@ -31,7 +31,7 @@ public class viewLutemons extends AppCompatActivity {
     Train train = new Train();
     private LutemonAdapter lutemonAdapter;
     private List<Lutemon> lutemonList;
-    LutemonManager lutemonManager = LutemonManager.getInstance();;
+    LutemonManager lutemonManager = LutemonManager.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,8 +71,6 @@ public class viewLutemons extends AppCompatActivity {
     private List<Lutemon> createSampleLutemons() {
         List<Lutemon> lutemons = lutemonManager.getListOfLutemons();
         train.setTrainee(lutemons.get(0));
-
-
 
         return lutemons;
     }

@@ -24,6 +24,8 @@ public RadioGroup radioGroup;
 public RadioButton selectedRadioButton;
 public Button createLutemonButton;
 public String chosenName;
+
+LutemonManager lutemonManager = LutemonManager.getInstance();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,7 +76,7 @@ public String chosenName;
             chosenType = selectedRadioButton.getText().toString();
             Toast.makeText(getApplicationContext(), "New " + selectedRadioButton.getText().toString()+" Lutemon has been created!", Toast.LENGTH_SHORT).show();
         }
-        LutemonManager.createLutemon(chosenName, chosenType);
+        lutemonManager.createLutemon(chosenName, chosenType);
     }
     public void TransformText()
     {

@@ -43,9 +43,8 @@ public class LutemonAdapter extends RecyclerView.Adapter<LutemonViewHolder> {
                     .inflate(R.layout.item_lutemon, parent, false);
             return new LutemonViewHolder(view);
         }
-    @Override
+        @Override
         public void onBindViewHolder(@NonNull LutemonViewHolder holder, int position) {
-
             Lutemon lutemon = lutemonList.get(position);
 
             holder.lutemonName.setText(lutemon.getName());

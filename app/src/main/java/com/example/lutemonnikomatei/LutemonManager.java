@@ -57,7 +57,7 @@ public class LutemonManager {
         }
     }
 
-    public static void createLutemon(String name, String type) {
+    public void createLutemon(String name, String type) {
         Lutemon lutemon = null; //test purposes, later to be changed to switch case to account for types
 
         switch (type) {
@@ -81,7 +81,7 @@ public class LutemonManager {
                 break;
         }
         if (lutemon != null) {
-            HomePage.lutemonManager.listOfLutemons.add(lutemon);
+            LutemonManager.getInstance().listOfLutemons.add(lutemon);
         }
     }
 
