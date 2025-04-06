@@ -12,23 +12,36 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/testBattle"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/testCreateLutemon"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/viewLutemon" />
 
     <Button
         android:id="@+id/viewLutemon"
-        android:layout_width="123dp"
+        android:layout_width="wrap_content"
         android:layout_height="49dp"
+        android:layout_marginTop="144dp"
         android:autoText="false"
         android:text="ViewLutemon"
         app:layout_constraintBottom_toTopOf="@+id/testBattle"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.51"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.679" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/testCreateLutemon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="100dp"
+        android:text="test lutemonCreation"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/testBattle" />
 
     <Button
         android:id="@+id/trainLutemon"

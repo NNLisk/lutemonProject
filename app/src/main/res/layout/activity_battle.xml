@@ -121,13 +121,14 @@
 
 
     <LinearLayout
+        android:id="@+id/turnMessageContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@id/scrollView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/playerContainer"
+        app:layout_constraintTop_toBottomOf="@+id/battleMessageContainer"
         app:layout_constraintVertical_bias="1.0">
 
         <TextView
@@ -141,6 +142,27 @@
             android:paddingTop="8dp"/>
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/battleMessageContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@id/turnMessageContainer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/playerContainer"
+        app:layout_constraintVertical_bias="1.0">
+
+        <TextView
+            android:id="@+id/battleMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:textSize="24sp"
+            android:textColor="@color/design_default_color_primary_variant"
+            android:paddingBottom="8dp"
+            android:paddingTop="8dp"/>
+    </LinearLayout>
     <LinearLayout
         android:id="@+id/playerContainer"
         android:layout_width="0dp"

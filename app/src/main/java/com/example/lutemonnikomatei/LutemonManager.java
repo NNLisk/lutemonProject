@@ -29,8 +29,8 @@ public class LutemonManager {
         return lutemonManager;
     }
 
-    public static void createLutemon(String name, LUTEMONTYPES type) {
-        Lutemon lutemon = null; //test purposes, later to be changed to switch case to account for types
+    public void createLutemon(String name, LUTEMONTYPES type) {
+        Lutemon lutemon = null;
 
         switch (type) {
             case Janne:
@@ -49,6 +49,34 @@ public class LutemonManager {
                 lutemon = new TA(name);
                 break;
             case TEACHER:
+                lutemon = new Teacher(name);
+                break;
+        }
+        if (lutemon != null) {
+            LutemonManager.getInstance().getListOfLutemons().add(lutemon);
+        }
+    }
+
+    public static void createLutemon(String name, String type) {
+        Lutemon lutemon = null; //test purposes, later to be changed to switch case to account for types
+
+        switch (type) {
+            case "Janne":
+                lutemon = new Janne(name);
+                break;
+            case "RESTAURANT_WORKER":
+                lutemon = new RestaurantWorker(name);
+                break;
+            case "SECURITY_GUARD":
+                lutemon = new SecurityGuard(name);
+                break;
+            case "STUDENT":
+                lutemon = new Student(name);
+                break;
+            case "TA":
+                lutemon = new TA(name);
+                break;
+            case "TEACHER":
                 lutemon = new Teacher(name);
                 break;
         }
@@ -85,4 +113,5 @@ public class LutemonManager {
     public static void lutemonLevelUpHandler(Lutemon lutemon) {
         lutemon.increaseLevel();
     }
+
 }

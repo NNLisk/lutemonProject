@@ -38,7 +38,7 @@ public class Battle extends AppCompatActivity {
     Button p2abilityButton1, p2abilityButton2, p2abilityButton3, p2abilityButton4;
     ArrayList<Button> buttonListPlayer2 = new ArrayList<>();
 
-    TextView p1NameContainer, p2NameContainer, p1HealthContainer, p2HealthContainer, p1StaminaContainer, p2StaminaContainer, showTurn;
+    TextView p1NameContainer, p2NameContainer, p1HealthContainer, p2HealthContainer, p1StaminaContainer, p2StaminaContainer, showTurn, battleMessage;
     ImageView p1ImageContainer, p2ImageContainer;
     BattleManager battleManager;
 
@@ -52,13 +52,7 @@ public class Battle extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        //dummy lutemons
-        LutemonManager.createLutemon("Janne", LUTEMONTYPES.Janne);
-        LutemonManager.createLutemon("Niko", LUTEMONTYPES.STUDENT);
 
-        // dummy lutemons
-        lutemonManager.setPlayer1(lutemonManager.getListOfLutemons().get(0));
-        lutemonManager.setPlayer2(lutemonManager.getListOfLutemons().get(1));
 
         BattleListener battleListener = new BattleListener() {
             @Override
@@ -74,6 +68,11 @@ public class Battle extends AppCompatActivity {
                 Log.d("GAME OVER", "onGameOver: CALLED");
                 updateBattleUIonTurnChange();
                 disableAllButtons(battleManager.getCurrentPlayer(), battleManager.getReceivingPlayer());
+            }
+
+            @Override
+            public void updateBattleMessage(String message) {
+                battleMessage.setText(message);
             }
         };
         battleManager = new BattleManager(battleListener);
@@ -99,6 +98,7 @@ public class Battle extends AppCompatActivity {
         buttonListPlayer2.add(p2abilityButton4);
 
         showTurn = findViewById(R.id.showTurn);
+        battleMessage = findViewById(R.id.battleMessage);
 
         p1NameContainer = findViewById(R.id.showP1name);
         p2NameContainer = findViewById(R.id.showP2name);
@@ -189,19 +189,6 @@ public class Battle extends AppCompatActivity {
                 break;
             }
         }
-    }
-
-    // ability buttons invisible and cleared
-    private void resetButtons() {
-        for (Button button : buttonListPlayer1) {
-            button.setOnClickListener(null);
-            button.setVisibility(View.GONE);
-        }
-        for (Button button : buttonListPlayer2) {
-            button.setOnClickListener(null);
-            button.setVisibility(View.GONE);
-        }
-        Log.d("RESET", "resetButtons: RESET");
     }
 
 
