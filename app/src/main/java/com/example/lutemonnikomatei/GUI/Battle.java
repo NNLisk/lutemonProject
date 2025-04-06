@@ -62,16 +62,18 @@ public class Battle extends AppCompatActivity {
 
         BattleListener battleListener = new BattleListener() {
             @Override
-            public void onTurnStart(Lutemon lutemon) {
+            public void onTurnStart(Lutemon lutemon) { // on turn change updates ui and updates button visibilities
+                //called on when player is selected
                 Log.d("ONTURNSTART", "onTurnStart: onTurnStart CALLED FOR " + lutemon.getName());
                 updateBattleUIonTurnChange();
                 updateButtonVisibilities(battleManager.getCurrentPlayer(), battleManager.getReceivingPlayer());
             }
 
             @Override
-            public void onGameOver() {
+            public void onGameOver() { //on game over disable all ability buttons and display winner
                 Log.d("GAME OVER", "onGameOver: CALLED");
-                // UI UPDATER METHOD CALL HERE
+                updateBattleUIonTurnChange();
+                disableAllButtons(battleManager.getCurrentPlayer(), battleManager.getReceivingPlayer());
             }
         };
         battleManager = new BattleManager(battleListener);
@@ -124,7 +126,7 @@ public class Battle extends AppCompatActivity {
         for (ATTACKTYPES attack : lutemon.getAttacks()) {
             if (index < buttons.size()) {
                 Button btn = buttons.get(index);
-                btn.setText(attack.toString());
+                btn.setText(attack.getBaseDamage() + " , " + attack.getCost() + " | " + attack.toString());
                 btn.setVisibility(View.VISIBLE);
 
                 final ATTACKTYPES attackCopy = attack;
@@ -146,7 +148,7 @@ public class Battle extends AppCompatActivity {
 
         for (DEBUFFTYPES debuff : lutemon.getDebuffs()) {
             if (index < buttons.size()) {
-                buttons.get(index).setText(debuff.toString());
+                buttons.get(index).setText(debuff.getCost() + " | " + debuff.toString());
                 buttons.get(index).setVisibility(View.VISIBLE);
                 buttons.get(index).setOnClickListener(view -> {
 
@@ -167,7 +169,7 @@ public class Battle extends AppCompatActivity {
 
             if (index < buttons.size()) {
                 Button btn = buttons.get(index);
-                btn.setText(buff.toString());
+                btn.setText( buff.getCost() + " | " + buff.toString());
                 btn.setVisibility(View.VISIBLE);
 
                 final BUFFTYPES buffCopy = buff;
@@ -227,7 +229,16 @@ public class Battle extends AppCompatActivity {
             btn.setVisibility(View.GONE);
         }
 
-        showTurn.setText(battleManager.getCurrentPlayer().getName());
+        showTurn.setText(battleManager.getCurrentPlayer().getName() + "'s turn");
+    }
+
+    private void disableAllButtons(Lutemon player1, Lutemon player2) {
+        for (Button btn : getButtonListForPlayer(player1)) {
+            btn.setVisibility(View.GONE);
+        }
+        for (Button btn : getButtonListForPlayer(player2)) {
+            btn.setVisibility(View.GONE);
+        }
     }
 
     private void UIwhenGameOver() {
