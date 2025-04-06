@@ -28,6 +28,7 @@ import java.util.List;
 public class viewLutemons extends AppCompatActivity {
 
     private RecyclerView recyclerView;
+    Train train = new Train();
     private LutemonAdapter lutemonAdapter;
     private List<Lutemon> lutemonList;
     LutemonManager lutemonManager = LutemonManager.getInstance();;
@@ -69,6 +70,7 @@ public class viewLutemons extends AppCompatActivity {
     // Method to create sample data
     private List<Lutemon> createSampleLutemons() {
         List<Lutemon> lutemons = lutemonManager.getListOfLutemons();
+        train.setTrainee(lutemons.get(0));
 
 
 
