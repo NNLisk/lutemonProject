@@ -12,7 +12,6 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.example.lutemonnikomatei.LutemonManager;
 import com.example.lutemonnikomatei.R;
-import com.example.lutemonnikomatei.enums.LUTEMONTYPES;
 
 public class HomePage extends AppCompatActivity {
 
@@ -20,8 +19,7 @@ public class HomePage extends AppCompatActivity {
 
     Button testBattle;
     Button viewLute;
-
-    Button testLutemonCreation;
+    Button trainLute;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,18 +32,10 @@ public class HomePage extends AppCompatActivity {
             return insets;
         });
 
-        lutemonManager.createLutemon("Niko", LUTEMONTYPES.STUDENT);
-        lutemonManager.createLutemon("Matei", LUTEMONTYPES.STUDENT);
-        lutemonManager.createLutemon("Cristian", LUTEMONTYPES.STUDENT);
-
-        lutemonManager.createLutemon("JANNE", LUTEMONTYPES.Janne);
-
-        lutemonManager.setPlayer1(lutemonManager.getListOfLutemons().get(3));
-        lutemonManager.setPlayer2(lutemonManager.getListOfLutemons().get(0));
-
         testBattle = findViewById(R.id.testBattle);
         viewLute = findViewById(R.id.viewLutemon);
-        testLutemonCreation = findViewById(R.id.testCreateLutemon);
+        trainLute = findViewById(R.id.trainLutemon);
+
 
         testBattle.setOnClickListener(view -> {
             Intent battleIntent = new Intent(HomePage.this, Battle.class);
@@ -54,10 +44,9 @@ public class HomePage extends AppCompatActivity {
         viewLute.setOnClickListener(view-> {Intent viewIntent = new Intent(HomePage.this, viewLutemons.class);
         startActivity(viewIntent);
         });
-
-        testLutemonCreation.setOnClickListener(view -> {
-            Intent createLutemonIntent = new  Intent(HomePage.this, CreateLutemon.class);
-            startActivity(createLutemonIntent);
+        trainLute.setOnClickListener(view-> {Intent viewIntent = new Intent(HomePage.this, Train.class);
+            startActivity(viewIntent);
         });
+
     }
 }
