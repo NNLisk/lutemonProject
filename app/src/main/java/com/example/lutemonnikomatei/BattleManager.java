@@ -16,7 +16,6 @@ public class BattleManager {
 
     Lutemon currentPlayer;
     Lutemon receivingPlayer;
-
     Lutemon winner = null;
     BattleListener listener;
     boolean isGameOver;
@@ -30,6 +29,7 @@ public class BattleManager {
         receivingPlayer = getReceivingLutemon(ltmMngr.getPlayer1(), ltmMngr.getPlayer2());
     }
     public void startBattle() {
+        listener.updateBattleMessage("Battle started");
         listener.onTurnStart(currentPlayer);
     }
     public Lutemon getCurrentPlayer() {return this.currentPlayer;}
