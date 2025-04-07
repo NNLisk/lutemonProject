@@ -156,6 +156,9 @@ public abstract class Lutemon {
     {
         this.maxHp = Hp;
     }
+    public void setMaxStamina(int Stamina){this.stamina = Stamina;}
+    public void setSpeed(int speed){this.speed = speed;}
+
     public double getHpMultiplier()
     {
         return this.hpMultiplier;
