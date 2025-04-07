@@ -44,11 +44,13 @@ public void TrainLutemon()
 }
 public void TrainSpeed()
 {
-
+    int newSpeed = this.trainee.getSpeed() +10;
+    this.trainee.setMaxHp(newSpeed);
 }
 public void TrainStamina()
     {
-
+        int newStamina = this.trainee.getMaxStamina() +10;
+        this.trainee.setMaxHp(newStamina);
     }
 public void TrainHp()
 {
