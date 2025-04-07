@@ -47,8 +47,8 @@ public class viewLutemons extends AppCompatActivity {
         // Add dividers between items (optional)
         recyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
 
-        // Create sample Lutemon data
-        lutemonList = createSampleLutemons();
+
+        lutemonList = lutemonManager.getListOfLutemons();
 
 
         // Initialize adapter with click listener
