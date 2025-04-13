@@ -67,10 +67,10 @@ public class viewLutemons extends AppCompatActivity {
         recyclerView.setAdapter(lutemonAdapter);
     }
 
-    // Method to create sample data
+  
     private List<Lutemon> createSampleLutemons() {
         List<Lutemon> lutemons = lutemonManager.getListOfLutemons();
-        train.setTrainee(lutemons.get(0));
+
 
         return lutemons;
     }

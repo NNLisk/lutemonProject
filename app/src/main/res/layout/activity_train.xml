@@ -7,54 +7,100 @@
     android:layout_height="match_parent"
     tools:context=".GUI.Train">
 
-    <Button
-        android:id="@+id/HpTrain"
-        android:layout_width="wrap_content"
+    <TextView
+        android:id="@+id/textViewSelectLutemon"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="64dp"
-        android:text="TrainHp"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="464dp" />
-
-    <Button
-        android:id="@+id/trainStamina"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="train Stamina"
+        android:layout_margin="8dp"
+        android:text="Select a Lutemon to Train"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.339"
-        app:layout_constraintStart_toEndOf="@+id/HpTrain"
-        tools:layout_editor_absoluteY="464dp" />
-
-    <Button
-        android:id="@+id/trainSpeed"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="64dp"
-        android:text="trainSpeed"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/button2"
-        app:layout_constraintHorizontal_bias="0.969"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/HpTrain"
-        app:layout_constraintVertical_bias="0.409" />
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="68dp"
-        android:layout_marginEnd="96dp"
-        android:text="Button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/trainStamina"
-        app:layout_constraintVertical_bias="0.019" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="408dp"
-        android:layout_height="381dp"
+        android:id="@+id/recyclerViewLutemons"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/cardViewSelectedLutemon"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="1dp" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewSelectLutemon" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardViewSelectedLutemon"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="4dp"
+        app:layout_constraintBottom_toTopOf="@+id/buttonContainer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/textViewSelectedLutemon"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Selected Lutemon:"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textViewLutemonCurrentStats"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Select a Lutemon to view stats"
+                android:textSize="16sp" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <LinearLayout
+        android:id="@+id/buttonContainer"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <Button
+            android:id="@+id/HpTrain"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="Train HP" />
+
+        <Button
+            android:id="@+id/trainStamina"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="Train Stamina" />
+
+        <Button
+            android:id="@+id/trainSpeed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="Train Speed" />
+
+        <Button
+            android:id="@+id/buttonGoBack"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Back" />
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
