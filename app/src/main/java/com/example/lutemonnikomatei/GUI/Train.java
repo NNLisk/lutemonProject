@@ -20,6 +20,8 @@ public class Train extends AppCompatActivity {
 private Lutemon trainee;
 public TextView Status;
 public Button trainHpButton;
+public Button trainStaminaButton;
+public Button trainSpeedButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,7 +33,11 @@ public Button trainHpButton;
             return insets;
         });
         trainHpButton = findViewById(R.id.HpTrain);
+        trainSpeedButton = findViewById((R.id.trainSpeed));
+        trainStaminaButton = findViewById((R.id.trainStamina));
         trainHpButton.setOnClickListener(v -> TrainHp());
+        trainStaminaButton.setOnClickListener((v -> TrainStamina()));
+        trainSpeedButton.setOnClickListener(v -> TrainSpeed());
 
     }
     public Lutemon GetTrainee()
