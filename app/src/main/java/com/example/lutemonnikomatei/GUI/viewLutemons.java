@@ -48,11 +48,11 @@ public class viewLutemons extends AppCompatActivity {
         recyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
 
 
-        lutemonList = lutemonManager.getListOfLutemons();
+
 
 
         // Initialize adapter with click listener
-        lutemonAdapter = new LutemonAdapter(lutemonList, new LutemonAdapter.OnLutemonClickListener() {
+        lutemonAdapter = new LutemonAdapter(LutemonManager.getInstance().getListOfLutemons(), new LutemonAdapter.OnLutemonClickListener() {
             @Override
             public void onLutemonClick(Lutemon lutemon) {
                 // Handle click event
@@ -66,8 +66,13 @@ public class viewLutemons extends AppCompatActivity {
         // Set adapter to RecyclerView
         recyclerView.setAdapter(lutemonAdapter);
     }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        lutemonAdapter.updateData(LutemonManager.getInstance().getListOfLutemons());
+        lutemonAdapter.notifyDataSetChanged();
+    }
 
-  
     private List<Lutemon> createSampleLutemons() {
         List<Lutemon> lutemons = lutemonManager.getListOfLutemons();
 
