@@ -103,6 +103,23 @@ public class LutemonManager {
         this.player2Lutemon = player;
     }
 
+    public void setPlayer(Lutemon player, int playerNr){
+        if(playerNr == 1){
+            setPlayer1(player);
+        }
+        else{
+            setPlayer2(player);
+        }
+
+    }
+
+    public Boolean lutemonsSet(){
+        if(player1Lutemon == null || player2Lutemon == null){
+            return false;
+        }
+        return true;
+    }
+
     public static void updateLutemonWins(Lutemon lutemon) {
         lutemon.addWin();
     }

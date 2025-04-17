@@ -24,6 +24,8 @@ public class HomePage extends AppCompatActivity {
 
     Button testLutemonCreation;
 
+    //Button chooseCharacter1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,15 +48,14 @@ public class HomePage extends AppCompatActivity {
 
         testBattle = findViewById(R.id.testBattle);
         viewLute = findViewById(R.id.viewLutemon);
-
+        //chooseCharacter1 = findViewById(R.id.chooseLutemon);
         trainLute = findViewById(R.id.trainLutemon);
 
         testLutemonCreation = findViewById(R.id.testCreateLutemon);
 
 
-        testBattle.setOnClickListener(view -> {
-            Intent battleIntent = new Intent(HomePage.this, Battle.class);
-            startActivity(battleIntent);
+        testBattle.setOnClickListener(view-> {Intent viewIntent = new Intent(HomePage.this, ChooseYourCharacter1.class);
+            startActivity(viewIntent);
         });
         viewLute.setOnClickListener(view-> {Intent viewIntent = new Intent(HomePage.this, viewLutemons.class);
         startActivity(viewIntent);
@@ -68,6 +69,10 @@ public class HomePage extends AppCompatActivity {
             Intent createLutemonIntent = new  Intent(HomePage.this, CreateLutemon.class);
             startActivity(createLutemonIntent);
         });
+
+        /*chooseCharacter1.setOnClickListener(view-> {Intent viewIntent = new Intent(HomePage.this, ChooseYourCharacter1.class);
+            startActivity(viewIntent);
+        });*/
 
     }
 }
