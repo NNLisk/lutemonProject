@@ -64,6 +64,9 @@ public class ChooseYourCharacter extends AppCompatActivity {
                 }
                 // If first player chooses, let the next one choose
                 if(currentPlayer==1){
+                    Toast.makeText(ChooseYourCharacter.this,
+                            "Player 1 has chosen their Lutemon! Player 2 next:",
+                            Toast.LENGTH_SHORT).show();
                     currentPlayer++;
                     setPlayerChoosingText();
                 }
