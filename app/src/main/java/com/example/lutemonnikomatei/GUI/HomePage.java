@@ -54,7 +54,7 @@ public class HomePage extends AppCompatActivity {
         testLutemonCreation = findViewById(R.id.testCreateLutemon);
 
 
-        testBattle.setOnClickListener(view-> {Intent viewIntent = new Intent(HomePage.this, ChooseYourCharacter1.class);
+        testBattle.setOnClickListener(view-> {Intent viewIntent = new Intent(HomePage.this, ChooseYourCharacter.class);
             startActivity(viewIntent);
         });
         viewLute.setOnClickListener(view-> {Intent viewIntent = new Intent(HomePage.this, viewLutemons.class);

@@ -25,7 +25,7 @@
             android:name=".GUI.ChooseYourCharacter2"
             android:exported="false" />
         <activity
-            android:name=".GUI.ChooseYourCharacter1"
+            android:name=".GUI.ChooseYourCharacter"
             android:exported="false" />
         <activity
             android:name=".GUI.viewLutemons"

@@ -7,11 +7,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -22,7 +18,7 @@ import com.example.lutemonnikomatei.R;
 
 import java.util.List;
 
-public class ChooseYourCharacter1 extends AppCompatActivity {
+public class ChooseYourCharacter extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     Train train = new Train();
@@ -38,7 +34,7 @@ public class ChooseYourCharacter1 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         currentPlayer = 1;
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_choose_your_character1);
+        setContentView(R.layout.activity_choose_your_character);
 
         // Find textView and set the text
         playerChoosingText = findViewById(R.id.playerChoosingTextView);
@@ -62,7 +58,7 @@ public class ChooseYourCharacter1 extends AppCompatActivity {
             public void onClick(View v) {
                 // If player is missing a lutemon, do not continue
                 if (!lutemonManager.lutemonsSet()){
-                    Toast.makeText(ChooseYourCharacter1.this,
+                    Toast.makeText(ChooseYourCharacter.this,
                             "Missing selection: ",
                             Toast.LENGTH_SHORT).show();
                 }
@@ -73,7 +69,7 @@ public class ChooseYourCharacter1 extends AppCompatActivity {
                 }
                 // If all players have selected their Lutemon, begin the battle
                 else {
-                    Intent battleIntent = new Intent(ChooseYourCharacter1.this, Battle.class);
+                    Intent battleIntent = new Intent(ChooseYourCharacter.this, Battle.class);
                     startActivity(battleIntent);
                 }
             }
@@ -86,7 +82,7 @@ public class ChooseYourCharacter1 extends AppCompatActivity {
             @Override
             public void onLutemonClick(Lutemon lutemon) {
                 // Handle click event
-                Toast.makeText(ChooseYourCharacter1.this,
+                Toast.makeText(ChooseYourCharacter.this,
                         "Selected: " + lutemon.getName(),
                         Toast.LENGTH_SHORT).show();
                 lutemonManager.setPlayer(lutemon, currentPlayer);
