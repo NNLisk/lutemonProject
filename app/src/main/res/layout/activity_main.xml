@@ -11,6 +11,7 @@
         android:id="@+id/testBattle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
         android:text="@string/testBattle"
         app:layout_constraintBottom_toTopOf="@+id/testCreateLutemon"
         app:layout_constraintEnd_toEndOf="parent"
@@ -22,7 +23,7 @@
         android:id="@+id/viewLutemon"
         android:layout_width="wrap_content"
         android:layout_height="49dp"
-        android:layout_marginTop="144dp"
+        android:layout_marginTop="48dp"
         android:autoText="false"
         android:text="ViewLutemon"
         app:layout_constraintBottom_toTopOf="@+id/testBattle"
@@ -35,9 +36,8 @@
         android:id="@+id/testCreateLutemon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="100dp"
+        android:layout_marginTop="12dp"
         android:text="test lutemonCreation"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
@@ -47,12 +47,11 @@
         android:id="@+id/trainLutemon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
         android:text="Train Lutemon"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/testCreateLutemon"
-        app:layout_constraintVertical_bias="0.619" />
+        app:layout_constraintTop_toBottomOf="@+id/testCreateLutemon" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
