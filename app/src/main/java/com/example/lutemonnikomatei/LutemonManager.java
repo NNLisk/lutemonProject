@@ -12,6 +12,8 @@ import com.example.lutemonnikomatei.LutemonClasses.Teacher;
 import com.example.lutemonnikomatei.enums.LUTEMONTYPES;
 
 import java.util.ArrayList;
+import java.util.Locale;
+
 public class LutemonManager {
 
     public static LutemonManager lutemonManager = null;
@@ -59,29 +61,29 @@ public class LutemonManager {
 
     public void createLutemon(String name, String type) {
         Lutemon lutemon = null; //test purposes, later to be changed to switch case to account for types
-
+        type = type.toLowerCase();
         switch (type) {
-            case "Janne":
+            case "janne":
                 lutemon = new Janne(name);
                 break;
-            case "RESTAURANT_WORKER":
+            case "restaurantworker":
                 lutemon = new RestaurantWorker(name);
                 break;
-            case "SECURITY_GUARD":
+            case "securityguard":
                 lutemon = new SecurityGuard(name);
                 break;
-            case "STUDENT":
+            case "student":
                 lutemon = new Student(name);
                 break;
-            case "TA":
+            case "ta":
                 lutemon = new TA(name);
                 break;
-            case "TEACHER":
+            case "teacher":
                 lutemon = new Teacher(name);
                 break;
         }
         if (lutemon != null) {
-            LutemonManager.getInstance().listOfLutemons.add(lutemon);
+            LutemonManager.getInstance().getListOfLutemons().add(lutemon);
         }
     }
 

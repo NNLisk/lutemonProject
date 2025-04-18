@@ -66,16 +66,15 @@ LutemonManager lutemonManager = LutemonManager.getInstance();
             Toast.makeText(getApplicationContext(), "missing type", Toast.LENGTH_SHORT).show();
             return;
         }
-        else
-        {
-            // one of the radio buttons is checked
-            // get selected radio button from radioGroup
-            int selectedId = radioGroup.getCheckedRadioButtonId();
-            // find the radiobutton by returned id
-            selectedRadioButton = (RadioButton)findViewById(selectedId);
-            chosenType = selectedRadioButton.getText().toString();
-            Toast.makeText(getApplicationContext(), "New " + selectedRadioButton.getText().toString()+" Lutemon has been created!", Toast.LENGTH_SHORT).show();
-        }
+
+        // one of the radio buttons is checked
+        // get selected radio button from radioGroup
+        int selectedId = radioGroup.getCheckedRadioButtonId();
+        // find the radiobutton by returned id
+        selectedRadioButton = (RadioButton)findViewById(selectedId);
+        chosenType = selectedRadioButton.getText().toString();
+        Toast.makeText(getApplicationContext(), "New " + selectedRadioButton.getText().toString()+" Lutemon has been created!", Toast.LENGTH_SHORT).show();
+
         lutemonManager.createLutemon(chosenName, chosenType);
     }
     public void TransformText()
