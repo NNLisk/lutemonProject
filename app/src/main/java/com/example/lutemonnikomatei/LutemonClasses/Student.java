@@ -22,9 +22,10 @@ public class Student extends Lutemon{
         this.debuffs = new ArrayList<DEBUFFTYPES>();
 
         attacks.add(ATTACKTYPES.PUNCH);
+        attacks.add(ATTACKTYPES.PROJECTILE);
         buffs.add(BUFFTYPES.BATTERY);
         buffs.add(BUFFTYPES.HEAL);
-        debuffs.add(DEBUFFTYPES.CONFUSION);
+
 
     }
 

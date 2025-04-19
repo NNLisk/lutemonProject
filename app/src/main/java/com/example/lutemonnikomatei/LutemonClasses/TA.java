@@ -22,7 +22,7 @@ public class TA extends Lutemon{
 
         attacks.add(ATTACKTYPES.SLASH);
         attacks.add(ATTACKTYPES.PIERCE);
-        debuffs.add(DEBUFFTYPES.WEAKEN);
+        attacks.add(ATTACKTYPES.PROJECTILE);
         buffs.add(BUFFTYPES.BATTERY);
     }
 

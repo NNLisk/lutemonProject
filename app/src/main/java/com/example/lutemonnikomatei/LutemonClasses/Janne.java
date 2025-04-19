@@ -22,7 +22,7 @@ public class Janne extends Lutemon {
         attacks.add(ATTACKTYPES.SLAM);
         attacks.add(ATTACKTYPES.PROJECTILE);
         buffs.add(BUFFTYPES.HEAL);
-        debuffs.add(DEBUFFTYPES.CONFUSION);
+        buffs.add(BUFFTYPES.MYSTERYBUFF);
     }
 
     public ArrayList<ATTACKTYPES> getAttacks() {
