@@ -23,8 +23,8 @@ public class RestaurantWorker extends Lutemon{
 
         attacks.add(ATTACKTYPES.PUNCH);
         attacks.add(ATTACKTYPES.SLASH);
-        debuffs.add(DEBUFFTYPES.MYSTERYDEBUFF);
-        buffs.add(BUFFTYPES.MYSTERYBUFF);
+        buffs.add(BUFFTYPES.BATTERY);
+        buffs.add(BUFFTYPES.PASSIVEHEAL);
     }
 
     

@@ -61,6 +61,7 @@ public class Battle extends AppCompatActivity {
             public void onTurnStart(Lutemon lutemon) { // on turn change updates ui and updates button visibilities
                 //called on when player is selected
                 Log.d("ONTURNSTART", "onTurnStart: onTurnStart CALLED FOR " + lutemon.getName());
+                battleManager.processStatusEffects(battleManager.getCurrentPlayer());
                 updateBattleUIonTurnChange();
                 updateButtonVisibilities(battleManager.getCurrentPlayer(), battleManager.getReceivingPlayer());
             }
