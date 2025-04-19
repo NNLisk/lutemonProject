@@ -209,7 +209,7 @@ public class BattleManager {
         return true;
     }
 
-    // method to process status effects
+    // method to process status effects with an iterator
     public void processStatusEffects(Lutemon lutemon) {
         Iterator<StatusEffect> iterator = lutemon.getStatusEffects().iterator();
         while (iterator.hasNext()) {
@@ -220,8 +220,6 @@ public class BattleManager {
             }
         }
     }
-
-
 }
 
 

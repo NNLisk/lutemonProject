@@ -24,7 +24,7 @@ public class Teacher extends Lutemon{
 
         attacks.add(ATTACKTYPES.PUNCH);
         attacks.add(ATTACKTYPES.PROJECTILE);
-        buffs.add(BUFFTYPES.MYSTERYBUFF);
+        buffs.add(BUFFTYPES.PASSIVEHEAL);
         buffs.add(BUFFTYPES.HEAL);
 
     }
