@@ -5,6 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/palette3"
     tools:context=".GUI.Train">
 
     <TextView
@@ -16,6 +17,7 @@
         android:textAlignment="center"
         android:textSize="18sp"
         android:textStyle="bold"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -25,6 +27,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="8dp"
+        android:background="@color/palette2"
         app:layout_constraintBottom_toTopOf="@+id/cardViewSelectedLutemon"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -37,6 +40,7 @@
         android:layout_margin="8dp"
         app:cardCornerRadius="8dp"
         app:cardElevation="4dp"
+        app:cardBackgroundColor="@color/palette2"
         app:layout_constraintBottom_toTopOf="@+id/buttonContainer"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
@@ -53,7 +57,8 @@
                 android:layout_height="wrap_content"
                 android:text="Selected Lutemon:"
                 android:textSize="18sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:textColor="@color/white" />
 
             <TextView
                 android:id="@+id/textViewLutemonCurrentStats"
@@ -61,7 +66,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:text="Select a Lutemon to view stats"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:textColor="@color/white" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
@@ -80,27 +86,35 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
-            android:text="Train HP" />
+            android:text="Train HP"
+            android:backgroundTint="@color/palette1"
+            android:textColor="@color/white" />
 
         <Button
             android:id="@+id/trainStamina"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
-            android:text="Train Stamina" />
+            android:text="Train Stamina"
+            android:backgroundTint="@color/palette1"
+            android:textColor="@color/white" />
 
         <Button
             android:id="@+id/trainSpeed"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
-            android:text="Train Speed" />
+            android:text="Train Speed"
+            android:backgroundTint="@color/palette1"
+            android:textColor="@color/white" />
 
         <Button
             android:id="@+id/buttonGoBack"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Back" />
+            android:text="Back"
+            android:backgroundTint="@color/palette1"
+            android:textColor="@color/white" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

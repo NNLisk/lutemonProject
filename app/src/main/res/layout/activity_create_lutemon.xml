@@ -5,6 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/palette3"
     tools:context=".GUI.CreateLutemon">
 
     <Button
@@ -13,6 +14,8 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:text="Create"
+        android:backgroundTint="@color/palette1"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -25,6 +28,9 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="72dp"
         android:hint="Enter a name for your Lutemon:"
+        android:textColorHint="@color/white"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/palette1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -38,84 +44,87 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/giveNameEditView">
 
-        <!-- Important: Use android:checkedButton to set default selection if needed -->
-
         <!-- Using a GridLayout to maintain the 3x2 appearance -->
 
+        <!-- First row -->
+        <RadioButton
+            android:id="@+id/idBtnJanne"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:layout_row="0"
+            android:layout_column="0"
+            android:padding="2dp"
+            android:text="Janne"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:buttonTint="@color/palette1"
+            android:textSize="10sp" />
 
-            <!-- First row -->
-            <RadioButton
-                android:id="@+id/idBtnJanne"
-                android:layout_width="wrap_content"
-                android:layout_height="25dp"
-                android:layout_row="0"
-                android:layout_column="0"
-                android:padding="2dp"
-                android:text="Janne"
-                android:textAlignment="center"
-                android:textColor="@color/black"
-                android:textSize="10sp" />
+        <RadioButton
+            android:id="@+id/idBtnStudent"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:layout_row="0"
+            android:layout_column="1"
+            android:padding="2dp"
+            android:text="Student"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:buttonTint="@color/palette1"
+            android:textSize="10sp" />
 
-            <RadioButton
-                android:id="@+id/idBtnStudent"
-                android:layout_width="wrap_content"
-                android:layout_height="25dp"
-                android:layout_row="0"
-                android:layout_column="1"
-                android:padding="2dp"
-                android:text="Student"
-                android:textAlignment="center"
-                android:textColor="@color/black"
-                android:textSize="10sp" />
+        <RadioButton
+            android:id="@+id/idBtnRestaurantWorker"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:layout_row="0"
+            android:layout_column="2"
+            android:padding="2dp"
+            android:text="RestaurantWorker"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:buttonTint="@color/palette1"
+            android:textSize="10sp" />
 
-            <RadioButton
-                android:id="@+id/idBtnRestaurantWorker"
-                android:layout_width="wrap_content"
-                android:layout_height="25dp"
-                android:layout_row="0"
-                android:layout_column="2"
-                android:padding="2dp"
-                android:text="RestaurantWorker"
-                android:textAlignment="center"
-                android:textColor="@color/black"
-                android:textSize="10sp" />
+        <!-- Second row -->
+        <RadioButton
+            android:id="@+id/idBtnSecurityGuard"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:layout_row="1"
+            android:layout_column="0"
+            android:padding="2dp"
+            android:text="SecurityGuard"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:buttonTint="@color/palette1"
+            android:textSize="10sp" />
 
-            <!-- Second row -->
-            <RadioButton
-                android:id="@+id/idBtnSecurityGuard"
-                android:layout_width="wrap_content"
-                android:layout_height="25dp"
-                android:layout_row="1"
-                android:layout_column="0"
-                android:padding="2dp"
-                android:text="SecurityGuard"
-                android:textAlignment="center"
-                android:textColor="@color/black"
-                android:textSize="10sp" />
+        <RadioButton
+            android:id="@+id/idBtnTA"
+            android:layout_width="66dp"
+            android:layout_height="25dp"
+            android:layout_row="1"
+            android:layout_column="1"
+            android:padding="2dp"
+            android:text="TA"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:buttonTint="@color/palette1"
+            android:textSize="10sp" />
 
-            <RadioButton
-                android:id="@+id/idBtnTA"
-                android:layout_width="66dp"
-                android:layout_height="25dp"
-                android:layout_row="1"
-                android:layout_column="1"
-                android:padding="2dp"
-                android:text="TA"
-                android:textAlignment="center"
-                android:textColor="@color/black"
-                android:textSize="10sp" />
-
-            <RadioButton
-                android:id="@+id/idBtnTeacher"
-                android:layout_width="85dp"
-                android:layout_height="25dp"
-                android:layout_row="1"
-                android:layout_column="2"
-                android:padding="2dp"
-                android:text="Teacher"
-                android:textAlignment="center"
-                android:textColor="@color/black"
-                android:textSize="10sp" />
+        <RadioButton
+            android:id="@+id/idBtnTeacher"
+            android:layout_width="85dp"
+            android:layout_height="25dp"
+            android:layout_row="1"
+            android:layout_column="2"
+            android:padding="2dp"
+            android:text="Teacher"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:buttonTint="@color/palette1"
+            android:textSize="10sp" />
 
     </RadioGroup>
 

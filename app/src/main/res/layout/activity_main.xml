@@ -5,6 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/palette3"
     tools:context=".GUI.HomePage">
 
     <Button
@@ -13,6 +14,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:text="@string/testBattle"
+        android:backgroundTint="@color/palette1"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/testCreateLutemon"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -26,6 +29,8 @@
         android:layout_marginTop="48dp"
         android:autoText="false"
         android:text="ViewLutemon"
+        android:backgroundTint="@color/palette1"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/testBattle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -38,6 +43,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:text="test lutemonCreation"
+        android:backgroundTint="@color/palette1"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
@@ -49,6 +56,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:text="Train Lutemon"
+        android:backgroundTint="@color/palette1"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
