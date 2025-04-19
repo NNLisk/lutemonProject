@@ -99,7 +99,6 @@ public class BattleManager {
             return;
         }
 
-        processStatusEffects(currentPlayer);
         if (!handleAttack(currentPlayer, receivingPlayer, attack)) {
             Log.d("OUTOFSTAMINA", "onPlayerAttackSelected: " + currentPlayer.getName() + "OUTOFSTAMINA");
             listener.updateBattleMessage(currentPlayer.getName() + " Is out of stamina");
@@ -126,7 +125,6 @@ public class BattleManager {
 
         if (isGameOver) return;
 
-        processStatusEffects(currentPlayer);
         if (!handleBuffing(currentPlayer, buff)) {
             listener.updateBattleMessage(currentPlayer.getName() + " Is out of stamina");
             throw new OutOfStamina();
@@ -149,7 +147,6 @@ public class BattleManager {
         if (isGameOver) {
             return;
         }
-        processStatusEffects(currentPlayer);
 
         if (!handleDebuffing(currentPlayer, receivingPlayer, debuff)) {
             listener.updateBattleMessage(currentPlayer.getName() + " Is out of stamina");
@@ -196,6 +193,7 @@ public class BattleManager {
                 StatusEffect eff = new MultiturnHeal(3);
                 lutemon.addStatusEffect(eff);
                 eff.applyEffect(currentPlayer);
+                listener.updateBattleMessage(currentPlayer.getName() + " used passive heal (3 turns)");
                 break;
         }
         return true;
@@ -214,6 +212,7 @@ public class BattleManager {
         Iterator<StatusEffect> iterator = lutemon.getStatusEffects().iterator();
         while (iterator.hasNext()) {
             StatusEffect effect = iterator.next();
+            listener.updateBattleMessage(effect.getName() + " Was applied");
             effect.applyEffect(lutemon);
             if (effect.isExpired()) {
                 iterator.remove();
