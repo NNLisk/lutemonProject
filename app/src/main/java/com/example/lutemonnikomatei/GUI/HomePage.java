@@ -49,7 +49,7 @@ public class HomePage extends AppCompatActivity {
 
 
         testBattle.setOnClickListener(view-> {
-            if (lutemonManager.getPlayer1() == null && lutemonManager.getPlayer2() == null) {
+            if (lutemonManager.getListOfLutemons().size() < 2) {
                 Toast.makeText(view.getContext(), "Create the lutemons first!", Toast.LENGTH_SHORT).show();
                 return;
             }

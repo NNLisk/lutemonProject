@@ -110,6 +110,13 @@ public abstract class Lutemon {
         return this.type;
     }
 
+    public void addDamageTaken(int damage) {
+        this.damageTaken += damage;
+    }
+    public void addDamageDealt(int damage) {
+        this.damageDealt += damage;
+    }
+
     /*
      method generates maxHp for lutemon
      - Called only by constructor
