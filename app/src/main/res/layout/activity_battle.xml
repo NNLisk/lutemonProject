@@ -123,6 +123,21 @@
                 android:backgroundTint="@color/palette1"
                 android:contentDescription="@string/playerAbility"
                 android:textColor="@color/white"/>
+
+            <Button
+                android:id="@+id/BackToHome"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:layout_marginBottom="4dp"
+                android:layout_marginTop="4dp"
+                android:backgroundTint="@color/palette1"
+                android:contentDescription="@string/playerAbility"
+                android:textColor="@color/white"/>
+
+
         </LinearLayout>
 
     </ScrollView>

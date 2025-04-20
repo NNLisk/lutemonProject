@@ -1,5 +1,6 @@
 package com.example.lutemonnikomatei.GUI;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -36,6 +37,7 @@ public class Battle extends AppCompatActivity {
     Button p1abilityButton1, p1abilityButton2, p1abilityButton3, p1abilityButton4;
     ArrayList<Button> buttonListPlayer1 = new ArrayList<>();
     Button p2abilityButton1, p2abilityButton2, p2abilityButton3, p2abilityButton4;
+    Button backToHome;
     ArrayList<Button> buttonListPlayer2 = new ArrayList<>();
 
     TextView p1NameContainer, p2NameContainer, p1HealthContainer, p2HealthContainer, p1StaminaContainer, p2StaminaContainer, showTurn, battleMessage;
@@ -70,7 +72,7 @@ public class Battle extends AppCompatActivity {
             public void onGameOver() { //on game over disable all ability buttons and display winner
                 Log.d("GAME OVER", "onGameOver: CALLED");
                 updateBattleUIonTurnChange();
-                disableAllButtons(battleManager.getCurrentPlayer(), battleManager.getReceivingPlayer());
+                UIwhenGameOver();
             }
 
             @Override
@@ -100,6 +102,8 @@ public class Battle extends AppCompatActivity {
         buttonListPlayer2.add(p2abilityButton2);
         buttonListPlayer2.add(p2abilityButton3);
         buttonListPlayer2.add(p2abilityButton4);
+
+        backToHome = findViewById(R.id.BackToHome);
 
         showTurn = findViewById(R.id.showTurn);
         battleMessage = findViewById(R.id.battleMessage);
@@ -195,8 +199,15 @@ public class Battle extends AppCompatActivity {
                 break;
             }
         }
-    }
 
+        backToHome.setOnClickListener(view -> {
+            Log.d("View", "buttonAssigner: User back to home");
+            Intent viewIntent = new Intent(Battle.this, HomePage.class);
+            startActivity(viewIntent);
+        });
+        backToHome.setText("Go back to home screen");
+
+    }
 
     // updates the player name and stats in the battle ui, called after every turn
     // with onTurnStart in the battlelistener
@@ -240,7 +251,8 @@ public class Battle extends AppCompatActivity {
 
     // UI method for game over ui updates
     private void UIwhenGameOver() {
-
+        disableAllButtons(battleManager.getCurrentPlayer(), battleManager.getReceivingPlayer());
+        backToHome.setVisibility(View.VISIBLE);
     }
 
     // list handler for getting each lutemons personal list of ability buttons
