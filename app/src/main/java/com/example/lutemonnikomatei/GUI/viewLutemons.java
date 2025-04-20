@@ -78,7 +78,7 @@ public class viewLutemons extends AppCompatActivity {
     }
 
     /**
-     * Displays detailed stats for the selected Lutemon
+     * Displays the stats of the Lutemon
      */
     private void displayLutemonDetails(Lutemon lutemon) {
         // Show the details container
@@ -87,7 +87,7 @@ public class viewLutemons extends AppCompatActivity {
         // Update the selected Lutemon title
         textViewSelectedLutemon.setText("Selected: " + lutemon.getName());
 
-        // Format all stats in a structured way
+        // Format stats
         String stats = String.format(
                 "Type: %s\n\n" +
                         "Base Stats:\n" +
