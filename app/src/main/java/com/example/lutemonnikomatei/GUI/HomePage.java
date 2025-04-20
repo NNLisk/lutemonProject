@@ -49,7 +49,7 @@ public class HomePage extends AppCompatActivity {
 
         testBattle = findViewById(R.id.testBattle);
         viewLute = findViewById(R.id.viewLutemon);
-        //chooseCharacter1 = findViewById(R.id.chooseLutemon);
+
         trainLute = findViewById(R.id.trainLutemon);
 
         testLutemonCreation = findViewById(R.id.testCreateLutemon);
@@ -76,9 +76,6 @@ public class HomePage extends AppCompatActivity {
             startActivity(createLutemonIntent);
         });
 
-        /*chooseCharacter1.setOnClickListener(view-> {Intent viewIntent = new Intent(HomePage.this, ChooseYourCharacter1.class);
-            startActivity(viewIntent);
-        });*/
 
     }
 }

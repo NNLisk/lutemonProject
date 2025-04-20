@@ -3,7 +3,6 @@ package com.example.lutemonnikomatei;
 
 import android.content.Context;
 
-import com.example.lutemonnikomatei.GUI.HomePage;
 import com.example.lutemonnikomatei.LutemonClasses.Janne;
 import com.example.lutemonnikomatei.LutemonClasses.Lutemon;
 import com.example.lutemonnikomatei.LutemonClasses.RestaurantWorker;
@@ -19,9 +18,6 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
-import java.util.stream.Collectors;
 
 public class LutemonManager {
 
@@ -132,16 +128,7 @@ public class LutemonManager {
         return true;
     }
 
-    public static void updateLutemonWins(Lutemon lutemon) {
-        lutemon.addWin();
-    }
 
-    public static void updateLutemonLosses(Lutemon lutemon) {
-        lutemon.addLoss();
-    }
-    public static void lutemonLevelUpHandler(Lutemon lutemon) {
-        lutemon.increaseLevel();
-    }
     public void saveLutemons(ArrayList<Lutemon> lutemons, Context context) {
         try {
             FileOutputStream fileOut = context.openFileOutput("lutemons.ser", Context.MODE_PRIVATE);

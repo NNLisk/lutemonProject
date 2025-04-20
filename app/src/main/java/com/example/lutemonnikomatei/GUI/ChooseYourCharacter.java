@@ -23,7 +23,7 @@ public class ChooseYourCharacter extends AppCompatActivity {
     private RecyclerView recyclerView;
     Train train = new Train();
     private LutemonAdapter lutemonAdapter;
-    private List<Lutemon> lutemonList;
+
     LutemonManager lutemonManager = LutemonManager.getInstance();
     int currentPlayer;
     TextView playerChoosingText;
@@ -107,10 +107,5 @@ public class ChooseYourCharacter extends AppCompatActivity {
         lutemonAdapter.notifyDataSetChanged();
     }
 
-    private List<Lutemon> createSampleLutemons() {
-        List<Lutemon> lutemons = lutemonManager.getListOfLutemons();
 
-
-        return lutemons;
-    }
 }

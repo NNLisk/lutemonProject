@@ -49,10 +49,7 @@ LutemonManager lutemonManager = LutemonManager.getInstance();
         });
 
     }
-    public void SwitchSprite()
-    {
 
-    }
     public void CreateLutemonMethod()
     {
         chosenName = nameText.getText().toString();
@@ -78,8 +75,5 @@ LutemonManager lutemonManager = LutemonManager.getInstance();
         lutemonManager.createLutemon(chosenName, chosenType);
         lutemonManager.saveLutemons(lutemonManager.getListOfLutemons(),this);
     }
-    public void TransformText()
-    {
 
-    }
 }
