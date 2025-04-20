@@ -71,7 +71,11 @@ public class Battle extends AppCompatActivity {
             @Override
             public void onGameOver() { //on game over disable all ability buttons and display winner
                 Log.d("GAME OVER", "onGameOver: CALLED");
+                Lutemon winner = battleManager.getWinner();
+                Lutemon loser = (battleManager.getWinner() == battleManager.getCurrentPlayer()) ? battleManager.getReceivingPlayer() : battleManager.getCurrentPlayer();
+                updateBattleMessage(battleManager.getWinner().getName() + " Wins!");
                 updateBattleUIonTurnChange();
+                handleBattleEnd(winner, loser);
                 UIwhenGameOver();
             }
 
@@ -262,5 +266,16 @@ public class Battle extends AppCompatActivity {
         } else {
             return buttonListPlayer2;
         }
+    }
+
+
+    // handles battle over logic, restoring hp and stamina, updating wins and losses
+    private void handleBattleEnd(Lutemon winner, Lutemon loser) {
+        winner.addWin();
+        loser.addLoss();
+        winner.restoreHealth();
+        loser.restoreHealth();
+        winner.restoreStamina();
+        loser.restoreStamina();
     }
 }

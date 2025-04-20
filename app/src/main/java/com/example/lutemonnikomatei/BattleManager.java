@@ -45,27 +45,20 @@ public class BattleManager {
     // getters
     public Lutemon getCurrentPlayer() {return this.currentPlayer;}
     public Lutemon getReceivingPlayer() {return this.receivingPlayer;}
+    public Lutemon getWinner() {return winner;}
 
     // checks if the battle is over and returns the player with 0 hp left
     private Lutemon checkIfBattleOver(Lutemon p1, Lutemon p2) {
         if (p1.getHp() == 0) {
-            return p1;
+            return p2;
         }
         if (p2.getHp() == 0) {
-            return p2;
+            return p1;
         }
         return null;
     }
 
-    // handles battle over logic, restoring hp and stamina, updating wins and losses
-    private void handleBattleEnd(Lutemon winner, Lutemon loser) {
-        winner.addWin();
-        loser.addLoss();
-        winner.restoreHealth();
-        loser.restoreHealth();
-        winner.restoreStamina();
-        loser.restoreStamina();
-    }
+
 
     // returns the player with higher speed statistic, to determine the starter of battle
     public Lutemon getStartingPlayer(Lutemon player1, Lutemon player2) {
@@ -111,7 +104,6 @@ public class BattleManager {
         if (winner != null) {
             Log.d("WINNER", "onPlayerAttackSelected: WINNER: " + winner.getName());
             isGameOver = true;
-            handleBattleEnd(winner, (winner == currentPlayer) ? receivingPlayer : currentPlayer);
             listener.onGameOver();
             return;
         }
@@ -133,7 +125,6 @@ public class BattleManager {
         winner = checkIfBattleOver(currentPlayer, receivingPlayer);
         if (winner != null) {
             isGameOver = true;
-            handleBattleEnd(winner, (winner == currentPlayer) ? receivingPlayer : currentPlayer);
             listener.onGameOver();
             return;
         }
@@ -156,7 +147,6 @@ public class BattleManager {
         winner = checkIfBattleOver(currentPlayer, receivingPlayer);
         if (winner != null) {
             isGameOver = true;
-            handleBattleEnd(winner, (winner == currentPlayer) ? receivingPlayer : currentPlayer);
             listener.onGameOver();
             return;
         }
