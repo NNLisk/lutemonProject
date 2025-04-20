@@ -10,11 +10,11 @@
 
     <Button
         android:id="@+id/testBattle"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
-        android:text="@string/testBattle"
         android:backgroundTint="@color/palette1"
+        android:text="@string/testBattle"
         android:textColor="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/testCreateLutemon"
         app:layout_constraintEnd_toEndOf="parent"
@@ -24,12 +24,12 @@
 
     <Button
         android:id="@+id/viewLutemon"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="49dp"
         android:layout_marginTop="48dp"
         android:autoText="false"
-        android:text="ViewLutemon"
         android:backgroundTint="@color/palette1"
+        android:text="@string/viewLutemon"
         android:textColor="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/testBattle"
         app:layout_constraintEnd_toEndOf="parent"
@@ -39,11 +39,11 @@
 
     <Button
         android:id="@+id/testCreateLutemon"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
-        android:text="test lutemonCreation"
         android:backgroundTint="@color/palette1"
+        android:text="@string/lutemonCreation"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -52,11 +52,11 @@
 
     <Button
         android:id="@+id/trainLutemon"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
-        android:text="Train Lutemon"
         android:backgroundTint="@color/palette1"
+        android:text="@string/trainLutemon"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.492"

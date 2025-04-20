@@ -1,5 +1,8 @@
 <resources>
-    <string name="app_name">lutemonNikoMatei</string>
+    <string name="app_name">Lutemon Game</string>
     <string name="playerAbility">Player Ability</string>
-    <string name="testBattle">Test Battle</string>
+    <string name="testBattle">Battle</string>
+    <string name="viewLutemon">View Lutemons</string>
+    <string name="lutemonCreation">Create a new Lutemon</string>
+    <string name="trainLutemon">Train a Lutemon</string>
 </resources>
