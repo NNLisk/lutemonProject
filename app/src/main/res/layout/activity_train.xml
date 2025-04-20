@@ -31,7 +31,8 @@
         app:layout_constraintBottom_toTopOf="@+id/cardViewSelectedLutemon"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewSelectLutemon" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewSelectLutemon"
+        app:layout_constraintHeight_percent="0.3" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardViewSelectedLutemon"
@@ -105,6 +106,15 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             android:text="Train Speed (1 XP)"
+            android:backgroundTint="@color/palette1"
+            android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/trainDamage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="Train Damage (1 XP)"
             android:backgroundTint="@color/palette1"
             android:textColor="@color/white" />
 

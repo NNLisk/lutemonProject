@@ -94,6 +94,7 @@ public class viewLutemons extends AppCompatActivity {
                         "HP: %d/%d\n" +
                         "Stamina: %d/%d\n" +
                         "Speed: %d\n" +
+                        "Damage Multiplier: %.2f\n" +
                         "Experience: %d\n\n" +
                         "Battle Record:\n" +
                         "Wins: %d\n" +
@@ -104,6 +105,7 @@ public class viewLutemons extends AppCompatActivity {
                 lutemon.getHp(), lutemon.getMaxHp(),
                 lutemon.getStamina(), lutemon.getMaxStamina(),
                 lutemon.getSpeed(),
+                lutemon.getDamageMultiplier(),
                 lutemon.getExperience(),
                 lutemon.getWins(),
                 lutemon.getLosses(),

@@ -14,7 +14,7 @@ public class RestaurantWorker extends Lutemon{
     public ArrayList<BUFFTYPES> buffs;
     public ArrayList<ATTACKTYPES> weaknesses;
     public RestaurantWorker(String name) {
-        super(name, 1.7, 0.6, 0.8);
+        super(name, 1.7, 0.6, 0.8,0.7);
         this.type = LUTEMONTYPES.RESTAURANT_WORKER;
 
         this.attacks = new ArrayList<ATTACKTYPES>();

@@ -21,6 +21,7 @@ public abstract class Lutemon {
     int hp;
     int maxStamina;
     int stamina;
+    double damageMultiplier;
     ArrayList<StatusEffect> statusEffects;
     LUTEMONTYPES type;
     int wins;
@@ -30,7 +31,7 @@ public abstract class Lutemon {
     double speedMultiplier;
     double staminaMultiplier;
 
-    public Lutemon(String name, double hpMultiplier, double speedMultiplier, double staminaMultiplier) {
+    public Lutemon(String name, double hpMultiplier, double speedMultiplier, double staminaMultiplier,double damageMultiplier) {
         this.name = name;
         this.hpMultiplier = hpMultiplier;
         this.speedMultiplier = speedMultiplier;
@@ -44,6 +45,7 @@ public abstract class Lutemon {
         this.experience = 0;
         this.damageDealt = 0;
         this.damageTaken = 0;
+        this.damageMultiplier = damageMultiplier;
     }
 
     public abstract ArrayList<ATTACKTYPES> getAttacks();
@@ -188,5 +190,13 @@ public int getWins()
     public void setDamageDealt(int DamageD)
     {
         this.damageDealt = DamageD;
+    }
+    public void setDamageMultiplier(double multi)
+    {
+        this.damageMultiplier = multi;
+    }
+    public double getDamageMultiplier()
+    {
+        return this.damageMultiplier;
     }
 }

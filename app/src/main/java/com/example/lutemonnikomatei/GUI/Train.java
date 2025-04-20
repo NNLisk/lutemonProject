@@ -25,6 +25,7 @@ public class Train extends AppCompatActivity implements LutemonTrainAdapter.OnLu
     private Button trainHpButton;
     private Button trainStaminaButton;
     private Button trainSpeedButton;
+    private Button trainDamageButton;
     private Button buttonGoBack;
     private RecyclerView recyclerViewLutemons;
     private LutemonTrainAdapter adapter;
@@ -46,6 +47,7 @@ public class Train extends AppCompatActivity implements LutemonTrainAdapter.OnLu
         trainHpButton = findViewById(R.id.HpTrain);
         trainSpeedButton = findViewById(R.id.trainSpeed);
         trainStaminaButton = findViewById(R.id.trainStamina);
+        trainDamageButton = findViewById(R.id.trainDamage);
         buttonGoBack = findViewById(R.id.buttonGoBack);
         recyclerViewLutemons = findViewById(R.id.recyclerViewLutemons);
 
@@ -58,6 +60,7 @@ public class Train extends AppCompatActivity implements LutemonTrainAdapter.OnLu
         trainHpButton.setOnClickListener(v -> TrainHp());
         trainStaminaButton.setOnClickListener(v -> TrainStamina());
         trainSpeedButton.setOnClickListener(v -> TrainSpeed());
+        trainDamageButton.setOnClickListener(v -> TrainDamage());
         buttonGoBack.setOnClickListener(v -> finish());
 
         // Initially disable training buttons until a Lutemon is selected
@@ -77,15 +80,16 @@ public class Train extends AppCompatActivity implements LutemonTrainAdapter.OnLu
             // Update the selected Lutemon title
             textViewSelectedLutemon.setText("Selected: " + trainee.getName());
 
-            // Update the stats display - now including XP
+            // Update the stats display - now including XP and damage multiplier
             String stats = String.format(
-                    "Type: %s\nHP: %d/%d\nSpeed: %d\nStamina: %d/%d\nExperience: %d",
+                    "Type: %s\nHP: %d/%d\nSpeed: %d\nStamina: %d/%d\nDamage Multiplier: %.2f\nExperience: %d",
                     trainee.getType(),
                     trainee.getHp(),
                     trainee.getMaxHp(),
                     trainee.getSpeed(),
                     trainee.getStamina(),
                     trainee.getMaxStamina(),
+                    trainee.getDamageMultiplier(),
                     trainee.getExperience()
             );
             textViewLutemonCurrentStats.setText(stats);
@@ -110,6 +114,7 @@ public class Train extends AppCompatActivity implements LutemonTrainAdapter.OnLu
         trainHpButton.setEnabled(enabled);
         trainStaminaButton.setEnabled(enabled);
         trainSpeedButton.setEnabled(enabled);
+        trainDamageButton.setEnabled(enabled);
     }
 
     private boolean consumeExperiencePoint() {
@@ -150,6 +155,18 @@ public class Train extends AppCompatActivity implements LutemonTrainAdapter.OnLu
             trainee.setMaxHp(newHp);
             trainee.restoreHealth(); // Restore health after training
             showTrainingSuccess("HP");
+            updateSelectedLutemonDisplay();
+            updateTrainingButtonsState();
+            adapter.notifyDataSetChanged();
+        }
+    }
+
+    public void TrainDamage() {
+        if (trainee != null && consumeExperiencePoint()) {
+            // Increase damage multiplier by 0.1
+            double newDamageMultiplier = trainee.getDamageMultiplier() + 0.1;
+            trainee.setDamageMultiplier(newDamageMultiplier);
+            showTrainingSuccess("Damage");
             updateSelectedLutemonDisplay();
             updateTrainingButtonsState();
             adapter.notifyDataSetChanged();

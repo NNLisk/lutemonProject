@@ -13,7 +13,7 @@ public class TA extends Lutemon{
     public ArrayList<BUFFTYPES> buffs;
     public ArrayList<ATTACKTYPES> weaknesses;
     public TA(String name) {
-        super(name, 1,1,1);
+        super(name, 1,1,1,1.4);
         this.type = LUTEMONTYPES.TA;
 
         this.attacks = new ArrayList<ATTACKTYPES>();

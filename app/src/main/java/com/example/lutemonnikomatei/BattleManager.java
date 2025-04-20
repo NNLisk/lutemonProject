@@ -163,7 +163,7 @@ public class BattleManager {
         if (attacking.getStamina() < attack.getCost()){
             return false;
         }
-        receiving.decreaseHealth(attack.getBaseDamage());
+        receiving.decreaseHealth((int)Math.round(attack.getBaseDamage()*attacking.getDamageMultiplier()));
         attacking.decreaseStamina(attack.getCost());
         return true;
     }

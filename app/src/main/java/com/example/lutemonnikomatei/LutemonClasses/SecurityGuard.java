@@ -13,7 +13,7 @@ public class SecurityGuard extends Lutemon{
     public ArrayList<BUFFTYPES> buffs;
     public ArrayList<ATTACKTYPES> weaknesses;
     public SecurityGuard(String name) {
-        super(name, 0.8, 1.4, 1.3);
+        super(name, 0.8, 1.4, 1.3,1.8);
         this.type = LUTEMONTYPES.SECURITY_GUARD;
 
         this.attacks = new ArrayList<ATTACKTYPES>();
