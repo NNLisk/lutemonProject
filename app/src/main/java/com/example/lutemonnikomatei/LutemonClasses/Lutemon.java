@@ -8,11 +8,13 @@ import com.example.lutemonnikomatei.enums.DEBUFFTYPES;
 import com.example.lutemonnikomatei.enums.LUTEMONTYPES;
 import com.example.lutemonnikomatei.statuseffects.StatusEffect;
 
+import java.io.Serializable;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Random;
 
-public abstract class Lutemon {
+public abstract class Lutemon implements Serializable {
+    private static final long serialVersionUID = 1L;
     String name;
     int speed;
     int maxHp;
@@ -206,4 +208,5 @@ public int getWins()
     {
         return this.damageMultiplier;
     }
+
 }

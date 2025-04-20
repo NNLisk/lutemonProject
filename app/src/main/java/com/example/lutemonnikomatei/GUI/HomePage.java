@@ -11,9 +11,13 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.lutemonnikomatei.LutemonClasses.Lutemon;
 import com.example.lutemonnikomatei.LutemonManager;
 import com.example.lutemonnikomatei.R;
 import com.example.lutemonnikomatei.enums.LUTEMONTYPES;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class HomePage extends AppCompatActivity {
 
@@ -29,6 +33,7 @@ public class HomePage extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
@@ -39,6 +44,8 @@ public class HomePage extends AppCompatActivity {
         });
 
         lutemonManager = LutemonManager.getInstance();
+        ArrayList<Lutemon> listLutemons = lutemonManager.loadLutemons(this);
+        lutemonManager.setListOfLutemons(listLutemons);
 
         testBattle = findViewById(R.id.testBattle);
         viewLute = findViewById(R.id.viewLutemon);

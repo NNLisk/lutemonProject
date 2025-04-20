@@ -76,6 +76,7 @@ LutemonManager lutemonManager = LutemonManager.getInstance();
         Toast.makeText(getApplicationContext(), "New " + selectedRadioButton.getText().toString()+" Lutemon has been created!", Toast.LENGTH_SHORT).show();
 
         lutemonManager.createLutemon(chosenName, chosenType);
+        lutemonManager.saveLutemons(lutemonManager.getListOfLutemons(),this);
     }
     public void TransformText()
     {

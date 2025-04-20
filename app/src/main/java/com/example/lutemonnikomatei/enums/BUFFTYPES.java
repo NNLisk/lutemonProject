@@ -1,6 +1,8 @@
 package com.example.lutemonnikomatei.enums;
 
-public enum BUFFTYPES {
+import java.io.Serializable;
+
+public enum BUFFTYPES implements Serializable {
     BATTERY(0),
     HEAL(3),
     PASSIVEHEAL(6),

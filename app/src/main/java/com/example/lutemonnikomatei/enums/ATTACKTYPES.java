@@ -1,6 +1,8 @@
 package com.example.lutemonnikomatei.enums;
 
-public enum ATTACKTYPES {
+import java.io.Serializable;
+
+public enum ATTACKTYPES implements Serializable {
     SLASH(3, 30),
     PUNCH(2, 20),
     PIERCE(3, 27),

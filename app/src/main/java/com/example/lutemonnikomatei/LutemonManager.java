@@ -1,6 +1,8 @@
 package com.example.lutemonnikomatei;
 
 
+import android.content.Context;
+
 import com.example.lutemonnikomatei.GUI.HomePage;
 import com.example.lutemonnikomatei.LutemonClasses.Janne;
 import com.example.lutemonnikomatei.LutemonClasses.Lutemon;
@@ -11,8 +13,15 @@ import com.example.lutemonnikomatei.LutemonClasses.TA;
 import com.example.lutemonnikomatei.LutemonClasses.Teacher;
 import com.example.lutemonnikomatei.enums.LUTEMONTYPES;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
+import java.util.stream.Collectors;
 
 public class LutemonManager {
 
@@ -133,6 +142,33 @@ public class LutemonManager {
     public static void lutemonLevelUpHandler(Lutemon lutemon) {
         lutemon.increaseLevel();
     }
-
-
+    public void saveLutemons(ArrayList<Lutemon> lutemons, Context context) {
+        try {
+            FileOutputStream fileOut = context.openFileOutput("lutemons.ser", Context.MODE_PRIVATE);
+            ObjectOutputStream out = new ObjectOutputStream(fileOut);
+            out.writeObject(lutemons);
+            out.close();
+            fileOut.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    // Loading lutemons
+    public ArrayList<Lutemon> loadLutemons(Context context) {
+        ArrayList<Lutemon> lutemons = new ArrayList<>();
+        try {
+            FileInputStream fileIn = context.openFileInput("lutemons.ser");
+            ObjectInputStream in = new ObjectInputStream(fileIn);
+            lutemons = (ArrayList<Lutemon>) in.readObject();
+            in.close();
+            fileIn.close();
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return lutemons;
+    }
+public void setListOfLutemons(ArrayList listOfLutemons)
+{
+  this.listOfLutemons = listOfLutemons;
+}
 }

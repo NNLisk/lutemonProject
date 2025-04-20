@@ -2,7 +2,9 @@ package com.example.lutemonnikomatei.statuseffects;
 
 import com.example.lutemonnikomatei.LutemonClasses.Lutemon;
 
-public interface StatusEffect {
+import java.io.Serializable;
+
+public interface StatusEffect  {
     String name = null;
 
     public String getName();

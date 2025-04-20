@@ -1,6 +1,8 @@
 package com.example.lutemonnikomatei.enums;
 
-public enum LUTEMONTYPES {
+import java.io.Serializable;
+
+public enum LUTEMONTYPES implements Serializable {
     TEACHER,
     STUDENT,
     RESTAURANT_WORKER,

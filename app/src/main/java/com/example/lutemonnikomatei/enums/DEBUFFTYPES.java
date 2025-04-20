@@ -1,6 +1,8 @@
 package com.example.lutemonnikomatei.enums;
 
-public enum DEBUFFTYPES {
+import java.io.Serializable;
+
+public enum DEBUFFTYPES implements Serializable {
     POISON(2),
     CONFUSION(4),
     WEAKEN(3),
