@@ -105,6 +105,7 @@ public class BattleManager {
         winner = checkIfBattleOver(currentPlayer, receivingPlayer);
         if (winner != null) {
             Log.d("WINNER", "onPlayerAttackSelected: WINNER: " + winner.getName());
+            winner.increaseLevel();
             isGameOver = true;
             listener.onGameOver();
             return;

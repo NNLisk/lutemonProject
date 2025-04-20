@@ -1,7 +1,6 @@
 package com.example.lutemonnikomatei.GUI;
 
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -70,7 +69,7 @@ public class Train extends AppCompatActivity implements LutemonTrainAdapter.OnLu
         // Set the selected Lutemon as the trainee
         trainee = LutemonManager.getInstance().getListOfLutemons().get(position);
         updateSelectedLutemonDisplay();
-        setTrainingButtonsEnabled(true);
+        updateTrainingButtonsState();
     }
 
     private void updateSelectedLutemonDisplay() {
@@ -78,20 +77,32 @@ public class Train extends AppCompatActivity implements LutemonTrainAdapter.OnLu
             // Update the selected Lutemon title
             textViewSelectedLutemon.setText("Selected: " + trainee.getName());
 
-            // Update the stats display
+            // Update the stats display - now including XP
             String stats = String.format(
-                    "Type: %s\nHP: %d/%d\nSpeed: %d\nStamina: %d/%d",
+                    "Type: %s\nHP: %d/%d\nSpeed: %d\nStamina: %d/%d\nExperience: %d",
                     trainee.getType(),
                     trainee.getHp(),
                     trainee.getMaxHp(),
                     trainee.getSpeed(),
                     trainee.getStamina(),
-                    trainee.getMaxStamina()
+                    trainee.getMaxStamina(),
+                    trainee.getExperience()
             );
             textViewLutemonCurrentStats.setText(stats);
         } else {
             textViewSelectedLutemon.setText("Selected Lutemon:");
             textViewLutemonCurrentStats.setText("Select a Lutemon to view stats");
+        }
+    }
+
+    private void updateTrainingButtonsState() {
+        boolean hasEnoughXp = (trainee != null && trainee.getExperience() > 0);
+        setTrainingButtonsEnabled(hasEnoughXp);
+
+        if (trainee != null && !hasEnoughXp) {
+            Toast.makeText(this,
+                    trainee.getName() + " needs more experience to train!",
+                    Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -101,43 +112,53 @@ public class Train extends AppCompatActivity implements LutemonTrainAdapter.OnLu
         trainSpeedButton.setEnabled(enabled);
     }
 
-    public void TrainSpeed() {
-        if (trainee != null) {
+    private boolean consumeExperiencePoint() {
+        if (trainee != null && trainee.getExperience() > 0) {
+            trainee.setExperience(trainee.getExperience() - 1);
+            return true;
+        }
+        return false;
+    }
 
+    public void TrainSpeed() {
+        if (trainee != null && consumeExperiencePoint()) {
             int newSpeed = trainee.getSpeed() + 1;
             trainee.setSpeed(newSpeed);
             showTrainingSuccess("Speed");
             updateSelectedLutemonDisplay();
+            updateTrainingButtonsState();
             adapter.notifyDataSetChanged();
         }
     }
 
     public void TrainStamina() {
-        if (trainee != null) {
+        if (trainee != null && consumeExperiencePoint()) {
             int newStamina = trainee.getMaxStamina() + 1;
             trainee.setMaxStamina(newStamina);
             trainee.restoreStamina(); // Restore stamina after training
             showTrainingSuccess("Stamina");
             updateSelectedLutemonDisplay();
+            updateTrainingButtonsState();
             adapter.notifyDataSetChanged();
         }
     }
 
     public void TrainHp() {
-        if (trainee != null) {
+        if (trainee != null && consumeExperiencePoint()) {
             int increment = Math.max(1, (int)(trainee.getHpMultiplier() * 2));
             int newHp = trainee.getMaxHp() + increment;
             trainee.setMaxHp(newHp);
             trainee.restoreHealth(); // Restore health after training
             showTrainingSuccess("HP");
             updateSelectedLutemonDisplay();
+            updateTrainingButtonsState();
             adapter.notifyDataSetChanged();
         }
     }
 
     private void showTrainingSuccess(String attribute) {
         Toast.makeText(this,
-                trainee.getName() + "'s " + attribute + " training was successful!",
+                trainee.getName() + "'s " + attribute + " training was successful! (-1 XP)",
                 Toast.LENGTH_SHORT).show();
     }
 }

@@ -13,7 +13,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
-        android:text="Select a Lutemon to Train"
+        android:text="Select a Lutemon to Train (1 XP required)"
         android:textAlignment="center"
         android:textSize="18sp"
         android:textStyle="bold"
@@ -86,7 +86,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
-            android:text="Train HP"
+            android:text="Train HP (1 XP)"
             android:backgroundTint="@color/palette1"
             android:textColor="@color/white" />
 
@@ -95,7 +95,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
-            android:text="Train Stamina"
+            android:text="Train Stamina (1 XP)"
             android:backgroundTint="@color/palette1"
             android:textColor="@color/white" />
 
@@ -104,7 +104,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
-            android:text="Train Speed"
+            android:text="Train Speed (1 XP)"
             android:backgroundTint="@color/palette1"
             android:textColor="@color/white" />
 
