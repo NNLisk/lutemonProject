@@ -3,6 +3,7 @@ package com.example.lutemonnikomatei.GUI;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,7 +17,7 @@ import com.example.lutemonnikomatei.enums.LUTEMONTYPES;
 
 public class HomePage extends AppCompatActivity {
 
-    public static LutemonManager lutemonManager = LutemonManager.getInstance();
+    public static LutemonManager lutemonManager;
 
     Button testBattle;
     Button viewLute;
@@ -37,14 +38,7 @@ public class HomePage extends AppCompatActivity {
             return insets;
         });
 
-        lutemonManager.createLutemon("Niko", LUTEMONTYPES.STUDENT);
-        lutemonManager.createLutemon("Matei", LUTEMONTYPES.STUDENT);
-        lutemonManager.createLutemon("Cristian", LUTEMONTYPES.STUDENT);
-
-        lutemonManager.createLutemon("JANNE", LUTEMONTYPES.Janne);
-
-        lutemonManager.setPlayer1(lutemonManager.getListOfLutemons().get(3));
-        lutemonManager.setPlayer2(lutemonManager.getListOfLutemons().get(0));
+        lutemonManager = LutemonManager.getInstance();
 
         testBattle = findViewById(R.id.testBattle);
         viewLute = findViewById(R.id.viewLutemon);
@@ -54,7 +48,12 @@ public class HomePage extends AppCompatActivity {
         testLutemonCreation = findViewById(R.id.testCreateLutemon);
 
 
-        testBattle.setOnClickListener(view-> {Intent viewIntent = new Intent(HomePage.this, ChooseYourCharacter.class);
+        testBattle.setOnClickListener(view-> {
+            if (lutemonManager.getPlayer1() == null && lutemonManager.getPlayer2() == null) {
+                Toast.makeText(view.getContext(), "Create the lutemons first!", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            Intent viewIntent = new Intent(HomePage.this, ChooseYourCharacter.class);
             startActivity(viewIntent);
         });
         viewLute.setOnClickListener(view-> {Intent viewIntent = new Intent(HomePage.this, viewLutemons.class);

@@ -23,6 +23,7 @@ public class LutemonManager {
     Lutemon player2Lutemon;
     private LutemonManager() {
         this.listOfLutemons = new ArrayList<Lutemon>();
+
     }
     public static LutemonManager getInstance() {
         if (lutemonManager == null) {
