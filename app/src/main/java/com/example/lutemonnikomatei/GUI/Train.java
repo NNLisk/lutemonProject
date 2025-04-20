@@ -103,6 +103,7 @@ public class Train extends AppCompatActivity implements LutemonTrainAdapter.OnLu
 
     public void TrainSpeed() {
         if (trainee != null) {
+
             int newSpeed = trainee.getSpeed() + 1;
             trainee.setSpeed(newSpeed);
             showTrainingSuccess("Speed");

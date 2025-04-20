@@ -157,10 +157,28 @@ public abstract class Lutemon {
         this.maxHp = Hp;
     }
     public void setMaxStamina(int Stamina){this.maxStamina = Stamina;}
+    public void setExperience(int Exp){this.experience = Exp;}
+    public int getExperience(){return this.experience;}
     public void setSpeed(int speed){this.speed = speed;}
+public int getWins()
+{
+    return this.wins;
+}
 
     public double getHpMultiplier()
     {
         return this.hpMultiplier;
+    }
+
+    public int getLosses() {
+        return this.losses;
+    }
+
+    public int getDamageDealt() {
+        return this.damageDealt;
+    }
+
+    public Object getDamageTaken() {
+        return this.damageTaken;
     }
 }

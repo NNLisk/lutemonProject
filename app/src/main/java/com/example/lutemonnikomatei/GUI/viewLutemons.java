@@ -1,20 +1,9 @@
 package com.example.lutemonnikomatei.GUI;
 
-import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.activity.EdgeToEdge;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
-
-import com.example.lutemonnikomatei.LutemonClasses.Lutemon;
-import com.example.lutemonnikomatei.LutemonClasses.TA;
-import com.example.lutemonnikomatei.LutemonManager;
-import com.example.lutemonnikomatei.R;
-
-import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,16 +11,23 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
+import com.example.lutemonnikomatei.LutemonClasses.Lutemon;
+import com.example.lutemonnikomatei.LutemonManager;
+import com.example.lutemonnikomatei.R;
+
 import java.util.List;
 
 public class viewLutemons extends AppCompatActivity {
 
     private RecyclerView recyclerView;
-    Train train = new Train();
     private LutemonAdapter lutemonAdapter;
     private List<Lutemon> lutemonList;
     LutemonManager lutemonManager = LutemonManager.getInstance();
+
+    // Stats view components
+    private TextView textViewSelectedLutemon;
+    private TextView textViewLutemonDetailsStats;
+    private View lutemonDetailsContainer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,25 +43,33 @@ public class viewLutemons extends AppCompatActivity {
         // Add dividers between items (optional)
         recyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
 
+        // Find stats view components
+        textViewSelectedLutemon = findViewById(R.id.textViewSelectedLutemon);
+        textViewLutemonDetailsStats = findViewById(R.id.textViewLutemonDetailsStats);
+        lutemonDetailsContainer = findViewById(R.id.lutemonDetailsContainer);
 
-
-
+        // Hide details container until a Lutemon is selected
+        lutemonDetailsContainer.setVisibility(View.GONE);
 
         // Initialize adapter with click listener
         lutemonAdapter = new LutemonAdapter(LutemonManager.getInstance().getListOfLutemons(), new LutemonAdapter.OnLutemonClickListener() {
             @Override
             public void onLutemonClick(Lutemon lutemon) {
-                // Handle click event
-                Toast.makeText(viewLutemons.this,
-                        "Selected: " + lutemon.getName(),
-                        Toast.LENGTH_SHORT).show();
-
+                // Display detailed stats
+                displayLutemonDetails(lutemon);
             }
         });
 
         // Set adapter to RecyclerView
         recyclerView.setAdapter(lutemonAdapter);
+
+        // Set up back button
+        Button buttonBack = findViewById(R.id.buttonGoBack);
+        if (buttonBack != null) {
+            buttonBack.setOnClickListener(v -> finish());
+        }
     }
+
     @Override
     protected void onResume() {
         super.onResume();
@@ -73,10 +77,45 @@ public class viewLutemons extends AppCompatActivity {
         lutemonAdapter.notifyDataSetChanged();
     }
 
-    private List<Lutemon> createSampleLutemons() {
-        List<Lutemon> lutemons = lutemonManager.getListOfLutemons();
+    /**
+     * Displays detailed stats for the selected Lutemon
+     */
+    private void displayLutemonDetails(Lutemon lutemon) {
+        // Show the details container
+        lutemonDetailsContainer.setVisibility(View.VISIBLE);
 
+        // Update the selected Lutemon title
+        textViewSelectedLutemon.setText("Selected: " + lutemon.getName());
 
-        return lutemons;
+        // Format all stats in a structured way
+        String stats = String.format(
+                "Type: %s\n\n" +
+                        "Base Stats:\n" +
+                        "HP: %d/%d\n" +
+                        "Stamina: %d/%d\n" +
+                        "Speed: %d\n" +
+                        "Experience: %d\n\n" +
+                        "Battle Record:\n" +
+                        "Wins: %d\n" +
+                        "Losses: %d\n" +
+                        "Damage Dealt: %d\n" +
+                        "Damage Taken: %d",
+                lutemon.getType(),
+                lutemon.getHp(), lutemon.getMaxHp(),
+                lutemon.getStamina(), lutemon.getMaxStamina(),
+                lutemon.getSpeed(),
+                lutemon.getExperience(),
+                lutemon.getWins(),
+                lutemon.getLosses(),
+                lutemon.getDamageDealt(),
+                lutemon.getDamageTaken()
+        );
+
+        textViewLutemonDetailsStats.setText(stats);
+
+        // Show a brief toast to confirm selection
+        Toast.makeText(viewLutemons.this,
+                "Selected: " + lutemon.getName(),
+                Toast.LENGTH_SHORT).show();
     }
 }
