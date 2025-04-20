@@ -98,6 +98,8 @@ public class BattleManager {
             throw new OutOfStamina();
         } else {
             listener.updateBattleMessage(currentPlayer.getName() + " HIT " + receivingPlayer.getName() + " BY " + attack.getBaseDamage());
+            IncreaseAttackDealt(currentPlayer,attack);
+            IncreaseAttackTaken(receivingPlayer,currentPlayer,attack);
         }
 
         winner = checkIfBattleOver(currentPlayer, receivingPlayer);
@@ -208,6 +210,16 @@ public class BattleManager {
                 iterator.remove();
             }
         }
+    }
+    public void IncreaseAttackDealt(Lutemon Attacker,ATTACKTYPES att)
+    {
+        Attacker.setDamageDealt(Attacker.getDamageDealt()+att.getBaseDamage());
+
+    }
+    public void IncreaseAttackTaken(Lutemon Defender,Lutemon Attacker,ATTACKTYPES att)
+    {
+        Defender.setDamageTaken(Defender.getDamageTaken()+att.getBaseDamage());
+
     }
 }
 

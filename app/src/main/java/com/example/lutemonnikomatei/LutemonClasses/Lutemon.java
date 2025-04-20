@@ -178,7 +178,15 @@ public int getWins()
         return this.damageDealt;
     }
 
-    public Object getDamageTaken() {
+    public int getDamageTaken() {
         return this.damageTaken;
+    }
+    public void setDamageTaken(int Damage)
+    {
+        this.damageTaken = Damage;
+    }
+    public void setDamageDealt(int DamageD)
+    {
+        this.damageDealt = DamageD;
     }
 }
