@@ -13,3 +13,7 @@ and fight them splitting the screen with another player couch co-op style
 
 ## How to use
 Source code can be accessed with android studio and it can be downloaded to a connected phone
+
+
+## UML
+![UML](uml.png)
