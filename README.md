@@ -16,4 +16,4 @@ Source code can be accessed with android studio and it can be downloaded to a co
 
 
 ## UML
-![UML](uml.png)
+![UML](UML.png)
